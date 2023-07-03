@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jacob Jose">
+    <title>GetSummaryHoldings</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N5DCWKQ06J"></script>
+</head>
+<body>
+    <table id="tableHeading">
+        <tr>
+            <td><h1><a href="/" class="URLLikeRegularText"> Get Summary Holdings </a></h1></td>
+            <td>Contact us: </td>
+            <td><a href="mailto:support@getsummaryholdings.com">support@getsummaryholdings.com</a></td>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+
+
+    <table id="tableUserInput">
+        <form action="https://editiontracker.azurewebsites.net/postData" method="POST" id="formUserInput">
+            <tr>
+                <td><label id="lblTxtTextEditionsType" for="txtTextEditionsType">Edition types:</label></td>
+                <td><input type="text" id="txtTextEditionsType" name="editionsType" required placeholder="vol/ser/no" value="vol" ></td>
+            </tr>
+            <tr>
+                <td><label id="lblTxtNumberYearStarting" for="txtNumberYearStarting">Starting Year:</label></td>
+                <td><input type="text" id="txtNumberYearStarting" name="yearStarting" required placeholder="Earliest edition in Alma" value="2000" ></td>
+                <td><label id="lblTxtNumberYearEnding" for="txtNumberYearEnding" class="right-align">End Year:</label></td>
+                <td><input type="text" id="txtNumberYearEnding" name="yearEnding" required placeholder="Latest edition in Alma or 2020" value="2020" ></td>
+            </tr>
+            <tr>
+                <td><label id="lblTxtNumberEditionsPerYear" for="txtNumberEditionsPerYear">Editions in a year:</label></td>
+                <td><input type="text" id="txtNumberEditionsPerYear" name="editionsPerYear" required placeholder="Number of issues in a year" value="12" ></td>
+                <td><label id="lblTxtNumberVolumeStartingYear" for="txtNumberVolumeStartingYear">Volume of starting year:</label></td>
+                <td><input type="text" id="txtNumberVolumeStartingYear" name="volumeStartingYear" required placeholder="Volume of starting year" value="1" ></td>
+            </tr>
+            <tr>
+
+            </tr>
+        <tr>
+            <td><button id="btnCreateTable">Generate Checkboxes</button></td>
+
+            <td colspan="2">
+
+                    <input type="hidden" id="arrayEditionDescription" name="arrayEditionDescription">
+                    <input type="hidden" id="arrayEditionNumber" name="arrayEditionNumber">
+                    <input type="hidden" id="arrayYear" name="arrayYear">
+                    <input type="hidden" id="arrayAvailabilityStatusYear" name="arrayAvailabilityStatusYear">
+                    <input type="hidden" id="arrayAvailabilityStatusIssuesOfEachYear" name="arrayAvailabilityStatusIssuesOfEachYear">
+                    <input type="hidden" id="arrayIssuesInTheYear" name="arrayIssuesInTheYear">
+                    <button type="submit" id="btnGenerateSummary" disabled="disabled">Generate Summary Holdings</button>
+        </form>
+            </td>
+        <td><button id="btnClearAll" disabled="disabled">Reset</button></td>
+
+        </tr>
+        <tr>
+            <td><label for="divRBMode" class="right-align" >Output:</label></td>
+            <td>
+                <div id="divRBMode">
+                    <label>
+                        <input type="radio" name="rbMode" id="rbModeBasic" value="modeBasic" onclick="setUserMode(this.value)" checked>
+                        Basic
+                    </label>
+                    <label>
+                        <input type="radio" name="rbMode" id="rbModeAdvanced" value="modeAdvanced" onclick="setUserMode(this.value)" >
+                        Detailed
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table id="tableSummaryHoldingBasic" class="modeBasic">
+        <tr>
+            <td><label for="textAreaUnavailableEditionsWithoutYearAdvanced">Missing Editions</label></td>
+            <td><label for="textAreaAvailableSummaryHoldingBasic">Summary Holdings (available)</label></td>
+        </tr>
+        <tr>
+            <td><textarea id="textAreaUnavailableEditionsWithoutYearBasic" name="textAreaUnavailableEditionsWithoutYear" th:text="${textAreaUnavailableEditionsWithoutYear}"></textarea></td>
+            <td><textarea id="textAreaAvailableSummaryHoldingBasic" name="textAreaAvailableSummaryHolding" th:text="${textAreaAvailableSummaryHolding}"> </textarea></td>
+        </tr>
+    </table>
+
+    <table id="tableSummaryHoldingAdvanced" class="modeAdvanced" >
+        <tr>
+            <td colspan="2" class="tableHeader">
+                Missing Editions
+            </td>
+            <td colspan="2" class="tableHeader" >
+                Available Editions
+            </td>
+            <td rowspan="2" class="tableHeader" >
+                Standard Summary Holdings
+            </td>
+        </tr>
+        <tr>
+            <td><label for="textAreaUnavailableEditionsWithoutYearAdvanced">Without Year</label></td>
+            <td><label for="textAreaUnavailableEditionsWithYear">With Year</label></td>
+            <td><label for="textAreaAvailableEditionsWithYear" class="modeAdvanced" >With Year</label></td>
+            <td><label for="textAreaAvailableEditionsWithoutYear" class="modeAdvanced" >Without Year</label></td>
+        </tr>
+        <tr>
+            <td><textarea id="textAreaUnavailableEditionsWithoutYearAdvanced" name="textAreaUnavailableEditionsWithoutYear" th:text="${textAreaUnavailableEditionsWithoutYear}"></textarea></td>
+            <td><textarea id="textAreaUnavailableEditionsWithYear" name="textAreaUnavailableEditionsWithYear" class="modeAdvanced"  th:text="${textAreaUnavailableEditionsWithYear}"> </textarea></td>
+            <td><textarea id="textAreaAvailableEditionsWithYear" name="textAreaAvailableEditionsWithYear" class="modeAdvanced" th:text="${textAreaAvailableEditionsWithYear}"> </textarea></td>
+            <td><textarea id="textAreaAvailableEditionsWithoutYear" name="textAreaAvailableEditionsWithoutYear" class="modeAdvanced" th:text="${textAreaAvailableEditionsWithoutYear}"> </textarea></td>
+            <td><textarea id="textAreaAvailableSummaryHoldingAdvanced" name="textAreaAvailableSummaryHolding" th:text="${textAreaAvailableSummaryHolding}"> </textarea></td>
+        </tr>
+
+
+    </table>
+    <div id="divUserInteractionArea" class="divUserInteractionArea"></div>
+    <div id="divMatrix"></div>
+
+    <script>
+        main();
+    </script>
+    <div id="divUserGuide">
+        <hr>
+        <h3>User Guide</h3>
+        <ol>
+            <li>'Generate Checkboxes to generate a new checkbox-table. This will also to clear existing data.</li>
+            <li>Double-click on 'Volume' and 'Number' to change their values.</li>
+            <li>After changing the year, press the 'Enter' or 'Return' key to update the year of subsequent rows.</li>
+            <li>Check 'Check all' to select all issues.</li>
+            <li>Press 'ALT' + digits (1 through 9) to quickly select an input element. E.g. "ALT + 1" to change 'Edition Type' description. </li>
+        </ol>
+
+
+    </div>
+
+</body>
+</html>
