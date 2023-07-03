@@ -1,12 +1,12 @@
 # Following based on Template from GitHub.com.
 
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Push to main.
 
 on:
   # Runs on pushes targeting the default branch
-#  push:
-#    branches: ["20230702-02_July_2023"]
+  push:
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,6 +29,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      if: github.actor == github.repository_owner
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
