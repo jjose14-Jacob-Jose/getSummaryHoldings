@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/*
+Author: Jacob Jose
+Date: May 15, 2023, 15:49.
+Description: CSS stylesheet for 'Edition Tracker'.
+*/
+
+#matrixTable {
+  text-align: center;
+}
+
+/*#matrixTable th,*/
+/*#matrixTable td {*/
+/*    text-align: center;*/
+/*}*/
+
+/*Styles for labels whose id starts with "labelEdition".*/
+label[id^="labelEdition"] {
+  color: #144879;
+}
+
+#tableUserInput {
+  border: 1px solid black;
+  /*background-color: #f2f2f2;*/
+  padding-right: 10px;
+  margin-right: 10px;
+  text-align: right;
+}
+
+#tableSummaryHoldingAdvanced {
+  text-align: left;
+}
+
+.divTableContainers{
+  display: flex;
+  flex: 1;
+}
+
+.tableHeader {
+  text-align: center;
+}
+
+/*textarea {*/
+/*    white-space: pre-wrap;*/
+/*}*/
+
+/*.table1, .table2 {*/
+
+/*    margin-right: 10px; !* Adjust the spacing between tables if needed *!*/
+/*}*/
+
+
+/*Styles for the body.*/
+
+
+/*Following is for loading spiner animation.*/
+#divUserInteractionArea {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 100s linear infinite; /* Safari */
+  animation: spin .5s linear infinite;
+}
+
+/* Safari (loading spinner animation)*/
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+/*Other Browsers loading spinner animation.*/
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*Styles for increase button.*/
+.btnIncrease {
+  background: #bae1ba;
+}
+
+/*Styles for decrease button.*/
+.btnDecrease {
+  background: #eeb6b6;
+}
+
+/*Remove underline and blue color from HTML anchor-tag text. */
+.URLLikeRegularText {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+

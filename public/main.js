@@ -23,7 +23,7 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
+const URL_GENERATE_SUMMARY = "http://localhost:8080/postData";
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
@@ -675,6 +675,7 @@ function initialLoadingActivities() {
     // Event-listener for 'Clear All' button.
     {
         document.getElementById("btnClearAll").addEventListener("click", function() {
+            console.log("clicked");
             clearHTMLTable();
             setVisibilityOfHTMLClassElements(false);
         })
@@ -858,6 +859,9 @@ function enableKeyboardShortCuts() {
 }
 
 // Function with main logic.
-function main() {
+export function main() {
+    console.log("working");
     initialLoadingActivities();
 }
+
+// main();
