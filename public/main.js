@@ -4,6 +4,8 @@ Date: May 15, 2023, 15:49.
 Description: JavaScript file for 'Edition Tracker'.
 */
 
+import { ENV_LOCAL, ENV_PROD } from "@/constants";
+
 const ID_DIV_MATRIX = "divMatrix";
 const MATRIX_COLUMN_INDICES = {
     COLUMN_INDEX_OF_EDITION_NUMBER: 0,
@@ -23,7 +25,7 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = "http://localhost:8080/postData";
+const URL_GENERATE_SUMMARY = ENV_PROD + "/postData";
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";

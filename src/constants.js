@@ -47,3 +47,6 @@ const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_CHECKBOXES = '6';
 const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_SUMMARY_HOLDINGS = '7';
 const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_RESET = '8';
 const KEYBOARD_LETTER_TO_FOCUS_ON_RB_ADVANCED = '9';
+
+export const ENV_LOCAL = "http://localhost:8080";
+export const ENV_PROD = "https://editiontracker.azurewebsites.net";

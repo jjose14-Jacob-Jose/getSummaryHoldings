@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect } from "react";
 import { main } from "../../public/main";
+import { ENV_LOCAL, ENV_PROD } from "@/constants";
 
 export default function Home() {
 
@@ -23,7 +24,7 @@ export default function Home() {
             </div>
 
             <div id="tableUserInput" >
-                <form action="http://localhost:8080/postData" method="POST" id="formUserInput">
+                <form action={`${ENV_PROD}/postData`} method="POST" id="formUserInput">
                    
                     <label id="lblTxtTextEditionsType" htmlFor ="txtTextEditionsType">Edition types:</label>
                     <input type="text" id="txtTextEditionsType" name="editionsType" required placeholder="vol/ser/no" value="vol"  />
