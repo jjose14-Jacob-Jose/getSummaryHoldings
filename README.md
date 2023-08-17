@@ -1,11 +1,39 @@
-# getSummaryHoldings
-'getSummaryHoldings' web application front-end. 
+# UI Codebase for getSummaryHoldings application
+Built with [Next.js](https://nextjs.org/), [Tailwind](https://tailwindcss.com/), and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Hosted on Vercel - https://get-summary-holdings.vercel.app/
+
+Tools and versions used -
+
+- Node v16.15.0
+- npm v9.8.1
+- Tailwind CSS v3.3.3
+
+# What is getSummaryHoldings?
+It is a tool which can be used to summarize holdings of serials. This application is targeted towards library associates who deal with serials and calculate holdings data from time to time, and aims to ease the process for them. 
+
+Some of the major features provided are -
+
+- The ability to generate editions, years, and issues for a serial with basic publication details.
+- The ability to select available issues from the generated data to calculate holdings with a formatted enumeration and chronology fields.
+- Keyboard shortcuts for faster navigation.
+
+## Project Structure
+`public/` holds all the Javascript files and images within the codebase.
+
+`src/` is split into `app/` which holds the root code and code for the router, and `components/` which has wrappers, static, and dynamic UI components which can be used globally and are placed within respective folders.
+
+## Track the Project's Progress
+Check out the [project board](https://github.com/users/Shira98/projects/4/views/1) for current progress and future list of features. 
+
+We'll be migrating to Trello soon, check out the [new board](https://trello.com/b/3CmgViGr/agile-scrum).
+
 
 ## Getting Started
 
-First, run the development server:
+Clone the project and run `npm install` in the project directory. This should install all of the required dependencies.
+
+Then, run the development server:
 
 ```bash
 npm run dev
