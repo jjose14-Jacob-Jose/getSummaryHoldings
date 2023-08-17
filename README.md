@@ -15,7 +15,7 @@ It is a tool which can be used to summarize holdings of serials. This applicatio
 Some of the major features provided are -
 
 - The ability to generate editions, years, and issues for a serial with basic publication details.
-- The ability to select available issues from the generated data to calculate holdings with a formatted enumeration and chronology fields.
+- The ability to select available issues from the generated data to calculate holdings with formatted enumeration and chronology fields.
 - Keyboard shortcuts for faster navigation.
 
 ## Project Structure
