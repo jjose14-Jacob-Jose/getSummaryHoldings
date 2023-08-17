@@ -25,7 +25,7 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = ENV_PROD + "/postData";
+const URL_GENERATE_SUMMARY = ENV_LOCAL + "/postData";
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
@@ -688,6 +688,7 @@ function initialLoadingActivities() {
         // Function to get input parameters and display the table.
         document.getElementById("btnCreateTable").addEventListener("click", function() {
             event.preventDefault();
+            console.log("Started")
 
             try {
                 editionsType = document.getElementById("txtTextEditionsType").value;
@@ -724,7 +725,7 @@ function initialLoadingActivities() {
                 }
 
             } catch (error) {
-                printToAlert(error.message)
+                printToAlert(error.message) //Handle error at UI end
             }
 
 
@@ -766,8 +767,8 @@ function setVisibilityOfHTMLClassElements(htmlClassName, visibilityFlag) {
 }
 
 // Set the current mode (basic/advanced) selected by user.
-function setUserMode(mode) {
-    userMode = mode;
+export function setUserMode(mode) {
+    userMode = mode.target.value;
     toggleUserModeVisibility();
 }
 
