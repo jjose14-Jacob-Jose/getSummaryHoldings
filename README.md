@@ -31,7 +31,9 @@ We'll be migrating to Trello soon, check out the [new board](https://trello.com/
 
 ## Getting Started
 
-First, run the development server:
+Clone the project and run `npm install` in the project directory. This should install all of the required dependencies.
+
+Then, run the development server:
 
 ```bash
 npm run dev
