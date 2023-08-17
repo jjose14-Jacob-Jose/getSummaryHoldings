@@ -26,6 +26,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/*
+  Custom site scrollbar - START.
+*/
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -46,3 +50,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ababab84;
 }
+
+/*
+  Custom site scrollbar - END.
+*/
