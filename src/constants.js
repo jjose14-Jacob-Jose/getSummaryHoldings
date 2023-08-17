@@ -1,52 +1,52 @@
-const ID_DIV_MATRIX = "divMatrix";
-const MATRIX_COLUMN_INDICES = {
+export const ENV_LOCAL = "http://localhost:8080";
+export const ENV_PROD = "https://editiontracker.azurewebsites.net";
+
+export const ID_DIV_MATRIX = "divMatrix";
+export const MATRIX_COLUMN_INDICES = {
     COLUMN_INDEX_OF_EDITION_NUMBER: 0,
     COLUMN_INDEX_OF_YEAR: 1,
     COLUMN_INDEX_OF_FLAG_AVAILABILITY: 2
 };
-const TEXT_OF_KEY_TO_CONFIRM_YEAR_UPDATE = 'Enter';
-const TEXT_LABEL_HEADER_EDITION_TYPE = "Volume";
-const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
-const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Check all";
-const TEXT_LABEL_HEADER_YEAR = "Year";
-const TEXT_LABEL_HEADER_ISSUES= "Issues";
-const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
-const TEXT_BUTTON_ISSUE_COUNT_DECREASE= "-";
+export const TEXT_OF_KEY_TO_CONFIRM_YEAR_UPDATE = 'Enter';
+export const TEXT_LABEL_HEADER_EDITION_TYPE = "Volume";
+export const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
+export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Check all";
+export const TEXT_LABEL_HEADER_YEAR = "Year";
+export const TEXT_LABEL_HEADER_ISSUES= "Issues";
+export const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
+export const TEXT_BUTTON_ISSUE_COUNT_DECREASE= "-";
 
-const FLAG_ISSUES_NOT_AVAILABLE = 0;
-const FLAG_ISSUES_ALL_AVAILABLE = 1;
-const FLAG_ISSUES_SOME_AVAILABLE = 2;
+export const FLAG_ISSUES_NOT_AVAILABLE = 0;
+export const FLAG_ISSUES_ALL_AVAILABLE = 1;
+export const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = "http://localhost:8080/postData";
-const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
+export const URL_GENERATE_SUMMARY = ENV_LOCAL + "/postData";
+export const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
-const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
-const HTML_ELEMENT_CLASS_VALUE_MODE_BASIC = "modeBasic";
-const HTML_ELEMENT_VALUE_INCREASE = "+";
-const HTML_ELEMENT_VALUE_DECREASE = "-";
-const HTML_ELEMENT_NAME_MODE = "rbMode";
+export const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
+export const HTML_ELEMENT_CLASS_VALUE_MODE_BASIC = "modeBasic";
+export const HTML_ELEMENT_VALUE_INCREASE = "+";
+export const HTML_ELEMENT_VALUE_DECREASE = "-";
+export const HTML_ELEMENT_NAME_MODE = "rbMode";
 
-const CSS_HTML_ELEMENT_VALUE_INCREASE = "btnIncrease";
-const CSS_HTML_ELEMENT_VALUE_DECREASE = "btnDecrease";
+export const CSS_HTML_ELEMENT_VALUE_INCREASE = "btnIncrease";
+export const CSS_HTML_ELEMENT_VALUE_DECREASE = "btnDecrease";
 
-const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
-const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
+export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
+export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
 
-const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
-const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = " is not a valid number.";
-const MESSAGE_DUPLICATE_EDITION_NUMBER = " already exists. Please enter a unique value.";
+export const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
+export const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = " is not a valid number.";
+export const MESSAGE_DUPLICATE_EDITION_NUMBER = " already exists. Please enter a unique value.";
 
-const STRING_VALUE_EMPTY = "";
+export const STRING_VALUE_EMPTY = "";
 
-const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITION_TYPE_DESCRIPTION = '1';
-const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_STARTING = '2';
-const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_ENDING = '3';
-const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITIONS_IN_A_YEAR = '4';
-const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_VOLUME_OF_STARTING_YEAR = '5';
-const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_CHECKBOXES = '6';
-const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_SUMMARY_HOLDINGS = '7';
-const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_RESET = '8';
-const KEYBOARD_LETTER_TO_FOCUS_ON_RB_ADVANCED = '9';
-
-export const ENV_LOCAL = "http://localhost:8080";
-export const ENV_PROD = "https://editiontracker.azurewebsites.net";
+export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITION_TYPE_DESCRIPTION = '1';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_STARTING = '2';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_ENDING = '3';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITIONS_IN_A_YEAR = '4';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_VOLUME_OF_STARTING_YEAR = '5';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_CHECKBOXES = '6';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_SUMMARY_HOLDINGS = '7';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_BTN_RESET = '8';
+export const KEYBOARD_LETTER_TO_FOCUS_ON_RB_ADVANCED = '9';
