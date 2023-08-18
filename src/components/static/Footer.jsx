@@ -18,7 +18,7 @@ export default function Footer() {
                 </div>
                 <div className="lg:text-right text-center">
                     <div>Powered by <Link href="https://nextjs.org/" className="font-bold hover:opacity-80"
-                                        rel="noopener noreferrer" target="_blank">NextJs</Link> &&nbsp;
+                                        rel="noopener noreferrer" target="_blank">Next.js</Link> &&nbsp;
                                     <Link href="https://tailwindcss.com/" className="font-bold hover:opacity-80"
                                         rel="noopener noreferrer" target="_blank">Tailwind</Link>.
                     </div>
