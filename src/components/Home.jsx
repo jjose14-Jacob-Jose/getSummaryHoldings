@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { styles } from "@/constants/styles";
+import FeaturesCarousel from "./FeaturesCarousel";
+import { features_list } from "@/constants/component_constants";
 
 /**
  * Home page component of the site. Describes the tool's purpose, features, etc.
@@ -94,7 +96,7 @@ export default function Home() {
                 {/* Features section */}
                 <div className="p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
                     <h2 className={`text-center ${styles.headingTwo} pb-28`}>Explore Additional Features</h2>
-                    
+                    <FeaturesCarousel itemsData={features_list} />
                 </div>
 
                 {/* Contact section */}
