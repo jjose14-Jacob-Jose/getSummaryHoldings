@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
   title: 'GetSummaryHoldings',
   description: 'A free browser based solution that computes summary holdings of books.',
-  author: 'Jacob Jose, Praneetha Doddi'
+  author: 'Jacob Jose, Praneetha Doddi, Shivaram Bathini'
 }
 
 export default function RootLayout({ children }) {
