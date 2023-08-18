@@ -21,7 +21,7 @@ export default function Header() {
                 />
             </Link>
             <div className="flex gap-8 items-center align-middle">
-            <Link  href="/home" rel="noopener noreferrer">Home</Link>
+            {/* <Link  href="/home" rel="noopener noreferrer">Home</Link> */}
             {/* <Link  href="/">About</Link> */}
             {/* Light/dark mode button */}
             {/* Help modal button */}
