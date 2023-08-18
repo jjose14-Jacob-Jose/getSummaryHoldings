@@ -18,13 +18,9 @@ export default function Footer() {
                 </div>
                 <div className="lg:text-right text-center">
                     <div>Powered by <Link href="https://nextjs.org/" className="font-bold hover:opacity-80"
-                                        rel="noopener noreferrer" target="_blank">NextJs</Link>,&nbsp;
+                                        rel="noopener noreferrer" target="_blank">NextJs</Link> &&nbsp;
                                     <Link href="https://tailwindcss.com/" className="font-bold hover:opacity-80"
-                                        rel="noopener noreferrer" target="_blank">Tailwind</Link>,&nbsp; 
-                                        <Link href="https://icons8.com/" className="font-bold hover:opacity-80"
-                                        rel="noopener noreferrer" target="_blank">Icons8</Link>, & &nbsp; 
-                                    <Link href="https://spring.io/projects/spring-boot/" className="font-bold hover:opacity-80"
-                                        rel="noopener noreferrer" target="_blank">Spring Boot</Link>.
+                                        rel="noopener noreferrer" target="_blank">Tailwind</Link>.
                     </div>
                     <div className="text-xs mt-1 lg:mt-0">All Rights Reserved © 2023</div>    
                 </div>
