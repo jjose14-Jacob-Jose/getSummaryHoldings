@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { styles } from "@/constants/styles";
 import FeaturesCarousel from "./FeaturesCarousel";
-import { features_list } from "@/constants/component_constants";
+import { features_list, prototype_link } from "@/constants/component_constants";
 
 /**
  * Home page component of the site. Describes the tool's purpose, features, etc.
@@ -29,7 +29,11 @@ export default function Home() {
                         <p className={`${styles.paraTwo}`}>A free browser based solution that computes summary holdings of books for you.</p>
                     
                         <div className="flex gap-4 mt-8">
-                            <Link href="/" className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light items-center">
+                            <Link 
+                                href={prototype_link} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light items-center">
                                 Explore the Prototype
                             </Link>
                             <button onClick={() => scrollToLearnMore()} className="p-2 h-fit font-light text-sm text-white hover:underline underline-offset-4  items-center">
