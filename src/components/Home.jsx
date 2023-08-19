@@ -23,7 +23,7 @@ export default function Home() {
     return (
         <div className="items-center align-middle justify-center">
             {/* Hero section */}
-            <div className="p-12 flex gap-24 mx-auto justify-center items-center mb-24">
+            <div className="p-12 flex mx-auto justify-center items-center mb-24">
                     <div className="w-1/2">
                         <h1 className={`${styles.headingOne} pb-4`}>Serials Calculations. Simplified.</h1>
                         <p className={`${styles.paraTwo}`}>A free browser based solution that computes summary holdings of books for you.</p>
@@ -42,10 +42,10 @@ export default function Home() {
                         </div>
                     </div>
                     <Image 
-                        src="/Logo draft 1.png"
+                        src="/landing_illustration.png"
                         alt="Landing page illustration"
-                        width={460}
-                        height={380}
+                        width={560}
+                        height={480}
                         className="rounded-lg"
                     />
                 </div> 
