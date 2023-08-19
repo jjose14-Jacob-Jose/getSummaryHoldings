@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import Link from "next/link";
 
  /**
@@ -11,17 +10,15 @@ import Link from "next/link";
 export default function Header() {
     return(
         <div className="p-4 mx-4 mt-2 mb-2 flex gap-2 items-center justify-between text-sm align-middle">
-            <Link href="/home" rel="noopener noreferrer" >
-                <Image 
-                     src="/Logo draft 1.png"
-                     alt="Portfolio Logo"
-                     width={48}
-                     height={48}
-                     className="rounded-lg"
+            <Link href="/" rel="noopener noreferrer" >
+                <img 
+                     src="/Logo.png"
+                     alt="Logo"
+                     className="w-[47px] h-[50px] rounded-lg bg-white p-[2px]"
                 />
             </Link>
             <div className="flex gap-8 items-center align-middle">
-            <Link  href="/home" rel="noopener noreferrer">Home</Link>
+            {/* <Link  href="/home" rel="noopener noreferrer">Home</Link> */}
             {/* <Link  href="/">About</Link> */}
             {/* Light/dark mode button */}
             {/* Help modal button */}

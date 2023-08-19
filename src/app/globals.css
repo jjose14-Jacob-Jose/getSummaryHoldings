@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 41, 45, 58;

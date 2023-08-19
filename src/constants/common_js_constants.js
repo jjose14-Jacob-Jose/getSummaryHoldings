@@ -1,3 +1,10 @@
+/**
+ * Common JavaScript code constants.
+ * 
+ * @author pdoddi
+ */
+
+
 export const ENV_LOCAL = "http://localhost:8080";
 export const ENV_PROD = "https://editiontracker.azurewebsites.net";
 
