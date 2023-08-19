@@ -1,12 +1,11 @@
 'use client';
 
-import Link from "next/link";
 import Image from "next/image";
 import { styles } from "@/constants/styles";
 import { useEffect, useState } from "react";
 
 /**
- * Home page component of the site. Describes the tool's purpose, features, etc.
+ * Carousel component of the site for the features section.
  * 
  * @author pdoddi
  */
@@ -72,7 +71,7 @@ export default function FeaturesCarousel({itemsData}) {
                     alt="Portfolio Logo"
                     width={460}
                     height={380}
-                    className="rounded-lg"
+                    className="rounded-lg drop-shadow-lg"
                 />
             </div>
         </div>

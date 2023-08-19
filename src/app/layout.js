@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <Head>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-N5DCWKQ06J" />
         <Script language="JavaScript" type="text/javascript"  src="https://code.jquery.com/jquery-3.6.0.min.js"/>
-        <Script language="JavaScript" type="text/javascript" src="./main.js" /> 
+        {/* <Script language="JavaScript" type="text/javascript" src="./main.js" />  */}
       </Head>
           
       <body className={inter.className}>{children}</body>

@@ -39,7 +39,7 @@ export default function Home() {
                     </div>
                     <Image 
                         src="/Logo draft 1.png"
-                        alt="Portfolio Logo"
+                        alt="Landing page illustration"
                         width={460}
                         height={380}
                         className="rounded-lg"
@@ -51,11 +51,18 @@ export default function Home() {
 
                 {/* Work faster section */}
                 <div className="p-12 mx-auto justify-center items-center pt-28 pb-28">
-                    <h2 className={`text-center ${styles.headingTwo} pb-28`}>Work Faster by Getting Started</h2>
-                    <div className="flex gap-12 align-middle items-center mx-auto justify-center mb-24">
+                    <div className="flex mx-auto justify-center">
+                        <h2 className={`text-center ${styles.headingTwo}`}>Work Faster by Getting Started</h2>
+                        <img 
+                            src="/text_highlight.png"
+                            alt="Text highlight icon"
+                            className="w-[15px] h-[30px] rotate-[140deg] -mt-5"
+                        />
+                    </div>
+                    <div className="flex gap-12 align-middle items-center mx-auto justify-center mb-24 mt-28">
                         <Image 
                             src="/Logo draft 1.png"
-                            alt="Portfolio Logo"
+                            alt="App Snapshot - fill out serial details"
                             width={260}
                             height={80}
                             className="rounded-lg drop-shadow-lg"
@@ -72,7 +79,7 @@ export default function Home() {
                         </div>
                         <Image 
                             src="/Logo draft 1.png"
-                            alt="Portfolio Logo"
+                            alt="App Snapshot - select issues"
                             width={260}
                             height={80}
                             className="rounded-lg drop-shadow-lg"
@@ -81,7 +88,7 @@ export default function Home() {
                     <div className="flex gap-12 align-middle items-center mx-auto justify-center">
                         <Image 
                             src="/Logo draft 1.png"
-                            alt="Portfolio Logo"
+                            alt="App Snapshot - get summary holdings"
                             width={260}
                             height={80}
                             className="rounded-lg drop-shadow-lg"
@@ -95,8 +102,17 @@ export default function Home() {
 
                 {/* Features section */}
                 <div className="p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
-                    <h2 className={`text-center ${styles.headingTwo} pb-28`}>Explore Additional Features</h2>
-                    <FeaturesCarousel itemsData={features_list} />
+                    <div className="w-fit mx-auto justify-center">
+                        <h2 className={`${styles.headingTwo} pl-[15px]`}>Explore Additional Features</h2>
+                        <img 
+                            src="/text_highlight.png"
+                            alt="Text highlight icon"
+                            className="w-[15px] h-[30px] -rotate-[50deg] -mt-2"
+                        />
+                    </div>
+                    <div className="pt-28">
+                        <FeaturesCarousel itemsData={features_list} />
+                    </div>
                 </div>
 
                 {/* Contact section */}
