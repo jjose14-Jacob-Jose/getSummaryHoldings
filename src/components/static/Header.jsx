@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import Link from "next/link";
 
  /**
@@ -15,7 +14,7 @@ export default function Header() {
                 <img 
                      src="/Logo.png"
                      alt="Logo"
-                     className="w-[50px] h-[50px] rounded-lg bg-white p-[2px]"
+                     className="w-[47px] h-[50px] rounded-lg bg-white p-[2px]"
                 />
             </Link>
             <div className="flex gap-8 items-center align-middle">
