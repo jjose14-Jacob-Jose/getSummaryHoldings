@@ -34,16 +34,16 @@ export default function Home() {
                 whileInView="show"
                 className="px-6 pt-12 mobile:px-12 lg:flex xl:gap-8 mx-auto justify-center items-center mb-24">
                 <div className="lg:w-1/2 2xl:w-2/5">
-                    <motion.h1 variants={animateText(0.2)} className={`${styles.headingOne} pb-4`}>
+                    <motion.h1 variants={animateText(0.3)} className={`${styles.headingOne} pb-4`}>
                         Serials Calculations. Simplified.
                     </motion.h1>
-                    <motion.p variants={animateText(0.4)} className={`${styles.paraTwo}`}>
+                    <motion.p variants={animateText(0.5)} className={`${styles.paraTwo}`}>
                         A free browser based solution that computes summary holdings of
                         books for you.
                     </motion.p>
 
                     <div className="lg:flex lg:gap-4 mt-6 mb-12 lg:mt-8 lg:mb-0 w-fit lg:w-full mx-auto">
-                        <MotionLink variants={animateText(0.5)}
+                        <MotionLink variants={animateText(0.6)}
                             href={prototype_link}
                             target="_blank"
                             rel="noopener noreferrer"
