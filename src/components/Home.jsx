@@ -65,7 +65,7 @@ export default function Home() {
             <img
               src="/text_highlight.png"
               alt="Text highlight icon"
-              className="w-[15px] h-[30px] -rotate-[-50deg] -mt-2"
+              className="w-[15px] h-[30px] -rotate-[-35deg] -mb-4 "
             />
             <h2 className={`${styles.headingTwo} pl-[15px]`}>
               Say Goodbye to Taxing Calculations
@@ -75,7 +75,10 @@ export default function Home() {
           <div className="flex mx-auto justify-center space-x-20 mt-10">
             <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-6">
               <div className="flex mx-auto justify-center">
-                <img src="/puzzle_image.png" className="w-[180px] h-[150px]" />
+                <img
+                  src="/puzzle_image.png"
+                  className="w-[180px] h-[150px] -mr-5"
+                />
               </div>
               <div className="text-center">
                 <h3 className={`${styles.paraOne} mb-5`}>
@@ -198,17 +201,26 @@ export default function Home() {
         </div>
 
         {/* Check out the product prototype section*/}
-        <div className="p-12 gap-24 mx-auto flex justify-center text-center items-center h-[400px]">
+        <div className="p-12 gap-24 mx-auto flex justify-center text-center items-center h-[400px] pt-28 pb-28">
           <div>
-            <h1 className={`${styles.headingOne} pb-4`}>
-              Check out the product prototype
-            </h1>
-            <p className={`${styles.paraOne}`}>
-              A free browser based solution that computes summary holdings of
-              books for you.
+            <div className="flex mx-auto justify-center w-[1200px]">
+              <h1 className={`${styles.headingTwo}`}>
+                Check out the product prototype
+              </h1>
+              <img
+                src="/text_highlight.png"
+                alt="Text highlight icon"
+                className="w-[15px] h-[30px] -rotate-[130deg] mt-10"
+              />
+            </div>
+            <p
+              className={`${styles.paraTwo} flex mx-auto justify-center w-[50%]`}
+            >
+              We've built an interactive prototype in Figma for the product.
+              Open it up to experience the ptoduct yourself.
             </p>
 
-            <div className="flex gap-4 mt-8 justify-center">
+            <div className="flex gap-4 mt-5 justify-center">
               <Link
                 href={prototype_link}
                 target="_blank"
@@ -228,14 +240,14 @@ export default function Home() {
         {/* Contact section */}
         <div className="p-12 gap-24 mx-auto flex justify-center text-center bg-[#1E2027] items-center h-[400px]">
           <div>
-            <h1 className={`${styles.headingTwo} pb-4`}>
+            <h1 className={`${styles.headingThree}`}>
               Have suggestions, feature requests, or noticed an issue?
             </h1>
-            <p className={`${styles.paraTwo}`}>
-              Drop us a note! We'll br happy to take a loot at it.
+            <p className={`${styles.paraTwo} mt-5`}>
+              Drop us a note! We'll be happy to take a loot at it.
             </p>
 
-            <div className="flex gap-4 mt-8 justify-center">
+            <div className="flex gap-4 mt-5 justify-center">
               <Link
                 href="mailto:support@getsummaryholdings.com"
                 rel="noopener noreferrer"
