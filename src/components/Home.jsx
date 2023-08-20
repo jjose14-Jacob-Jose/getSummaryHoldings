@@ -73,11 +73,11 @@ export default function Home() {
           </div>
 
           <div className="flex mx-auto justify-center space-x-20 mt-10">
-            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-4 ">
+            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-4">
               <div className="flex mx-auto justify-center">
                 <img
                   src="/puzzle_image.png"
-                  className="w-[180px] h-[150px] -mr-5"
+                  className="w-[180px] h-[150px] -mr-5 mt-5"
                 />
               </div>
               <div className="text-center  mx-auto justify-center w-[300px]">
@@ -85,7 +85,7 @@ export default function Home() {
                   Stuck calculating which edition belongs to which year? We got
                   you.
                 </h3>
-                <p className={`${styles.paraThree}`}>
+                <p className="-mb-5">
                   Get a detailed view of editions, issues, and years with a
                   single click.
                 </p>
@@ -93,18 +93,18 @@ export default function Home() {
             </div>
 
             <div className="w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl space-y-10 border border-[#1E2027] rounded-2xl p-12">
-              <div className="flex mx-auto justify-center mt-8 ">
+              <div className="flex mx-auto justify-center mt-8">
                 <img
                   src="/checkboxes_image.png"
-                  className="w-[190px] h-[80px]"
+                  className="w-[190px] h-[80px] mb-6"
                 />
               </div>
               <div className="text-center  mx-auto justify-center w-[300px]">
-                <h3 className={`${styles.paraOne} mb-5`}>
+                <h3 className={`${styles.paraOne} mb-5 `}>
                   Need a quick overview of what's available or missing in a
                   serial? Leave it to us.
                 </h3>
-                <p className={`${styles.paraThree}`}>
+                <p>
                   Mark the available editions to get a summary of holdings data
                   with formatted enumeration and chronology field.
                 </p>
