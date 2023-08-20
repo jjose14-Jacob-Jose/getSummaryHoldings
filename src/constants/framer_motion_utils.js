@@ -20,7 +20,7 @@ export const animateHeader = {
       transition: {
         type: 'spring',
         stiffness: 80,
-        delay: 0.2
+        delay: 0.3
       },
     }
 };
