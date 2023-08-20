@@ -61,18 +61,6 @@ export default function Home() {
       <div id="learnMoreSection">
         {/* Goodbye to taxing calculations section */}
         <div className="p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
-          {/* <div className=" flex mx-auto justify-center">
-            <img
-              src="/text_highlight.png"
-              alt="Text highlight icon"
-              className="w-[15px] h-[30px] -rotate-[-55deg] -mb-4 "
-            />
-            <h2
-              className={`${styles.headingTwo} mx-auto justify-center text-center w-[100%]`}
-            >
-              
-            </h2>
-          </div> */}
           <div className="flex mx-auto justify-center">
             <img
               src="/text_highlight.png"
@@ -118,7 +106,7 @@ export default function Home() {
                 </h3>
                 <p>
                   Mark the available editions to get a summary of holdings data
-                  with formatted enumeration and chronology field.
+                  with formatted enumeration and chronology fields.
                 </p>
               </div>
             </div>
