@@ -9,7 +9,7 @@ import Header from '@/components/static/Header'
  */
 export default function LandingPage() {
 	return (
-		<main>
+		<main className='max-w-[1500px] m-auto'>
             <Header />
             <Home />
             <Footer />

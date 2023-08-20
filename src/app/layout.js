@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='font-thin'>
+    <html lang="en" className='font-thin min-h-screen'>
       <head>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-N5DCWKQ06J" />
         <Script language="JavaScript" type="text/javascript"  src="https://code.jquery.com/jquery-3.6.0.min.js"/>
