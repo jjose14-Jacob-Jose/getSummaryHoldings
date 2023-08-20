@@ -37,13 +37,13 @@ export default function Home() {
                     <motion.h1 variants={animateText(0.2)} className={`${styles.headingOne} pb-4`}>
                         Serials Calculations. Simplified.
                     </motion.h1>
-                    <motion.p variants={animateText(0.3)} className={`${styles.paraTwo}`}>
+                    <motion.p variants={animateText(0.4)} className={`${styles.paraTwo}`}>
                         A free browser based solution that computes summary holdings of
                         books for you.
                     </motion.p>
 
                     <div className="lg:flex lg:gap-4 mt-6 mb-12 lg:mt-8 lg:mb-0 w-fit lg:w-full mx-auto">
-                        <MotionLink variants={animateText(0.4)}
+                        <MotionLink variants={animateText(0.5)}
                             href={prototype_link}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -90,7 +90,12 @@ export default function Home() {
                     whileInView="show"
                     viewport={{once: true}}  
                     className="px-6  mobile:px-12 pt-28 pb-28 mx-auto justify-center items-center bg-[#1E2027] ">
-                    <motion.div variants={animateText(0.2)} className="flex mx-auto justify-center">
+                    <motion.div 
+                        variants={animateText(0.2)} 
+                        initial="hidden"
+                        whileInView="show" 
+                        viewport={{once: true}}
+                        className="flex mx-auto justify-center">
                         <img
                             src="/text_highlight.png"
                             alt="Text highlight icon"
@@ -102,7 +107,12 @@ export default function Home() {
                     </motion.div>
 
                     <div className="xl:flex mx-auto justify-center xl:space-x-20 space-y-10 xl:space-y-0 mt-10">
-                        <motion.div variants={animateText(0.3)} className=" xl:w-1/3 hover:bg-[#292D3A] hover:shadow-2xl xl:space-y-0 space-y-10 border border-[#1E2027]  rounded-2xl pb-12 xl:p-4 ">
+                        <motion.div 
+                            variants={animateText(0.5)} 
+                            initial="hidden"
+                            whileInView="show" 
+                            viewport={{once: true}}
+                            className=" xl:w-1/3 hover:bg-[#292D3A] hover:shadow-2xl xl:space-y-0 space-y-10 border border-[#1E2027]  rounded-2xl pb-12 xl:p-4 ">
                             <div className="flex mx-auto justify-center">
                                 <img
                                     src="/puzzle_image.png"
@@ -121,7 +131,12 @@ export default function Home() {
                             </div>
                         </motion.div>
 
-                        <motion.div variants={animateText(0.4)} className=" xl:w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl border border-[#1E2027] rounded-2xl pb-12 pt-6 xl:p-12">
+                        <motion.div 
+                            variants={animateText(0.6)} 
+                            initial="hidden"
+                            whileInView="show" 
+                            viewport={{once: true}}
+                            className=" xl:w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl border border-[#1E2027] rounded-2xl pb-12 pt-6 xl:p-12">
                             <div className="flex mx-auto justify-center mt-8">
                                 <img
                                     src="/checkboxes_image.png"
@@ -149,7 +164,12 @@ export default function Home() {
                     whileInView="show"
                     viewport={{once: true}}   
                     className="px-6 mobile:px-12 pt-28 pb-28 mx-auto justify-center items-center">
-                    <motion.div variants={animateText(0.2)} className="flex mx-auto justify-center">
+                    <motion.div 
+                        variants={animateText(0.2)} 
+                        initial="hidden"
+                        whileInView="show" 
+                        viewport={{once: true}}
+                        className="flex mx-auto justify-center">
                         <h2 className={`text-center ${styles.headingTwo}`}>
                             Work Faster by Getting Started
                         </h2>
@@ -159,7 +179,12 @@ export default function Home() {
                             className="hidden custom:block w-[15px] h-[30px] rotate-[140deg] -mt-5"
                         />
                     </motion.div>
-                    <motion.div variants={animateFromRight(0.3)} className="lg:flex gap-16 align-middle items-center mx-auto justify-center mt-28">
+                    <motion.div 
+                        variants={animateFromRight(0.3)} 
+                        initial="hidden"
+                        whileInView="show" 
+                        viewport={{once: true}} 
+                        className="lg:flex gap-16 align-middle items-center mx-auto justify-center mt-28">
                         <Image
                             src="/tool_inputs.png"
                             alt="App Snapshot - fill out serial details"
@@ -178,7 +203,12 @@ export default function Home() {
                             </p>
                         </div>
                     </motion.div>
-                    <motion.div variants={animateFromLeft(0.4)}  className="lg:flex gap-16 w-fit align-middle items-center mx-auto justify-center my-32">
+                    <motion.div 
+                        variants={animateFromLeft(0.4)} 
+                        initial="hidden"
+                        whileInView="show" 
+                        viewport={{once: true}} 
+                        className="lg:flex gap-16 w-fit align-middle items-center mx-auto justify-center my-32">
                         <Image
                             src="/tool_issue_selection.png"
                             alt="App Snapshot - select issues"
@@ -203,7 +233,12 @@ export default function Home() {
                             className="hidden lg:block rounded-[20px] shadow-[0px_0px_40px_rgba(0,0,0,0.4)] drop-shadow-lg h-auto"
                         />
                     </motion.div>
-                    <motion.div variants={animateFromRight(0.5)}  className="lg:flex gap-16 align-middle items-center mx-auto justify-center">
+                    <motion.div 
+                        variants={animateFromRight(0.5)} 
+                        initial="hidden"
+                        whileInView="show" 
+                        viewport={{once: true}} 
+                        className="lg:flex gap-16 align-middle items-center mx-auto justify-center">
                         <Image
                             src="/tool_generate_summary.png"
                             alt="App Snapshot - get summary holdings"
@@ -231,7 +266,12 @@ export default function Home() {
                     whileInView="show"
                     viewport={{once: true}}    
                     className="px-6  mobile:px-12 pt-28 pb-28 mx-auto justify-center items-center bg-[#1E2027] ">
-                    <motion.div variants={animateText(0.2)} className="w-fit mx-auto justify-center">
+                    <motion.div 
+                        variants={animateText(0.2)} 
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{once: true}} 
+                        className="w-fit mx-auto justify-center">
                         <h2 className={`${styles.headingTwo} pl-[15px]`}>
                             Explore Additional Features
                         </h2>
@@ -241,7 +281,12 @@ export default function Home() {
                             className="hidden custom:block w-[15px] h-[30px] -rotate-[50deg] -mt-2"
                         />
                     </motion.div>
-                    <motion.div variants={animateText(0.3)} className="pt-12 sm:pt-28">
+                    <motion.div 
+                        variants={animateText(0.4)} 
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{once: true}} 
+                        className="pt-12 sm:pt-28">
                         <FeaturesCarousel itemsData={features_list} />
                     </motion.div>
                 </motion.div>
@@ -254,7 +299,12 @@ export default function Home() {
                     viewport={{once: true}}     
                     className="px-6 mobile:px-12 pt-28 pb-28 gap-24 mx-auto flex justify-center text-center items-center h-[400px]  ">
                     <div>
-                        <motion.div variants={animateText(0.2)} className="flex mx-auto justify-center w-[90%]">
+                        <motion.div 
+                            variants={animateText(0.2)} 
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{once: true}} 
+                            className="flex mx-auto justify-center w-[90%]">
                             <h2 className={`text-center ${styles.headingTwo}`}>
                                 Check Out the Product Prototype
                             </h2>
@@ -264,14 +314,22 @@ export default function Home() {
                                 className="hidden custom:block w-[15px] h-[30px] -rotate-[130deg] mt-10"
                             />
                         </motion.div>
-                        <motion.p variants={animateText(0.3)} 
+                        <motion.p 
+                            variants={animateText(0.3)}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{once: true}} 
                             className={`${styles.paraTwo} flex mx-auto justify-center mt-5 lg:mt-0`}
                         >
                             We've built an interactive prototype in Figma for the product.
                             Open it up to experience the product yourself.
                         </motion.p>
                         <div className="flex gap-4 mt-5 justify-center">
-                            <MotionLink variants={animateText(0.4)} 
+                            <MotionLink 
+                                variants={animateText(0.4)} 
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{once: true}} 
                                 href={prototype_link}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -291,17 +349,30 @@ export default function Home() {
                     viewport={{once: true}}  
                     className="px-6 mobile:px-12 pt-28 pb-28 gap-24 mx-auto flex justify-center text-center bg-[#1E2027] items-center h-[400px]">
                     <div>
-                        <motion.h1 variants={animateText(0.2)} 
+                        <motion.h1 
+                            variants={animateText(0.2)}
+                            initial="hidden"
+                            whileInView="show" 
+                            viewport={{once: true}} 
                             className={`${styles.headingFour} flex mx-auto justify-center w-[90%]`}
                         >
                             Have suggestions, feature requests, or noticed an issue?
                         </motion.h1>
-                        <motion.p variants={animateText(0.3)}  className={`${styles.paraTwo} mt-3`}>
+                        <motion.p 
+                            variants={animateText(0.3)}  
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{once: true}}  
+                            className={`${styles.paraTwo} mt-3`}>
                             Drop us a note! We'll be happy to take a look at it.
                         </motion.p>
 
                         <div className="flex gap-4 mt-5 justify-center">
-                            <MotionLink variants={animateText(0.4)} 
+                            <MotionLink 
+                                variants={animateText(0.4)} 
+                                initial="hidden"
+                                whileInView="show" 
+                                viewport={{once: true}} 
                                 href="mailto:support@getsummaryholdings.com"
                                 rel="noopener noreferrer"
                                 target="_blank"
