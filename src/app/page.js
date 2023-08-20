@@ -1,4 +1,5 @@
 import Home from '@/components/Home'
+import BackToTopButton from '@/components/static/BackToTopButton'
 import Footer from '@/components/static/Footer'
 import Header from '@/components/static/Header'
 
@@ -13,6 +14,7 @@ export default function LandingPage() {
             <Header />
             <Home />
             <Footer />
+			<BackToTopButton />
         </main>
 		// <main className='m-auto min-h-screen flex flex-col'>
 		// 	<Header />
