@@ -218,7 +218,7 @@ export default function Home() {
 
         {/* Check out the product prototype section*/}
         <div className="px-6 mobile:px-12 pt-28 pb-28 gap-24 mx-auto flex justify-center text-center items-center h-[400px]  ">
-          <div className="p-12 mx-auto justify-center items-center pt-28 pb-28">
+          <div>
             <div className="flex mx-auto justify-center w-[90%]">
               <h2 className={`text-center ${styles.headingTwo}`}>
                 Check Out the Product Prototype
@@ -235,7 +235,6 @@ export default function Home() {
               We've built an interactive prototype in Figma for the product.
               Open it up to experience the product yourself.
             </p>
-
             <div className="flex gap-4 mt-5 justify-center">
               <Link
                 href={prototype_link}
@@ -274,10 +273,6 @@ export default function Home() {
               >
                 Contact Us
               </Link>
-              <button
-                onClick={() => scrollToLearnMore()}
-                className="p-2 h-fit font-light text-sm text-white hover:underline underline-offset-4  items-center"
-              ></button>
             </div>
           </div>
         </div>
