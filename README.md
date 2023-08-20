@@ -1,4 +1,4 @@
-# Default UI Codebase for getSummaryHoldings application
+# UI Codebase for getSummaryHoldings application
 Built with [Next.js](https://nextjs.org/), [Tailwind](https://tailwindcss.com/), and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Hosted on Vercel - https://get-summary-holdings.vercel.app/
