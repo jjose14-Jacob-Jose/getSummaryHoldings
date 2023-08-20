@@ -53,7 +53,7 @@ export default function Home() {
                         </MotionLink>
                         <br className="lg:hidden" />
                         <motion.button
-                            variants={animateText(0.4)}
+                            variants={animateText(0.5)}
                             onClick={() => scrollToLearnMore()}
                             className="mt-3 lg:mt-0 p-2 h-fit font-light text-sm text-white hover:underline underline-offset-4  items-center"
                         >
