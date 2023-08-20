@@ -61,52 +61,52 @@ export default function Home() {
       <div id="learnMoreSection">
         {/* Goodbye to taxing calculations section */}
         <div className="p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
-          <div className="w-fit mx-auto justify-center">
+          <div className="w-fit mx-auto justify-center text-center w-[60%]">
             <img
               src="/text_highlight.png"
               alt="Text highlight icon"
-              className="w-[15px] h-[30px] -rotate-[-35deg] -mb-4 "
+              className="w-[15px] h-[30px] -rotate-[-45deg] -mb-4 ml-20"
             />
-            <h2 className={`${styles.headingTwo} pl-[15px]`}>
+            <h2 className={`${styles.headingTwo} `}>
               Say Goodbye to Taxing Calculations
             </h2>
           </div>
 
           <div className="flex mx-auto justify-center space-x-20 mt-10">
-            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-5">
+            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-4 ">
               <div className="flex mx-auto justify-center">
                 <img
                   src="/puzzle_image.png"
                   className="w-[180px] h-[150px] -mr-5"
                 />
               </div>
-              <div className="text-center  mx-auto justify-center w-[80%]">
-                <h3 className={`${styles.paraOne} mb-5 -mt-5`}>
+              <div className="text-center  mx-auto justify-center w-[300px]">
+                <h3 className={`${styles.paraOne} mb-5 `}>
                   Stuck calculating which edition belongs to which year? We got
                   you.
                 </h3>
-                <p className={`${styles.paraTwo}`}>
+                <p className={`${styles.paraThree}`}>
                   Get a detailed view of editions, issues, and years with a
                   single click.
                 </p>
               </div>
             </div>
 
-            <div className="w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl space-y-10 border border-[#1E2027] rounded-2xl p-10 -mt-5">
-              <div className="flex mx-auto justify-center ">
+            <div className="w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl space-y-10 border border-[#1E2027] rounded-2xl p-12">
+              <div className="flex mx-auto justify-center mt-8 ">
                 <img
                   src="/checkboxes_image.png"
-                  className="w-[190px] h-[80px] mt-12"
+                  className="w-[190px] h-[80px]"
                 />
               </div>
-              <div className="text-center  mx-auto justify-center w-[100%]">
-                <h3 className={`${styles.paraOne} mb-5 mt-5`}>
+              <div className="text-center  mx-auto justify-center w-[300px]">
+                <h3 className={`${styles.paraOne} mb-5`}>
                   Need a quick overview of what's available or missing in a
                   serial? Leave it to us.
                 </h3>
-                <p className={`${styles.paraTwo}`}>
+                <p className={`${styles.paraThree}`}>
                   Mark the available editions to get a summary of holdings data
-                  with formatted enumeration and chronology field
+                  with formatted enumeration and chronology field.
                 </p>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function Home() {
           <div>
             <div className="flex mx-auto justify-center w-[1200px]">
               <h1 className={`${styles.headingTwo}`}>
-                Check out the product prototype
+                Check Out the Product Prototype
               </h1>
               <img
                 src="/text_highlight.png"
@@ -217,7 +217,7 @@ export default function Home() {
               className={`${styles.paraTwo} flex mx-auto justify-center w-[50%]`}
             >
               We've built an interactive prototype in Figma for the product.
-              Open it up to experience the ptoduct yourself.
+              Open it up to experience the product yourself.
             </p>
 
             <div className="flex gap-4 mt-5 justify-center">
@@ -241,12 +241,12 @@ export default function Home() {
         <div className="p-12 gap-24 mx-auto flex justify-center text-center bg-[#1E2027] items-center h-[400px]">
           <div>
             <h1
-              className={`${styles.headingThree} flex mx-auto justify-center w-[90%]`}
+              className={`${styles.headingFour} flex mx-auto justify-center w-[90%]`}
             >
               Have suggestions, feature requests, or noticed an issue?
             </h1>
-            <p className={`${styles.paraTwo} mt-5`}>
-              Drop us a note! We'll be happy to take a loot at it.
+            <p className={`${styles.paraTwo} mt-3`}>
+              Drop us a note! We'll be happy to take a look at it.
             </p>
 
             <div className="flex gap-4 mt-5 justify-center">
@@ -254,9 +254,9 @@ export default function Home() {
                 href="mailto:support@getsummaryholdings.com"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="p-2 px-4 h-fit text-white hover:text-[#2A2C32] border-[1px] font-light rounded  hover:bg-white hover:font-light items-center"
+                className="p-2 px-10 h-fit text-white text-sm hover:text-[#2A2C32] border-[1px] font-light rounded  hover:bg-white hover:font-light items-center"
               >
-                Contact Support
+                Contact Us
               </Link>
               <button
                 onClick={() => scrollToLearnMore()}
