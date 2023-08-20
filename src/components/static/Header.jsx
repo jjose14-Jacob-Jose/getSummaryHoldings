@@ -9,7 +9,7 @@ import Link from "next/link";
  */ 
 export default function Header() {
     return(
-        <div className="p-4 mx-4 mt-2 mb-2 flex gap-2 items-center justify-between text-sm align-middle">
+        <div className="p-4 mx-2 mobile:mx-4 mt-2 mb-2 flex gap-2 items-center justify-between text-sm align-middle">
             <Link href="/" rel="noopener noreferrer" >
                 <img 
                      src="/Logo.png"
