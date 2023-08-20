@@ -73,15 +73,15 @@ export default function Home() {
           </div>
 
           <div className="flex mx-auto justify-center space-x-20 mt-10">
-            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-6">
+            <div className="w-1/3 hover:bg-[#292D3A] hover:shadow-2xl space-y-10 border border-[#1E2027]  rounded-2xl p-5">
               <div className="flex mx-auto justify-center">
                 <img
                   src="/puzzle_image.png"
                   className="w-[180px] h-[150px] -mr-5"
                 />
               </div>
-              <div className="text-center">
-                <h3 className={`${styles.paraOne} mb-5`}>
+              <div className="text-center  mx-auto justify-center w-[80%]">
+                <h3 className={`${styles.paraOne} mb-5 -mt-5`}>
                   Stuck calculating which edition belongs to which year? We got
                   you.
                 </h3>
@@ -92,15 +92,15 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl space-y-10 border border-[#1E2027] rounded-2xl p-6">
-              <div className="flex mx-auto justify-center  w-[180px] h-[150px] ">
+            <div className="w-1/3 hover:bg-[#292D3A]  hover:shadow-2xl space-y-10 border border-[#1E2027] rounded-2xl p-10 -mt-5">
+              <div className="flex mx-auto justify-center ">
                 <img
                   src="/checkboxes_image.png"
-                  className="w-[200px] h-[80px] mt-12"
+                  className="w-[190px] h-[80px] mt-12"
                 />
               </div>
-              <div className="text-center">
-                <h3 className={`${styles.paraOne} mb-5`}>
+              <div className="text-center  mx-auto justify-center w-[100%]">
+                <h3 className={`${styles.paraOne} mb-5 mt-5`}>
                   Need a quick overview of what's available or missing in a
                   serial? Leave it to us.
                 </h3>
@@ -240,7 +240,9 @@ export default function Home() {
         {/* Contact section */}
         <div className="p-12 gap-24 mx-auto flex justify-center text-center bg-[#1E2027] items-center h-[400px]">
           <div>
-            <h1 className={`${styles.headingThree}`}>
+            <h1
+              className={`${styles.headingThree} flex mx-auto justify-center w-[90%]`}
+            >
               Have suggestions, feature requests, or noticed an issue?
             </h1>
             <p className={`${styles.paraTwo} mt-5`}>
