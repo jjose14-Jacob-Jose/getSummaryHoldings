@@ -44,7 +44,7 @@ export default function Home() {
                     <Image 
                         src="/landing_illustration.png"
                         alt="Landing page illustration"
-                        width={560}
+                        width={500}
                         height={480}
                         className="rounded-lg"
                     />
@@ -63,20 +63,20 @@ export default function Home() {
                             className="w-[15px] h-[30px] rotate-[140deg] -mt-5"
                         />
                     </div>
-                    <div className="flex gap-8 align-middle items-center mx-auto justify-center mb-24 mt-28">
+                    <div className="flex gap-16 align-middle items-center mx-auto justify-center mt-28">
                         <Image 
                             src="/tool_inputs.png"
                             alt="App Snapshot - fill out serial details"
-                            width={620}
+                            width={500}
                             height={200}
-                            className="rounded-lg drop-shadow-lg h-auto"
+                            className="rounded-[20px] shadow-[0px_0px_40px_rgba(0,0,0,0.4)] h-auto"
                         />
                         <div className="w-2/5 align-middle">
                             <h3 className={`${styles.headingThree}`}>Fill out the details of the serial</h3>
                             <p className={`${styles.paraTwo}`}>Fill in details like the range of years of the book, the number of editions it has per year, etc. to get a detailed list of editions, issues, and years.</p>
                         </div>
                     </div>
-                    <div className="flex gap-4 w-fit align-middle items-center mx-auto justify-center mb-24">
+                    <div className="flex gap-16 w-fit align-middle items-center mx-auto justify-center my-32">
                         <div className="w-2/5">
                             <h3 className={`${styles.headingThree}`}>Select the available issues</h3>
                             <p className={`${styles.paraTwo}`}>Check the available issues of the serial and mark them in the generated edition details.</p>
@@ -84,18 +84,18 @@ export default function Home() {
                         <Image 
                             src="/tool_issue_selection.png"
                             alt="App Snapshot - select issues"
-                            width={620}
+                            width={500}
                             height={200}
-                            className="rounded-lg drop-shadow-lg h-auto"
+                            className="rounded-[20px] shadow-[0px_0px_40px_rgba(0,0,0,0.4)] drop-shadow-lg h-auto"
                         />
                     </div>
-                    <div className="flex gap-8 align-middle items-center mx-auto justify-center">
+                    <div className="flex gap-16 align-middle items-center mx-auto justify-center">
                         <Image 
                             src="/tool_generate_summary.png"
                             alt="App Snapshot - get summary holdings"
-                            width={620}
+                            width={500}
                             height={200}
-                            className="rounded-lg drop-shadow-lg h-auto"
+                            className="rounded-[20px] shadow-[0px_0px_40px_rgba(0,0,0,0.4)] h-auto"
                         />
                         <div className="w-2/5 align-middle">
                             <h3 className={`${styles.headingThree}`}>Get summary holdings data</h3>
