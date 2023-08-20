@@ -17,7 +17,6 @@ export default function FeaturesCarousel({itemsData}) {
 
     // the required distance between touchStart and touchEnd to be detected as a swipe
     const minSwipeDistance = 50; 
-    let isPaused = false;
 
     const onTouchStart = (e) => {
         setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
