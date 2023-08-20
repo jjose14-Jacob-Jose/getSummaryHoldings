@@ -12,9 +12,9 @@ export default function LandingPage() {
 	return (
 		<main className='max-w-[1500px] m-auto'>
             <Header />
-            <Home />
-            <Footer />
 			<BackToTopButton />
+            <Home />
+			<Footer />
         </main>
 		// <main className='m-auto min-h-screen flex flex-col'>
 		// 	<Header />
