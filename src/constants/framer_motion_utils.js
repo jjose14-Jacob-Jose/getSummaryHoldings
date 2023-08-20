@@ -20,7 +20,7 @@ export const animateHeader = {
       transition: {
         type: 'spring',
         stiffness: 80,
-        delay: 0.3
+        delay: 0.2
       },
     }
 };
@@ -31,24 +31,6 @@ export const staggerContainer = (staggerChildren, delayChildren) => ({
         transition: {staggerChildren, delayChildren}
     }
 });
-
-
-export const generalAnimateBottomToTop = {
-    hidden: {
-      opacity: 0,
-      y: 10
-    },
-    show: {
-      y: 0,
-      opacity: 1,
-     
-      transition: {
-        type: 'spring',
-        duration: 0.5,
-        delay: 0.3
-      },
-    }
-};
 
 export const animateText = (delay) => ({
     hidden: {
@@ -65,3 +47,40 @@ export const animateText = (delay) => ({
         }
     }
 });
+
+export const animateFromLeft = (delay) => ({
+    hidden: {
+        x: -10,
+        opacity: 0
+    },
+    show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+            type: 'spring',
+            duration: 1.25,
+            delay
+        }
+    }
+});
+  
+export const animateFromRight = (delay) => ({
+    hidden: {
+        x: 10,
+        opacity: 0
+    },
+    show: {
+        x: 0,
+        opacity: 1,
+        transition: {
+            type: 'spring',
+            duration: 1.25,
+            delay
+        }
+    }
+});
+
+export const backToTopAnimation = {
+    hide: { opacity: 0 },
+    show: { opacity: 1 },
+};
