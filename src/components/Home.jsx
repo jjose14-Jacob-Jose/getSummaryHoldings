@@ -23,7 +23,7 @@ export default function Home() {
     return (
         <div className="items-center align-middle justify-center text-center lg:text-left">
             {/* Hero section */}
-            <div className="p-6 mobile:p-12 lg:flex xl:gap-8 mx-auto justify-center items-center mb-24">
+            <div className="px-6 pt-12 mobile:px-12 lg:flex xl:gap-8 mx-auto justify-center items-center mb-24">
                     <div className="lg:w-1/2 2xl:w-2/5">
                         <h1 className={`${styles.headingOne} pb-4`}>Serials Calculations. Simplified.</h1>
                         <p className={`${styles.paraTwo}`}>A free browser based solution that computes summary holdings of books for you.</p>
@@ -62,7 +62,7 @@ export default function Home() {
                 {/* Goodbye to taxing calculations section */}
 
                 {/* Work faster section */}
-                <div className="p-6 mobile:p-12 mx-auto justify-center items-center pt-28 pb-28">
+                <div className="px-6 mobile:px-12 pt-28 pb-28 mx-auto justify-center items-center">
                     <div className="flex mx-auto justify-center">
                         <h2 className={`text-center ${styles.headingTwo}`}>Work Faster by Getting Started</h2>
                         <img 
@@ -120,7 +120,7 @@ export default function Home() {
                 </div>
 
                 {/* Features section */}
-                <div className="p-6 mobile:p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
+                <div className="px-6 pt-28 pb-28 mobile:px-12 mx-auto justify-center items-center bg-[#1E2027] ">
                     <div className="w-fit mx-auto justify-center">
                         <h2 className={`${styles.headingTwo} pl-[15px]`}>Explore Additional Features</h2>
                         <img 
