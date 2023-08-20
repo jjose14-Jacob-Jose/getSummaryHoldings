@@ -61,13 +61,15 @@ export default function Home() {
       <div id="learnMoreSection">
         {/* Goodbye to taxing calculations section */}
         <div className="p-12 mx-auto justify-center items-center bg-[#1E2027] pt-28 pb-28">
-          <div className="w-fit mx-auto justify-center text-center w-[60%]">
+          <div className=" mx-auto justify-center">
             <img
               src="/text_highlight.png"
               alt="Text highlight icon"
-              className="w-[15px] h-[30px] -rotate-[-45deg] -mb-4 ml-20"
+              className="w-[15px] h-[30px] -rotate-[-55deg] -mb-4 ml-80"
             />
-            <h2 className={`${styles.headingTwo} `}>
+            <h2
+              className={`${styles.headingTwo} mx-auto justify-center text-center w-[60%]`}
+            >
               Say Goodbye to Taxing Calculations
             </h2>
           </div>
