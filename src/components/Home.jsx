@@ -63,41 +63,41 @@ export default function Home() {
                             className="w-[15px] h-[30px] rotate-[140deg] -mt-5"
                         />
                     </div>
-                    <div className="flex gap-12 align-middle items-center mx-auto justify-center mb-24 mt-28">
+                    <div className="flex gap-8 align-middle items-center mx-auto justify-center mb-24 mt-28">
                         <Image 
-                            src="/Logo draft 1.png"
+                            src="/tool_inputs.png"
                             alt="App Snapshot - fill out serial details"
-                            width={260}
-                            height={80}
-                            className="rounded-lg drop-shadow-lg"
+                            width={620}
+                            height={200}
+                            className="rounded-lg drop-shadow-lg h-auto"
                         />
-                        <div className="w-3/5 align-middle">
+                        <div className="w-2/5 align-middle">
                             <h3 className={`${styles.headingThree}`}>Fill out the details of the serial</h3>
                             <p className={`${styles.paraTwo}`}>Fill in details like the range of years of the book, the number of editions it has per year, etc. to get a detailed list of editions, issues, and years.</p>
                         </div>
                     </div>
-                    <div className="flex gap-12 align-middle items-center mx-auto justify-center mb-24">
-                        <div className="w-3/5 align-middle">
+                    <div className="flex gap-4 w-fit align-middle items-center mx-auto justify-center mb-24">
+                        <div className="w-2/5">
                             <h3 className={`${styles.headingThree}`}>Select the available issues</h3>
                             <p className={`${styles.paraTwo}`}>Check the available issues of the serial and mark them in the generated edition details.</p>
                         </div>
                         <Image 
-                            src="/Logo draft 1.png"
+                            src="/tool_issue_selection.png"
                             alt="App Snapshot - select issues"
-                            width={260}
-                            height={80}
-                            className="rounded-lg drop-shadow-lg"
+                            width={620}
+                            height={200}
+                            className="rounded-lg drop-shadow-lg h-auto"
                         />
                     </div>
-                    <div className="flex gap-12 align-middle items-center mx-auto justify-center">
+                    <div className="flex gap-8 align-middle items-center mx-auto justify-center">
                         <Image 
-                            src="/Logo draft 1.png"
+                            src="/tool_generate_summary.png"
                             alt="App Snapshot - get summary holdings"
-                            width={260}
-                            height={80}
-                            className="rounded-lg drop-shadow-lg"
+                            width={620}
+                            height={200}
+                            className="rounded-lg drop-shadow-lg h-auto"
                         />
-                        <div className="w-3/5 align-middle">
+                        <div className="w-2/5 align-middle">
                             <h3 className={`${styles.headingThree}`}>Get summary holdings data</h3>
                             <p className={`${styles.paraTwo}`}>Switch between <span className="inline font-medium">basic</span> and <span className="inline font-medium">detailed</span> views based on your need.</p>
                         </div>
