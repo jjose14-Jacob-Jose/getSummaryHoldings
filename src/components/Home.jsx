@@ -21,14 +21,14 @@ export default function Home() {
     }
 
     return (
-        <div className="items-center align-middle justify-center">
+        <div className="items-center align-middle justify-center text-center lg:text-left">
             {/* Hero section */}
-            <div className="p-12 flex mx-auto justify-center items-center mb-24">
-                    <div className="w-1/2">
+            <div className="p-12 lg:flex xl:gap-8 mx-auto justify-center items-center mb-24">
+                    <div className="lg:w-1/2 xl:w-2/5">
                         <h1 className={`${styles.headingOne} pb-4`}>Serials Calculations. Simplified.</h1>
                         <p className={`${styles.paraTwo}`}>A free browser based solution that computes summary holdings of books for you.</p>
                     
-                        <div className="flex gap-4 mt-8">
+                        <div className="lg:flex lg:gap-4 mt-6 mb-12 lg:mt-8 lg:mb-0 w-fit lg:w-full mx-auto">
                             <Link 
                                 href={prototype_link} 
                                 target="_blank" 
@@ -36,7 +36,8 @@ export default function Home() {
                                 className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light items-center">
                                 Explore the Prototype
                             </Link>
-                            <button onClick={() => scrollToLearnMore()} className="p-2 h-fit font-light text-sm text-white hover:underline underline-offset-4  items-center">
+                            <br className="lg:hidden"/>
+                            <button onClick={() => scrollToLearnMore()} className="mt-3 lg:mt-0 p-2 h-fit font-light text-sm text-white hover:underline underline-offset-4  items-center">
                                 Learn More
                             </button>
                         </div>
@@ -46,7 +47,14 @@ export default function Home() {
                         alt="Landing page illustration"
                         width={560}
                         height={480}
-                        className="rounded-lg"
+                        className="hidden lg:block"
+                    />
+                    <Image 
+                        src="/landing_illustration.png"
+                        alt="Landing page illustration"
+                        width={560}
+                        height={480}
+                        className="mx-auto lg:hidden"
                     />
                 </div> 
             {/* Learn More */}
