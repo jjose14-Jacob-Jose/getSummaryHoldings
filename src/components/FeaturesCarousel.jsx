@@ -36,7 +36,7 @@ export default function FeaturesCarousel({itemsData}) {
     return (
         <div className="items-center justify-center align-middle mx-auto">
             <div className="flex gap-12 mx-auto justify-center align-middle items-center">
-                <div className="w-1/2 space-y-8">
+                <div className="w-2/5 space-y-8">
                     <button onClick={() => jumpToItem(0)} className="flex gap-4 items-center text-left">
                         <div className={`h-[70px] w-[1px] bg-white ${currentIndex === 0 ? `opacity-100` : `opacity-40`} transition-all duration-200`}></div>
                         <div className={`${currentIndex === 0 ? `opacity-100` : `opacity-40`} transition-all duration-200`}>
@@ -67,11 +67,11 @@ export default function FeaturesCarousel({itemsData}) {
                     </button>
                 </div>
                 <Image 
-                    src="/Logo draft 1.png" //take source from the array - currentIndex.
-                    alt="Portfolio Logo"
-                    width={460}
-                    height={380}
-                    className="rounded-lg drop-shadow-lg"
+                    src={itemsData[currentIndex].image}
+                    alt={itemsData[currentIndex].alt}
+                    width={500}
+                    height={680}
+                    className="drop-shadow-lg transition-all duration-200"
                 />
             </div>
         </div>
