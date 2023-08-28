@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import { features_list } from "@/constants/component_constants";
