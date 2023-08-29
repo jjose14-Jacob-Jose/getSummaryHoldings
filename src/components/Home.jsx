@@ -22,24 +22,13 @@ export default function Home() {
 
   return (
     <div className="items-center align-middle justify-center text-center lg:text-left">
-      {/* Hero section */}
       <HeroSection />
-
       {/* Learn More */}
       <div id="learnMoreSection">
-        {/* Goodbye to taxing calculations section */}
         <GoodbyeToTaxingCalSection />
-
-        {/* Work faster section */}
         <WorkFasterSection />
-
-        {/* Features section */}
         <FeaturesSection />
-
-        {/* Check out the product prototype section*/}
         <CheckoutTheProductPrototypeSection />
-
-        {/* Contact section */}
         <ContactUsSection />
       </div>
     </div>

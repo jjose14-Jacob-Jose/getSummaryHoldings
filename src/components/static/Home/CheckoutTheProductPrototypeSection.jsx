@@ -5,7 +5,9 @@ import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import { prototype_link } from "@/constants/component_constants";
 import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
+
 const MotionLink = motion(Link);
+
 export default function CheckoutThePrototypeSection() {
   return (
     <motion.div
@@ -13,7 +15,7 @@ export default function CheckoutThePrototypeSection() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="px-6 mobile:px-12 pt-28 pb-28 gap-24 mx-auto flex justify-center text-center items-center h-[400px]  "
+      className="px-6 mobile:px-12 pt-28 pb-28 gap-24 mx-auto flex justify-center text-center items-center h-[400px]"
     >
       <div>
         <motion.div

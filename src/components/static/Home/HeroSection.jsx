@@ -1,12 +1,15 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import { prototype_link } from "@/constants/component_constants";
 import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
+
 const MotionLink = motion(Link);
 const MotionImage = motion(Image);
+
 export default function HeroSection() {
   return (
     <motion.div

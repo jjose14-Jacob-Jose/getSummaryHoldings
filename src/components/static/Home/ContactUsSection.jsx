@@ -4,7 +4,9 @@ import Link from "next/link";
 import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
+
 const MotionLink = motion(Link);
+
 export default function ContactUsSection() {
   return (
     <motion.div
