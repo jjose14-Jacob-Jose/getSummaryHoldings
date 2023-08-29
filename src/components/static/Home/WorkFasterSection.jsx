@@ -3,12 +3,7 @@
 import Image from "next/image";
 import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
-import {
-  animateFromLeft,
-  animateFromRight,
-  animateText,
-  staggerContainer,
-} from "@/constants/framer_motion_utils";
+import {animateFromLeft,animateFromRight,animateText,staggerContainer} from "@/constants/framer_motion_utils";
 
 export default function WorkFasterSection() {
   return (
