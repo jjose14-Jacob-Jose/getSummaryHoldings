@@ -19,8 +19,10 @@ export default function Footer() {
                 <div className="lg:text-right text-center">
                     <div>Powered by <Link href="https://nextjs.org/" className="font-bold hover:opacity-80"
                                         rel="noopener noreferrer" target="_blank">Next.js</Link>,&nbsp;
-                                    <Link href="https://spring.io/" className="font-bold hover:opacity-80"
-                                          rel="noopener noreferrer" target="_blank">Spring</Link>&nbsp;&&nbsp;
+                                    <Link href="https://icons8.com/icons" className="font-bold hover:opacity-80"
+                                          rel="noopener noreferrer" target="_blank">Icons8</Link>,&nbsp;
+                                    <Link href="https://www.framer.com/motion/introduction/" className="font-bold hover:opacity-80"
+                                          rel="noopener noreferrer" target="_blank">Framer Motion</Link>&nbsp;&&nbsp;
                                     <Link href="https://tailwindcss.com/" className="font-bold hover:opacity-80"
                                         rel="noopener noreferrer" target="_blank">Tailwind</Link>.
                     </div>
