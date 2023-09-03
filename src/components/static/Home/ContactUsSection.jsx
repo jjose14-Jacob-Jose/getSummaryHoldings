@@ -7,6 +7,12 @@ import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
 
 const MotionLink = motion(Link);
 
+/**
+ * Contact Us section of the Home page.
+ * 
+ * @author shivaram_bathini
+ */
+
 export default function ContactUsSection() {
   return (
     <motion.div

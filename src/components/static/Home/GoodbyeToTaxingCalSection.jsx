@@ -4,6 +4,12 @@ import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
 
+/**
+ * Goodbye to taxing calculations section of the Home page.
+ * 
+ * @author shivaram_bathini
+ */
+
 export default function GoodbyeToTaxingCalSection() {
   return (
     <motion.div

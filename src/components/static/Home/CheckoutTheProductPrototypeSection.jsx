@@ -8,6 +8,12 @@ import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
 
 const MotionLink = motion(Link);
 
+/**
+ * Check Out the Prototype section of the Home page.
+ * 
+ * @author shivaram_bathini
+ */
+
 export default function CheckoutThePrototypeSection() {
   return (
     <motion.div

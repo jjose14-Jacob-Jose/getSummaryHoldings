@@ -6,6 +6,12 @@ import { features_list } from "@/constants/component_constants";
 import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
 import FeaturesCarousel from "../../FeaturesCarousel";
 
+/**
+ * Features section of the Home page.
+ * 
+ * @author pdoddi
+ */
+
 export default function FeaturesSection() {
   return (
     <motion.div

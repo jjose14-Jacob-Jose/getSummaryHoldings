@@ -5,6 +5,12 @@ import { styles } from "@/constants/styles";
 import { motion } from "framer-motion";
 import {animateFromLeft,animateFromRight,animateText,staggerContainer} from "@/constants/framer_motion_utils";
 
+/**
+ * Work Faster section of the Home page.
+ * 
+ * @author pdoddi
+ */
+
 export default function WorkFasterSection() {
   return (
     <motion.div

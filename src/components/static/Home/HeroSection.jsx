@@ -10,6 +10,12 @@ import { animateText, staggerContainer } from "@/constants/framer_motion_utils";
 const MotionLink = motion(Link);
 const MotionImage = motion(Image);
 
+/**
+ * Hero section of the Home page.
+ * 
+ * @author pdoddi
+ */
+
 export default function HeroSection() {
   return (
     <motion.div
