@@ -29,7 +29,7 @@ export default function GoodbyeToTaxingCalSection() {
         <img
           src="/text_highlight.png"
           alt="Text highlight icon"
-          className="hidden custom:block w-[15px] h-[30px] rotate-[55deg] -mt-5"
+          className="hidden tablet:block w-[15px] h-[30px] rotate-[55deg] -mt-5"
         />
         <h2 className={`text-center ${styles.headingTwo}`}>
           Say Goodbye to Taxing <br /> Calculations

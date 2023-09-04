@@ -33,7 +33,7 @@ export default function WorkFasterSection() {
         <img
           src="/text_highlight.png"
           alt="Text highlight icon"
-          className="hidden custom:block w-[15px] h-[30px] rotate-[140deg] -mt-5"
+          className="hidden tablet:block w-[15px] h-[30px] rotate-[140deg] -mt-5"
         />
       </motion.div>
       <motion.div
