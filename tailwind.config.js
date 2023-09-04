@@ -16,6 +16,7 @@ module.exports = {
       screens: {
         mobile: "400px",
         custom: "845px",
+        custom2: "450px"
       },
     },
   },
