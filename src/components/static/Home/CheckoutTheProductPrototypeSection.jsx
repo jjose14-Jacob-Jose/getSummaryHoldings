@@ -37,7 +37,7 @@ export default function CheckoutThePrototypeSection() {
           <img
             src="/text_highlight.png"
             alt="Text highlight icon"
-            className="hidden custom:block w-[15px] h-[30px] -rotate-[130deg] mt-10"
+            className="hidden tablet:block w-[15px] h-[30px] -rotate-[140deg] lg:-rotate-[130deg] mt-7 lg:mt-10"
           />
         </motion.div>
         <motion.p
@@ -45,7 +45,7 @@ export default function CheckoutThePrototypeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className={`${styles.paraTwo} flex mx-auto justify-center mt-5 lg:mt-0`}
+          className={`${styles.paraTwo} flex mx-auto justify-center mt-5 tablet:mt-2 lg:mt-0`}
         >
           We've built an interactive prototype in Figma for the product. Open it
           up to experience the product yourself.
