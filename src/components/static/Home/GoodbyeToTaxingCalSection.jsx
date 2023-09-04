@@ -42,7 +42,7 @@ export default function GoodbyeToTaxingCalSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className=" custom2:w-[390px] hover:bg-[#292D3A] hover:shadow-2xl border-[#1E2027]  rounded-xl mx-auto justify-center lg:mx-0 p-10 pb-12"
+          className=" custom2:w-[420px] hover:bg-[#292D3A] hover:shadow-2xl border-[#1E2027]  rounded-xl mx-auto justify-center lg:mx-0 p-10 pb-12"
         >
           <div className="flex mx-auto justify-center">
             <img
@@ -66,7 +66,7 @@ export default function GoodbyeToTaxingCalSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className=" custom2:w-[390px] hover:bg-[#292D3A]  hover:shadow-2xl  border-[#1E2027] rounded-xl mx-auto justify-center lg:mx-0 p-5 pb-12"
+          className=" custom2:w-[420px] hover:bg-[#292D3A]  hover:shadow-2xl  border-[#1E2027] rounded-xl mx-auto justify-center lg:mx-0 p-5 pb-12"
         >
           <div className="flex mx-auto justify-center mt-8">
             <img
