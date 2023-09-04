@@ -59,7 +59,7 @@ export default function CheckoutThePrototypeSection() {
             href={prototype_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light items-center ml-8 sm:ml-0"
+            className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light mx-auto justify-center"
           >
             Explore the Prototype
           </MotionLink>
