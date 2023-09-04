@@ -37,7 +37,7 @@ export default function CheckoutThePrototypeSection() {
           <img
             src="/text_highlight.png"
             alt="Text highlight icon"
-            className="hidden custom:block w-[15px] h-[30px] -rotate-[140deg] lg:-rotate-[130deg] mt-7 lg:mt-10"
+            className="hidden tablet:block w-[15px] h-[30px] -rotate-[140deg] lg:-rotate-[130deg] mt-7 lg:mt-10"
           />
         </motion.div>
         <motion.p
