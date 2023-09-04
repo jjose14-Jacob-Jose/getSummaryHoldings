@@ -15,7 +15,7 @@ module.exports = {
       },
       screens: {
         mobile: "400px",
-        custom: "845px",
+        tablet: "845px",
         custom2: "500px"
       },
     },

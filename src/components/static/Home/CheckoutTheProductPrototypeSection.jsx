@@ -45,7 +45,7 @@ export default function CheckoutThePrototypeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className={`${styles.paraTwo} flex mx-auto justify-center mt-5 custom:mt-2 lg:mt-0`}
+          className={`${styles.paraTwo} flex mx-auto justify-center mt-5 tablet:mt-2 lg:mt-0`}
         >
           We've built an interactive prototype in Figma for the product. Open it
           up to experience the product yourself.
