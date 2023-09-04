@@ -50,11 +50,11 @@ export default function GoodbyeToTaxingCalSection() {
               className="w-[180px] h-[150px] -mr-5"
             />
           </div>
-          <div className="text-center  mx-auto justify-center ">
+          <div className="w-[90%] text-center mx-auto justify-center ">
             <h3 className={`${styles.paraOne} mt-7`}>
               Stuck calculating which edition belongs to which year? We got you.
             </h3>
-            <p className="mt-5">
+            <p className="mt-5 w-[90%] text-center mx-auto justify-center">
               Get a detailed view of editions, issues, and years with a single
               click.
             </p>
@@ -74,12 +74,12 @@ export default function GoodbyeToTaxingCalSection() {
               className="w-[190px] h-[80px] mb-12 mt-10"
             />
           </div>
-          <div className="text-center  mx-auto justify-center ">
+          <div className="w-[90%] text-center mx-auto justify-center">
             <h3 className={`${styles.paraOne} mb-5 `}>
               Need a quick overview of what's available or missing in a serial?
               Leave it to us.
             </h3>
-            <p className="w-[90%] mx-auto justify center">
+            <p className="w-[90%] text-center mx-auto justify-center">
               Mark the available editions to get a summary of holdings data with
               formatted enumeration and chronology fields.
             </p>
