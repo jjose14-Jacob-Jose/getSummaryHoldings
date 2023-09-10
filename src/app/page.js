@@ -1,4 +1,4 @@
-import Home from '@/components/Home'
+import UserInputs from '@/components/UserInputs'
 import BackToTopButton from '@/components/static/BackToTopButton'
 import Footer from '@/components/static/Footer'
 import Header from '@/components/static/Header'
@@ -13,7 +13,7 @@ export default function LandingPage() {
 		<main className='max-w-[1500px] m-auto'>
             <Header />
 			<BackToTopButton />
-            <Home />
+            <UserInputs/> 
 			<Footer />
         </main>
 		// <main className='m-auto min-h-screen flex flex-col'>
