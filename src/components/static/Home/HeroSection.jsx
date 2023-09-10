@@ -17,6 +17,14 @@ const MotionImage = motion(Image);
  */
 
 export default function HeroSection() {
+
+    function scrollToLearnMore(){
+        const element = document.getElementById('learnMoreSection');
+        if(element){
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
   return (
     <motion.div
       variants={staggerContainer}
