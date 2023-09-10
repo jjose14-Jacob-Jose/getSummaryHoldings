@@ -5,8 +5,22 @@
  * 
  * @author pdoddi
  */
-export default function SummaryHoldings() {
+export default function SummaryHoldingsResults() {
     return(<>
+        <div id="tableUserInput">
+            
+            <label htmlFor ="divRBMode" className="text-right">Output:</label>
+            <div id="divRBMode">
+                <label>
+                    <input type="radio" name="rbMode" id="rbModeBasic" value="modeBasic" onClick={(e) => setUserMode(e)} checked />
+                    Basic
+                </label>
+                <label>
+                    <input type="radio" name="rbMode" id="rbModeAdvanced" value="modeAdvanced" onClick={(e) => setUserMode(e)} />
+                    Detailed
+                </label>
+            </div>
+        </div>
             <div id="tableSummaryHoldingBasic" className="modeBasic">
                 <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Missing Editions</label>
                 <label htmlFor ="textAreaAvailableSummaryHoldingBasic">Summary Holdings (available)</label>

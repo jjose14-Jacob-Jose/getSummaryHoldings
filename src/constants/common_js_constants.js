@@ -15,9 +15,9 @@ export const MATRIX_COLUMN_INDICES = {
     COLUMN_INDEX_OF_FLAG_AVAILABILITY: 2
 };
 export const TEXT_OF_KEY_TO_CONFIRM_YEAR_UPDATE = 'Enter';
-export const TEXT_LABEL_HEADER_EDITION_TYPE = "Volume";
+export const TEXT_LABEL_HEADER_EDITION_TYPE = "Edition";
 export const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
-export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Check all";
+export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select All Issues";
 export const TEXT_LABEL_HEADER_YEAR = "Year";
 export const TEXT_LABEL_HEADER_ISSUES= "Issues";
 export const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
