@@ -1,4 +1,4 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, ID_DIV_MATRIX, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
+import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayAvailabilityStatusIssuesOfEachYear;
@@ -68,7 +68,6 @@ export function validateUserInputs(){
         yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
         volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
         editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
-        // div_matrix = document.querySelector("#"+ID_DIV_MATRIX);
 
         let messageError = STRING_VALUE_EMPTY;
         // Check if the parsed values are NaN (Not-a-Number)
