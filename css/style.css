@@ -39,6 +39,19 @@ label[id^="labelEdition"] {
     text-align: center;
 }
 
+#tableHeading {
+    /*border: 1px solid #000000;*/
+}
+
+#tableHeading td {
+    /*border: 1px solid #000000;*/
+}
+
+#tableSurvey {
+    color: red;
+
+}
+
 /*textarea {*/
 /*    white-space: pre-wrap;*/
 /*}*/
