@@ -17,7 +17,7 @@ export default function ResultsWrapper() {
     const [editionRows, setEditionRows] = useState(null);
     
     return (
-        <div className="m-auto">
+        <div >
             <div>
             {displayResults === false && (
             <div id="userInputs" className="m-auto items-center align-middle justify-center text-center">
@@ -34,7 +34,7 @@ export default function ResultsWrapper() {
                 displayResults && <ResultsSection editionRows={editionRows} />
             }
             </div>
-            <div>
+            <div className="w-[100%]">
             {displayResults && (
             <Footer/>
           )}
