@@ -2,6 +2,8 @@ import UserInputs from '@/components/UserInputs'
 import BackToTopButton from '@/components/static/BackToTopButton'
 import Footer from '@/components/static/Footer'
 import Header from '@/components/static/Header'
+import InputsWrapper from '@/components/wrappers/InputsWrapper'
+import ResultsWrapper from '@/components/wrappers/ResultsWrapper'
 
 /**
  * Server component for the landing page of the site. Displays the tool.
@@ -10,10 +12,10 @@ import Header from '@/components/static/Header'
  */
 export default function LandingPage() {
 	return (
-		<main className='max-w-[1500px] m-auto'>
+		<main className='max-w-[1500px] m-auto min-h-screen flex flex-col'>
             <Header />
 			<BackToTopButton />
-            <UserInputs/> 
+            <InputsWrapper/>
 			<Footer />
         </main>
 		// <main className='m-auto min-h-screen flex flex-col'>
