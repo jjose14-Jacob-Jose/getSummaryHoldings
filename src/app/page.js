@@ -8,7 +8,7 @@ import InputsWrapper from '@/components/wrappers/InputsWrapper'
  */
 export default function LandingPage() {
 	return (
-		<main className='m-auto min-h-screen flex flex-col'>
+		<main className='m-auto min-h-screen flex flex-col max-w-[1500px]'>
             <Header />
             <InputsWrapper/>
         </main>
