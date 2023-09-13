@@ -54,14 +54,6 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
                     displayResults &&
                     <button onClick={handleClear} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Clear</button>
                 }
-                <div className="cols-span-2">
-                    <input type="hidden" id="arrayEditionDescription" name="arrayEditionDescription" />
-                    <input type="hidden" id="arrayEditionNumber" name="arrayEditionNumber" />
-                    <input type="hidden" id="arrayYear" name="arrayYear" />
-                    <input type="hidden" id="arrayAvailabilityStatusYear" name="arrayAvailabilityStatusYear" />
-                    <input type="hidden" id="arrayAvailabilityStatusIssuesOfEachYear" name="arrayAvailabilityStatusIssuesOfEachYear" />
-                    <input type="hidden" id="arrayIssuesInTheYear" name="arrayIssuesInTheYear" />
-                </div>
             </div>
         </div>
     )

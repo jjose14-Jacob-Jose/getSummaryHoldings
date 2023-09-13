@@ -42,7 +42,7 @@ export default function EditionsTable({editionRows}) {
         }));
 
     return(<>
-        <TableContainer className="bg-white rounded-lg mx-auto w-fit max-w-[1085px]">
+        <TableContainer className="bg-white rounded-lg mx-auto w-fit max-w-[1070px]">
             <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -77,6 +77,5 @@ export default function EditionsTable({editionRows}) {
                 </TableBody>
             </Table> 
         </TableContainer>
-        <button id="btnGenerateSummary"></button>
     </>)
 };

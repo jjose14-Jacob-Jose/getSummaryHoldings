@@ -1,7 +1,7 @@
 import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
-let arrayAvailabilityStatusIssuesOfEachYear;
+let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
 
 // Function to print console outputs.
 function printToConsole(variable) {
@@ -16,14 +16,25 @@ function printToAlert(variable) {
 
 // Initializes the table.
 function initializeArrays() {
+    arrayEditionDescription = [];
+    arrayEditionNumber = [];
+    arrayYear = [];
+    arrayAvailabilityStatusYear = [];
     arrayAvailabilityStatusIssuesOfEachYear = [];
+    arrayIssuesInTheYear = [];
 
     // Adding '+1' to ensure 'ending' year is also included.
     const yearRange = yearEnding - yearStarting + 1;
     
-    // Creating an array of length 'editionsPerYear' with all elements having value 'FLAG_ISSUES_NOT_AVAILABLE' and pushing it to 'arrayAvailabilityStatusIssuesOfEachYear'.
     for(let i=0; i<yearRange; i++) {
+        arrayEditionDescription.push(editionsType);
+        arrayEditionNumber.push(volumeYearStarting++);
+        arrayYear.push(yearStarting++);
+        arrayAvailabilityStatusYear.push(FLAG_ISSUES_NOT_AVAILABLE);
+
+        // Creating an array of length 'editionsPerYear' with all elements having value 'FLAG_ISSUES_NOT_AVAILABLE' and pushing it to 'arrayAvailabilityStatusIssuesOfEachYear'.
         arrayAvailabilityStatusIssuesOfEachYear.push(Array.from({ length: editionsPerYear }, () => FLAG_ISSUES_NOT_AVAILABLE));
+        arrayIssuesInTheYear.push(editionsPerYear);
     }
 
     let rows = [];
@@ -58,6 +69,19 @@ function initializeArrays() {
     }
 
     return rows;
+}
+
+// Builds the request object for fetching holdings summary from the backend.
+export function getGenerateSummaryRequest() {
+    const form = new FormData();
+    form.append("arrayEditionDescription", arrayEditionNumber);
+    form.append("arrayEditionNumber", arrayEditionNumber);
+    form.append("arrayYear", arrayYear);
+    form.append("arrayAvailabilityStatusYear", arrayAvailabilityStatusYear);
+    form.append("arrayAvailabilityStatusIssuesOfEachYear", arrayAvailabilityStatusIssuesOfEachYear);
+    form.append("arrayIssuesInTheYear", arrayIssuesInTheYear);
+    form.append("editionsPerYear", editionsPerYear);
+    return form;
 }
 
 export function validateUserInputs(){
