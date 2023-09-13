@@ -7,7 +7,7 @@ import { validateUserInputs } from "../../public/public";
  * 
  * @author pdoddi
  */
-export default function UserInputs({setDisplayResults, setEditionRows}) {
+export default function UserInputs({setDisplayResults, setEditionRows, displayResults}) {
 
     function handleCalculateEditionsClick(e) {
         setEditionRows(null);
@@ -48,10 +48,12 @@ export default function UserInputs({setDisplayResults, setEditionRows}) {
                     </div>
                 </div>
 
-                <button onClick={handleCalculateEditionsClick} id="btnCreateTable" className="p-2 px-6 h-fit text-sm font-light bg-[#907360] text-white rounded hover:bg-[#89634A] hover:font-light items-center">Calculate Editions</button>
+                <button onClick={handleCalculateEditionsClick} id="btnCreateTable" className="p-2 px-6 h-fit text-sm font-light bg-[#89634A] text-white rounded hover:bg-[#83593D] hover:font-light items-center">Calculate Editions</button>
 
-                <button onClick={handleClear} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Clear</button>
-
+                { 
+                    displayResults &&
+                    <button onClick={handleClear} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Clear</button>
+                }
                 <div className="cols-span-2">
                     <input type="hidden" id="arrayEditionDescription" name="arrayEditionDescription" />
                     <input type="hidden" id="arrayEditionNumber" name="arrayEditionNumber" />

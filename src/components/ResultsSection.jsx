@@ -1,8 +1,8 @@
 'use client';
 
-// import { main, setUserMode } from "../../public/main";
 import SummaryHoldingsResults from "./SummaryHoldingsResults";
 import EditionsTable from "./EditionsTable";
+import BackToTopButton from "./static/BackToTopButton";
 
 /**
  * Complete results table component. Includes the editions table and summary holdings response.
@@ -16,9 +16,9 @@ export default function ResultsSection({editionRows}) {
 
     return (
         <div className="items-center align-middle justify-center pt-4">
+            <BackToTopButton />
             <SummaryHoldingsResults />
             <EditionsTable editionRows={editionRows} />
-         
         </div>
     )
 }
