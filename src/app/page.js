@@ -8,7 +8,7 @@ import ResultsWrapper from '@/components/wrappers/ResultsWrapper'
  */
 export default function LandingPage() {
 	return (
-		<main className='m-auto min-h-screen flex flex-col max-w-[1500px]'>
+		<main className='mx-auto min-h-screen flex flex-col max-w-[1500px]'>
             <Header />
             <ResultsWrapper/>
         </main>
