@@ -4,7 +4,7 @@ import { useState } from "react";
 import { getGenerateSummaryRequest } from "../../public/public";
 import axios from "axios";
 import Loader from "./static/Loader";
-import { ENV_LOCAL, HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED, HTML_ELEMENT_CLASS_VALUE_MODE_BASIC } from "@/constants/common_js_constants";
+import { ENV_LOCAL, ENV_PROD, HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED, HTML_ELEMENT_CLASS_VALUE_MODE_BASIC } from "@/constants/common_js_constants";
 
 /**
  * Summary holdings results component.
@@ -23,7 +23,7 @@ export default function SummaryHoldingsResults() {
         let response;
         try {
             response = await axios({
-                url: `${ENV_LOCAL}/postData`,
+                url: `${ENV_PROD}/postData`,
                 method: "post",
                 data: request,
                 headers: {
