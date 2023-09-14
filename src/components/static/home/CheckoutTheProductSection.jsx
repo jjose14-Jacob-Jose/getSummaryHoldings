@@ -14,7 +14,7 @@ const MotionLink = motion(Link);
  * @author shivaram_bathini
  */
 
-export default function CheckoutThePrototypeSection() {
+export default function CheckoutTheProductSection() {
   return (
     <motion.div
       variants={staggerContainer}
@@ -29,10 +29,10 @@ export default function CheckoutThePrototypeSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="flex mx-auto justify-center w-[90%]"
+          className="flex mx-auto justify-center"
         >
           <h2 className={`text-center ${styles.headingTwo}`}>
-            Check Out the Product Prototype
+            Start Exploring the Tool
           </h2>
           <img
             src="/text_highlight.png"
@@ -47,8 +47,7 @@ export default function CheckoutThePrototypeSection() {
           viewport={{ once: true }}
           className={`${styles.paraTwo} flex mx-auto justify-center mt-5 tablet:mt-2 lg:mt-0`}
         >
-          We've built an interactive prototype in Figma for the product. Open it
-          up to experience the product yourself.
+          Experience the product yourself. Don’t worry, it’s free!
         </motion.p>
         <div className="flex gap-4 mt-5 justify-center">
           <MotionLink
@@ -61,7 +60,7 @@ export default function CheckoutThePrototypeSection() {
             rel="noopener noreferrer"
             className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light mx-auto justify-center"
           >
-            Explore the Prototype
+            Start Using it
           </MotionLink>
         </div>
       </div>
