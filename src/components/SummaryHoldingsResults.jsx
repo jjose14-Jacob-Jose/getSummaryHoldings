@@ -19,28 +19,35 @@ export default function SummaryHoldingsResults() {
 
     //Makes the backend API call to fetch holdings summary details.
     const fetchData = async (request) => {
-        const response = await axios({
-            url: `${ENV_LOCAL}/postData`,
-            method: "post",
-            data: request,
-            headers: {
-              "Content-type": "multipart/form-data",
-            },
-        });
-      
-        setSummaryData(response.data);
- 
-        //Setting a delay of 1s as the loader loads a little too fast to see. 
-        //This might confuse users.
-        setTimeout(() => {
+        let response;
+        try {
+            response = await axios({
+                url: `${ENV_LOCAL}/postData`,
+                method: "post",
+                data: request,
+                headers: {
+                  "Content-type": "multipart/form-data",
+                },
+            });
+            setSummaryData(response.data);
+                    
+            //Setting a delay of 1s as the loader loads a little too fast to see. 
+            //This might confuse users.
+            setTimeout(() => {
+                setShowLoader(false);
+                setSummaryGenerated(true);
+            }, 1000);
+        } catch (error) {
             setShowLoader(false);
-            setSummaryGenerated(true);
-        }, 1000);
+            console.log(error);
+        }
     };
 
-    //Displays a lodaer, fetches the request object for the backend API call and makes the request.
-    function handleGenerateSummaryClick(){
+    //Displays a loader, fetches the request object for the backend API call and makes the request.
+    function handleGenerateSummaryClick() {
         setShowLoader(true);
+        setSummaryGenerated(false);
+        setSummaryData(null);
         const request = getGenerateSummaryRequest();
         fetchData(request);
     }

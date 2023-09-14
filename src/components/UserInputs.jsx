@@ -7,12 +7,17 @@ import { validateUserInputs } from "../../public/public";
  * 
  * @author pdoddi
  */
-export default function UserInputs({setDisplayResults, setEditionRows, displayResults}) {
+export default function UserInputs({setDisplayResults, setEditionRows, displayResults, scrollToEditionsTable}) {
 
     function handleCalculateEditionsClick(e) {
         setEditionRows(null);
         let rows = validateUserInputs();
         setEditionRows(rows);
+        if(displayResults){
+            setTimeout(() => {
+                scrollToEditionsTable();
+           }, 100);
+        }
         setDisplayResults(true);
     }
 
@@ -22,8 +27,7 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
     }
 
     return (
-        <div id="tableUserInput" className="bg-white p-6 px-12  rounded-lg m-auto w-fit">
-        {/* action={`${ENV_LOCAL}/postData`} method="POST" */}
+        <div id="tableUserInput" className="bg-white p-6 px-12 rounded-lg m-auto w-fit">
             <div className="flex gap-4 justify-center items-center align-bottom text-black">
                 <div className="flex gap-6 pr-4">
                     <div className="max-w-[101px]">
