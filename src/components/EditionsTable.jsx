@@ -20,6 +20,25 @@ export default function EditionsTable({ editionRows }) {
     const [selectedRows, setSelectedRows] = useState({});
     
     useEffect(() => {
+        // Initialize selectedCheckboxes and selectedRows here
+        const initialSelectedCheckboxes = {};
+        const initialSelectedRows = {};
+
+        // Set all checkboxes to false initially for each row
+        editionRows.forEach((row) => {
+            initialSelectedCheckboxes[row.rowId] = {};
+            row.listOfIssues.forEach((issue) => {
+                initialSelectedCheckboxes[row.rowId][issue.text] = false;
+            });
+            initialSelectedRows[row.rowId] = false; // Deselect all rows initially
+        });
+
+        setSelectedCheckboxes(initialSelectedCheckboxes);
+        setSelectedRows(initialSelectedRows);
+
+    }, [editionRows]);
+
+    useEffect(() => {
         // Check if all checkboxes in a row are selected and update the row's switch accordingly
         editionRows.forEach((row) => {
             const allCheckboxesSelected = row.listOfIssues.every((issue) =>
