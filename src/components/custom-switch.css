@@ -1,0 +1,37 @@
+/* custom-switch.css */
+.custom-switch {
+    display: inline-block;
+    width: 50px; 
+    height: 20px; 
+    position: relative;
+    cursor: pointer;
+    background-color: #fff; /* Background color for off state */
+    border: 1px solid #1E2027; 
+    border-radius: 10px; /* Adjust the border radius */
+    transition: background-color 2s, border-color 2s; 
+  }
+  
+  .custom-switch::before {
+    content: "";
+    position: absolute;
+    width: 16px; 
+    height: 16px; 
+    background-color: #1E2027; 
+    border-radius: 50%;
+    top: 50%;
+    left: 2px;
+    transform: translateY(-50%);
+    transition: transform 2s, background-color 2s, left 2s; 
+  }
+  
+  .custom-switch.checked {
+    background-color: #1E2027; /* Background color for on state (black) */
+    border: 1px solid #1E2027;
+  }
+  
+  .custom-switch.checked::before {
+    left: calc(62%); /* Adjust the circle's position */
+    background-color: #fff; /* Circle color for on state (white) */
+    transform: translateY(-50%);
+  }
+  
