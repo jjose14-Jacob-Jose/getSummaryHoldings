@@ -18,14 +18,13 @@ import { styled } from '@mui/material/styles';
 export default function EditionsTable({ editionRows }) {
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
-
+    
     useEffect(() => {
         // Check if all checkboxes in a row are selected and update the row's switch accordingly
         editionRows.forEach((row) => {
             const allCheckboxesSelected = row.listOfIssues.every((issue) =>
                 selectedCheckboxes[row.rowId]?.[issue.text]
             );
-
             setSelectedRows((prevState) => ({
                 ...prevState,
                 [row.rowId]: allCheckboxesSelected,
@@ -38,13 +37,23 @@ export default function EditionsTable({ editionRows }) {
             ...prevState,
             [rowId]: !prevState[rowId], // Toggle the row's selection state
         }));
+        // Use the setCheckboxesAsRow function to update checkboxes in the row
+        const isSelected = !selectedRows[rowId];
+        setCheckboxesAsRow(rowId, isSelected);
+        
+    };
 
-        // Toggle all checkboxes in the row
-        editionRows
-            .find((row) => row.rowId === rowId)
-            .listOfIssues.forEach((issue) => {
-                toggleCheckboxSelection(rowId, issue.text);
-            });
+    const setCheckboxesAsRow = (rowId, isSelected) => {
+        setSelectedCheckboxes((prevCheckboxes) => {
+            const updatedRowCheckboxes = { ...prevCheckboxes[rowId] };
+            for (const issueText in updatedRowCheckboxes) {
+                updatedRowCheckboxes[issueText] = isSelected;
+            }
+            return {
+                ...prevCheckboxes,
+                [rowId]: updatedRowCheckboxes,
+            };
+        });
     };
 
     const toggleCheckboxSelection = (rowId, issueText) => {
