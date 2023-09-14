@@ -57,8 +57,8 @@ function initializeArrays() {
         const newRow ={
             rowId: i,
             editionType: editionsType,
-            editionNumber: volumeYearStarting++,
-            year: yearStarting++,
+            editionNumber: arrayEditionNumber[i],
+            year: arrayYear[i],
             availabilityStatus: FLAG_ISSUES_NOT_AVAILABLE,
             listOfIssues: checkboxes,
             availabilityStatusIssuesOfEachYear: Array.from({ length: editionsPerYear }, () => FLAG_ISSUES_NOT_AVAILABLE),
@@ -74,7 +74,7 @@ function initializeArrays() {
 // Builds the request object for fetching holdings summary from the backend.
 export function getGenerateSummaryRequest() {
     const form = new FormData();
-    form.append("arrayEditionDescription", arrayEditionNumber);
+    form.append("arrayEditionDescription", arrayEditionDescription);
     form.append("arrayEditionNumber", arrayEditionNumber);
     form.append("arrayYear", arrayYear);
     form.append("arrayAvailabilityStatusYear", arrayAvailabilityStatusYear);
