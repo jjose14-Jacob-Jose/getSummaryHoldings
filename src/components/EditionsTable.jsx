@@ -26,9 +26,20 @@ export default function EditionsTable({editionRows}) {
 
     const HeaderTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
-        fontWeight: 600
+        fontWeight: 520,
+        fontSize: 12,
+        color: "#515151",
+        paddingBottom: 9,
+        paddingTop: 10,
+        paddingLeft: 26
     }
     }));
+
+    const PaddedTableCell = styled(TableCell)(() => ({
+        [`&.${tableCellClasses.body}`]: {
+            paddingLeft: 26
+        }
+        }));
 
     const AlternateTableRow = styled(TableRow)(() => ({
         //alternate rows have different colors
@@ -57,11 +68,11 @@ export default function EditionsTable({editionRows}) {
                     {
                         editionRows.map((row) => (
                             <AlternateTableRow hover key={row.rowId}>
-                                <TableCell component="th" scope="row" align="left" width="5%">{row.editionType}</TableCell>
-                                <TableCell align="left" width="5%">{row.editionNumber}</TableCell>
-                                <TableCell align="left" width="5%">{row.year}</TableCell>
-                                <TableCell width="10%">Select all</TableCell>
-                                <TableCell align="left" width="40%">
+                                <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
+                                <PaddedTableCell width="10%">Select all</PaddedTableCell>
+                                <PaddedTableCell align="left" width="40%">
                                     <div className="flex gap-2">
                                     {row.listOfIssues.map((issue) => (
                                     <li className="list-none">
@@ -70,7 +81,7 @@ export default function EditionsTable({editionRows}) {
                                     </li>
                                     ))}
                                     </div>
-                                </TableCell>
+                                </PaddedTableCell>
                             </AlternateTableRow>
                         ))
                     }

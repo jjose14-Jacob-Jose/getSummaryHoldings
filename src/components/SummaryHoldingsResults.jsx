@@ -56,7 +56,7 @@ export default function SummaryHoldingsResults() {
     return(
         <div className="bg-white text-black font-light rounded-lg m-auto w-[1070px]">
             <div className="flex justify-between px-8 p-3 items-center">
-                <h2 className="font-bold">Summary Holdings Details</h2>
+                <h2 className="font-medium text-lg">Summary Holdings Details</h2>
                 <div className="flex gap-4 items-center">
                     <p>(slider)</p>
                     <button onClick={handleGenerateSummaryClick} id="btnGenerateSummary" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Generate Summary Holdings</button>
