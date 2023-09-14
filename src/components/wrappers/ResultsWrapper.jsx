@@ -14,11 +14,18 @@ export default function ResultsWrapper() {
     
 	const [displayResults, setDisplayResults] = useState(false);
     const [editionRows, setEditionRows] = useState(null);
+
+    function scrollToEditionsTable(){
+        const element = document.getElementById('editionsTable');
+        if(element){
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    }
     
     return (
         <>
             <div className="m-auto flex flex-col">
-                <div className="items-center align-middle justify-center mb-14">
+                <div className={`"items-center align-middle justify-center ${displayResults ? "mb-4" : "mb-14" }`}>
                     {
                         !displayResults && (
                             <div className="text-center mx-auto p-6 px-12 pb-4">
@@ -31,6 +38,7 @@ export default function ResultsWrapper() {
                         displayResults={displayResults} 
                         setDisplayResults={setDisplayResults} 
                         setEditionRows={setEditionRows} 
+                        scrollToEditionsTable={scrollToEditionsTable}
                     />
                     {
                         displayResults && <ResultsSection editionRows={editionRows} />
