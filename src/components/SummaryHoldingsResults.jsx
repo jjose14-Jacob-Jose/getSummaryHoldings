@@ -4,7 +4,7 @@ import { useState } from "react";
 import { getGenerateSummaryRequest } from "../../public/public";
 import axios from "axios";
 import Loader from "./static/Loader";
-import { ENV_LOCAL } from "@/constants/common_js_constants";
+import { ENV_LOCAL, HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED, HTML_ELEMENT_CLASS_VALUE_MODE_BASIC } from "@/constants/common_js_constants";
 
 /**
  * Summary holdings results component.
@@ -16,6 +16,7 @@ export default function SummaryHoldingsResults() {
     const [summaryGenerated, setSummaryGenerated] = useState(false);
     const [summaryData, setSummaryData] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
+    const [userMode, setUserMode] = useState(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC);
 
     //Makes the backend API call to fetch holdings summary details.
     const fetchData = async (request) => {
@@ -53,7 +54,7 @@ export default function SummaryHoldingsResults() {
     }
 
     return(
-        <div className="bg-white  text-black font-light rounded-lg m-auto w-[1070px]">
+        <div className="bg-white text-black font-light rounded-lg m-auto w-[1070px]">
             <div className="flex justify-between px-8 p-3 items-center">
                 <h2 className="font-bold">Summary Holdings Details</h2>
                 <div className="flex gap-4 items-center">
@@ -66,21 +67,24 @@ export default function SummaryHoldingsResults() {
                 {
                     summaryGenerated ? 
                         <>
-                            <div id="tableUserInput">
+                            <div className="flex">
                                 
-                                <label htmlFor ="divRBMode" className="text-right">Output:</label>
+                                <label htmlFor ="divRBMode" className="text-right">View: </label>
                                 <div id="divRBMode">
                                     <label>
-                                        <input type="radio" name="rbMode" id="rbModeBasic" value="modeBasic" onClick={(e) => setUserMode(e)} checked />
+                                        <input type="radio" name="rbMode" id="rbModeBasic" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
+                                            checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? true : false} />
                                         Basic
                                     </label>
                                     <label>
-                                        <input type="radio" name="rbMode" id="rbModeAdvanced" value="modeAdvanced" onClick={(e) => setUserMode(e)} />
+                                        <input type="radio" name="rbMode" id="rbModeAdvanced" defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
+                                            checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? true : false} />
                                         Detailed
                                     </label>
                                 </div>
                             </div>
-                            <div id="tableSummaryHoldingBasic" className="modeBasic">
+
+                            <div id="tableSummaryHoldingBasic" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"}`}>
                                 <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Missing Editions</label>
                                 <label htmlFor ="textAreaAvailableSummaryHoldingBasic">Summary Holdings (available)</label>
                             
@@ -88,7 +92,7 @@ export default function SummaryHoldingsResults() {
                                 <textarea id="textAreaAvailableSummaryHoldingBasic" name="textAreaAvailableSummaryHolding">{summaryData.textAreaAvailableSummaryHolding}</textarea>
                             </div>
 
-                            <div id="tableSummaryHoldingAdvanced" className="modeAdvanced" >
+                            <div id="tableSummaryHoldingAdvanced" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"}`} >
                             
                                 <div colSpan="2" className="align-middle items-center">
                                     Missing Editions
