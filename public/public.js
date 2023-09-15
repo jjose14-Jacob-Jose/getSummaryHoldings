@@ -1,4 +1,4 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
+import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
@@ -110,6 +110,19 @@ export function validateUserInputs(){
 
         if (messageError !== STRING_VALUE_EMPTY) {
             messageError = messageError + MESSAGE_INVALID_INTEGER_INPUT_SUFFIX;
+            throw new Error (messageError);
+        }
+        //Check for empty string
+        editionsType = editionsType.trim();
+        if(!editionsType){
+            messageError = document.getElementById("lblTxtTextEditionsType").innerHTML + MESSAGE_EMPTY_FIELD;
+            throw new Error (messageError);
+        }
+
+        //Check for the correct year range - earliest edition should be before latest edition.
+        if(yearStarting > yearEnding){
+            messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML + 
+                            MESSAGE_YEAR_RANGE_INVALID + document.getElementById("lblTxtNumberYearStarting").innerHTML + ".";
             throw new Error (messageError);
         }
 
