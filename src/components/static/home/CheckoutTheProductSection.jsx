@@ -47,7 +47,7 @@ export default function CheckoutTheProductSection() {
           viewport={{ once: true }}
           className={`${styles.paraTwo} flex mx-auto justify-center mt-5 tablet:mt-2 lg:mt-0`}
         >
-          Experience the product yourself. Don’t worry, it’s free!
+          Dive in and experience the product yourself. Don’t worry, it’s free!
         </motion.p>
         <div className="flex gap-4 mt-5 justify-center">
           <MotionLink
