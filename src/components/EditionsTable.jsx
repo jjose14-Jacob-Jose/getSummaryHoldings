@@ -137,7 +137,8 @@ export default function EditionsTable({ editionRows }) {
                                 <TableCell align="left" width="5%">
                                     {row.year}
                                 </TableCell>
-                                <TableCell align="middle" width="10%">
+                                <TableCell ml="10px" align="middle" width="10%">
+                                    <div className="ml-10">
                                     <div
                                         className={`relative cursor-pointer w-12 h-5 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
@@ -150,6 +151,7 @@ export default function EditionsTable({ editionRows }) {
                                                 isRowSelected(row.rowId) ? 'checked bg-white left-7'  : 'bg-gray-900 left-0.5'
                                               } `}
                                         ></div>
+                                    </div>
                                     </div>
                                 </TableCell>
                                 <TableCell align="left" width="40%">
