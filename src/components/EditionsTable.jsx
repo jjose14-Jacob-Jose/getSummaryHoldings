@@ -98,21 +98,10 @@ export default function EditionsTable({ editionRows }) {
     ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
-    [`&.${tableCellClasses.head}`]: {
-        fontWeight: 520,
-        fontSize: 12,
-        color: "#515151",
-        paddingBottom: 9,
-        paddingTop: 10,
-        paddingLeft: 26
-    }
-    }));
-
-    const PaddedTableCell = styled(TableCell)(() => ({
-        [`&.${tableCellClasses.body}`]: {
-            paddingLeft: 26
+        [`&.${tableCellClasses.head}`]: {
+            fontWeight: 600
         }
-        }));
+    }));
 
     const AlternateTableRow = styled(TableRow)(() => ({
         '&:nth-of-type(odd)': {
@@ -148,8 +137,8 @@ export default function EditionsTable({ editionRows }) {
                                 <TableCell align="left" width="5%">
                                     {row.year}
                                 </TableCell>
-                                <TableCell width="10%">
-                                    <div className="ml-8">
+                                <TableCell align="middle" width="10%">
+                                    <div className="ml-9">
                                     <div
                                         className={`relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
@@ -187,7 +176,7 @@ export default function EditionsTable({ editionRows }) {
                                             </li>
                                         ))}
                                     </div>
-                                </PaddedTableCell>
+                                </TableCell>
                             </AlternateTableRow>
                         ))}
                     </TableBody>
@@ -197,4 +186,3 @@ export default function EditionsTable({ editionRows }) {
         </>
     );
 }
-
