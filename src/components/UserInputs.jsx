@@ -10,9 +10,9 @@ import { validateUserInputs } from "../../public/public";
 export default function UserInputs({setDisplayResults, setEditionRows, displayResults, scrollToEditionsTable}) {
 
     function handleCalculateEditionsClick(e) {
-        setEditionRows(null);
         let rows = validateUserInputs();
         if(rows.length > 0){
+            setEditionRows(null);
             setEditionRows(rows);
             if(displayResults){
                 setTimeout(() => {
