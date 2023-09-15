@@ -137,8 +137,8 @@ export default function EditionsTable({ editionRows }) {
                                 <TableCell align="left" width="5%">
                                     {row.year}
                                 </TableCell>
-                                <TableCell align="middle" width="10%">
-                                    <div className="ml-9">
+                                <TableCell width="10%">
+                                    <div className="ml-8">
                                     <div
                                         className={`relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
