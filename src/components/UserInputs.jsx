@@ -22,7 +22,7 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
         setDisplayResults(true);
     }
 
-    function handleClear(){
+    function handleReset(){
         setEditionRows(null);
         setDisplayResults(false);
     }
@@ -59,7 +59,7 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
 
                 { 
                     displayResults &&
-                    <button onClick={handleClear} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Reset</button>
+                    <button onClick={handleReset} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Reset</button>
                 }
             </div>
         </motion.div>
