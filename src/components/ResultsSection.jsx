@@ -15,7 +15,7 @@ export default function ResultsSection({editionRows}) {
     //todo: Use state to check if results are populated or not and disable/enable buttons on that basis.
 
     return (
-        <div className="items-center align-middle justify-center pt-4">
+        <div className="items-center align-middle justify-center space-y-4 pb-8">
             <BackToTopButton />
             <SummaryHoldingsResults />
             <EditionsTable editionRows={editionRows} />
