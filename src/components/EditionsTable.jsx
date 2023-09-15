@@ -8,6 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
+import { motion } from "framer-motion";
+import { animateText } from "@/constants/framer_motion_utils";
 
 /**
  * Table component with issue details and checkboxes.
@@ -52,7 +54,11 @@ export default function EditionsTable({editionRows}) {
           },
         }));
 
-    return(<>
+    return(<motion.div
+        variants={animateText(0.2)}
+        viewport={{ once: true }}
+        initial="hidden"
+        whileInView="show" >
         <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-fit max-w-[1070px]">
             <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
                 <TableHead>
@@ -88,5 +94,5 @@ export default function EditionsTable({editionRows}) {
                 </TableBody>
             </Table> 
         </TableContainer>
-    </>)
+    </motion.div>)
 };
