@@ -137,18 +137,18 @@ export default function EditionsTable({ editionRows }) {
                                 <TableCell align="left" width="5%">
                                     {row.year}
                                 </TableCell>
-                                <TableCell ml="10px" align="middle" width="10%">
-                                    <div className="ml-10">
+                                <TableCell align="middle" width="10%">
+                                    <div className="ml-9">
                                     <div
-                                        className={`relative cursor-pointer w-12 h-5 ${
+                                        className={`relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
                                           }`}
                                         onClick={() => toggleRowSelection(row.rowId)} 
                                     >
                                         <div
-                                            className={`absolute w-4 h-4 rounded-full transform top-1/2 -translate-y-1/2
+                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
                                              ${
-                                                isRowSelected(row.rowId) ? 'checked bg-white left-7'  : 'bg-gray-900 left-0.5'
+                                                isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
                                               } `}
                                         ></div>
                                     </div>
