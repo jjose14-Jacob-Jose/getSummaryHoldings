@@ -32,11 +32,11 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
                 <div className="flex gap-6 pr-4">
                     <div className="max-w-[101px]">
                         <label id="lblTxtNumberYearStarting" htmlFor ="txtNumberYearStarting" className="font-medium text-[13px]">Earliest edition</label>
-                        <input type="text" id="txtNumberYearStarting" className="text-black font-light mt-1 p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[100px]" name="yearStarting" required defaultValue="2000"  />
+                        <input type="number" id="txtNumberYearStarting" className="text-black font-light mt-1 p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[100px]" name="yearStarting" required defaultValue="2000"  />
                     </div>
                     <div className="max-w-[100px]">
                         <label id="lblTxtNumberYearEnding" htmlFor ="txtNumberYearEnding" className="font-medium text-[13px]">Latest edition</label>
-                        <input type="text" id="txtNumberYearEnding" className="text-black font-light mt-1 p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[100px] text-ellipsis hover:overflow-visible" name="yearEnding" required defaultValue="2020" />
+                        <input type="number" id="txtNumberYearEnding" className="text-black font-light mt-1 p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[100px] text-ellipsis hover:overflow-visible" name="yearEnding" required defaultValue="2020" />
                     </div>
                     <div className="max-w-[100px]">
                         <label id="lblTxtTextEditionsType" htmlFor="txtTextEditionsType" className="font-medium text-[13px]">Edition type</label>
@@ -44,11 +44,11 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
                     </div>
                     <div className="max-w-[133px] w-fit">
                         <label id="lblTxtNumberEditionsPerYear" htmlFor ="txtNumberEditionsPerYear" className="font-medium text-[13px]">Issues in a year</label>
-                        <input type="text" id="txtNumberEditionsPerYear" className="text-black mt-1 font-light p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[133px]" name="editionsPerYear" required defaultValue="7" />
+                        <input type="number" id="txtNumberEditionsPerYear" className="text-black mt-1 font-light p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[133px]" name="editionsPerYear" required defaultValue="7" />
                     </div>
                     <div className="max-w-[130px]">
                         <label id="lblTxtNumberVolumeStartingYear" htmlFor ="txtNumberVolumeStartingYear" className="font-medium text-[13px]">Starting volume</label>
-                        <input type="text" className="text-black font-light p-1 pl-[10px] rounded mt-1 max-w-[124px] border-black/[0.2] border-[1.5px] text-sm" id="txtNumberVolumeStartingYear" name="volumeStartingYear" required defaultValue="1"  />
+                        <input type="number" className="text-black font-light p-1 pl-[10px] rounded mt-1 max-w-[124px] border-black/[0.2] border-[1.5px] text-sm" id="txtNumberVolumeStartingYear" name="volumeStartingYear" required defaultValue="1"  />
                     </div>
                 </div>
 
