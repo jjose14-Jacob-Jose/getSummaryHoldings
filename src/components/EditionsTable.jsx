@@ -12,7 +12,6 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import './custom-switch.css';
 import { styled } from '@mui/material/styles';
 
 export default function EditionsTable({ editionRows }) {
@@ -138,11 +137,20 @@ export default function EditionsTable({ editionRows }) {
                                 <TableCell align="left" width="5%">
                                     {row.year}
                                 </TableCell>
-                                <TableCell align="center" width="10%">
+                                <TableCell align="middle" width="10%">
                                     <div
-                                        className={`custom-switch ${isRowSelected(row.rowId) ? 'checked' : ''}`}
-                                        onClick={() => toggleRowSelection(row.rowId)}
-                                    ></div>
+                                        className={`relative cursor-pointer w-12 h-5 ${
+                                            isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                          }`}
+                                        onClick={() => toggleRowSelection(row.rowId)} 
+                                    >
+                                        <div
+                                            className={`absolute w-4 h-4 rounded-full transform top-1/2 -translate-y-1/2
+                                             ${
+                                                isRowSelected(row.rowId) ? 'checked bg-white left-7'  : 'bg-gray-900 left-0.5'
+                                              } `}
+                                        ></div>
+                                    </div>
                                 </TableCell>
                                 <TableCell align="left" width="40%">
                                     <div className="flex gap-2">
