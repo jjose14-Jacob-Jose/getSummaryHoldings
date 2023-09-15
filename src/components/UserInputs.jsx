@@ -12,13 +12,15 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
     function handleCalculateEditionsClick(e) {
         setEditionRows(null);
         let rows = validateUserInputs();
-        setEditionRows(rows);
-        if(displayResults){
-            setTimeout(() => {
-                scrollToEditionsTable();
-           }, 100);
+        if(rows.length > 0){
+            setEditionRows(rows);
+            if(displayResults){
+                setTimeout(() => {
+                    scrollToEditionsTable();
+               }, 100);
+            }
+            setDisplayResults(true);
         }
-        setDisplayResults(true);
     }
 
     function handleClear(){
