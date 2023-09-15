@@ -32,7 +32,7 @@ export default function ResultsWrapper() {
                 initial="hidden"
                 animate="show"
                 className="parent m-auto flex flex-col">
-                <div className={`" transition-all ease-in-out duration-300 items-center align-middle justify-center ${displayResults ? "mb-4" : "mb-14" }`}>
+                <div className={`items-center align-middle justify-center ${displayResults ? "mb-4" : "mb-16" }`}>
                     {
                         !displayResults && (
                             <motion.div layout className="child text-center mx-auto p-6 px-12 pb-4">
