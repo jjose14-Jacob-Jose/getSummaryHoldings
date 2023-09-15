@@ -98,10 +98,21 @@ export default function EditionsTable({ editionRows }) {
     ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
-        [`&.${tableCellClasses.head}`]: {
-            fontWeight: 600
-        }
+    [`&.${tableCellClasses.head}`]: {
+        fontWeight: 520,
+        fontSize: 12,
+        color: "#515151",
+        paddingBottom: 9,
+        paddingTop: 10,
+        paddingLeft: 26
+    }
     }));
+
+    const PaddedTableCell = styled(TableCell)(() => ({
+        [`&.${tableCellClasses.body}`]: {
+            paddingLeft: 26
+        }
+        }));
 
     const AlternateTableRow = styled(TableRow)(() => ({
         '&:nth-of-type(odd)': {
@@ -176,7 +187,7 @@ export default function EditionsTable({ editionRows }) {
                                             </li>
                                         ))}
                                     </div>
-                                </TableCell>
+                                </PaddedTableCell>
                             </AlternateTableRow>
                         ))}
                     </TableBody>
@@ -186,3 +197,4 @@ export default function EditionsTable({ editionRows }) {
         </>
     );
 }
+
