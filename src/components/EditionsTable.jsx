@@ -14,6 +14,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 
+/**
+ * Table component with issue details and checkboxes.
+ * 
+ * @author pdoddi
+ */
+
 export default function EditionsTable({ editionRows }) {
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
@@ -99,9 +105,20 @@ export default function EditionsTable({ editionRows }) {
 
     const HeaderTableCell = styled(TableCell)(() => ({
         [`&.${tableCellClasses.head}`]: {
-            fontWeight: 600
+        fontWeight: 520,
+        fontSize: 12,
+        color: "#515151",
+        paddingBottom: 9,
+        paddingTop: 10,
+        paddingLeft: 26
         }
     }));
+
+    const PaddedTableCell = styled(TableCell)(() => ({
+        [`&.${tableCellClasses.body}`]: {
+            paddingLeft: 26
+        }
+        }));
 
     const AlternateTableRow = styled(TableRow)(() => ({
         '&:nth-of-type(odd)': {
@@ -114,7 +131,7 @@ export default function EditionsTable({ editionRows }) {
 
     return (
         <>
-            <TableContainer className="bg-white rounded-lg mx-auto w-fit max-w-[1085px]">
+            <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-fit max-w-[1070px]">
                 <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -128,16 +145,10 @@ export default function EditionsTable({ editionRows }) {
                     <TableBody>
                         {editionRows.map((row) => (
                             <AlternateTableRow hover key={row.rowId}>
-                                <TableCell component="th" scope="row" align="left" width="5%">
-                                    {row.editionType}
-                                </TableCell>
-                                <TableCell align="left" width="5%">
-                                    {row.editionNumber}
-                                </TableCell>
-                                <TableCell align="left" width="5%">
-                                    {row.year}
-                                </TableCell>
-                                <TableCell align="middle" width="10%">
+                                 <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
+                                 <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
+                                <PaddedTableCell align="middle" width="10%">
                                     <div className="ml-9">
                                     <div
                                         className={`relative cursor-pointer w-10 h-4 ${
@@ -153,8 +164,8 @@ export default function EditionsTable({ editionRows }) {
                                         ></div>
                                     </div>
                                     </div>
-                                </TableCell>
-                                <TableCell align="left" width="40%">
+                                </PaddedTableCell>
+                                <PaddedTableCell align="left" width="40%">
                                     <div className="flex gap-2">
                                         {row.listOfIssues.map((issue) => (
                                             <li className="list-none" key={issue.text}>
@@ -176,7 +187,7 @@ export default function EditionsTable({ editionRows }) {
                                             </li>
                                         ))}
                                     </div>
-                                </TableCell>
+                                </PaddedTableCell>
                             </AlternateTableRow>
                         ))}
                     </TableBody>
