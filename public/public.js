@@ -1,4 +1,4 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
+import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
@@ -12,6 +12,30 @@ function printToConsole(variable) {
 function printToAlert(variable) {
     printToConsole(JSON.stringify(variable));
     alert(JSON.stringify(variable));
+}
+
+export function setCheckBoxSelected(i, indexOfEdition, isTrue){
+    if(isTrue) {
+        arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_ALL_AVAILABLE;
+    }
+    else {
+        arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_NOT_AVAILABLE;
+    }
+}
+
+//Sets row level flags depending on the number of checkboxes selected in a row -
+// - All the checkboxes selected - FLAG_ISSUES_ALL_AVAILABLE
+// - Some of the checkboxes selected - FLAG_ISSUES_SOME_AVAILABLE
+// - None of the checkboxes selected - FLAG_ISSUES_NOT_AVAILABLE
+export function setCheckboxesInARowSelectedValue(i, isTrue, selectedIssuesCount){
+    if(isTrue){
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_ALL_AVAILABLE;
+    }
+    else if(selectedIssuesCount === 0) {
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+    } else {
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
+    }
 }
 
 // Initializes the table.
@@ -46,7 +70,7 @@ function initializeArrays() {
 
             // Create checkbox element
             const checkbox = {
-                id: 'checkboxOfIssue' + indexOfEdition,
+                id: indexOfEdition,
                 checked: arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition]  === FLAG_ISSUES_ALL_AVAILABLE,
                 text: `${indexOfEdition + 1 }`
             }
@@ -73,6 +97,8 @@ function initializeArrays() {
 
 // Builds the request object for fetching holdings summary from the backend.
 export function getGenerateSummaryRequest() {
+    console.log(arrayAvailabilityStatusYear);
+    console.log(arrayAvailabilityStatusIssuesOfEachYear);
     const form = new FormData();
     form.append("arrayEditionDescription", arrayEditionDescription);
     form.append("arrayEditionNumber", arrayEditionNumber);
