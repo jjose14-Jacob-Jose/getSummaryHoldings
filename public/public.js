@@ -94,17 +94,17 @@ export function validateUserInputs(){
         editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
 
         let messageError = STRING_VALUE_EMPTY;
-        // Check if the parsed values are NaN (Not-a-Number)
-        if (isNaN(yearStarting)) {
+        // Check if the parsed values are NaN (Not-a-Number) or negative/zero.
+        if (isNaN(yearStarting) || yearStarting < 1) {
             messageError = document.getElementById("lblTxtNumberYearStarting").innerHTML;
         }
-        if (isNaN(yearEnding)) {
+        if (isNaN(yearEnding) || yearEnding < 1) {
             messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML;
         }
-        if (isNaN(volumeYearStarting)) {
+        if (isNaN(volumeYearStarting) || volumeYearStarting < 1) {
             messageError = document.getElementById("lblTxtNumberVolumeStartingYear").innerHTML;
         }
-        if (isNaN(editionsPerYear)) {
+        if (isNaN(editionsPerYear) || editionsPerYear < 1) {
             messageError = document.getElementById("lblTxtNumberEditionsPerYear").innerHTML;
         }
 
@@ -112,6 +112,7 @@ export function validateUserInputs(){
             messageError = messageError + MESSAGE_INVALID_INTEGER_INPUT_SUFFIX;
             throw new Error (messageError);
         }
+     
         //Check for empty string
         editionsType = editionsType.trim();
         if(!editionsType){
