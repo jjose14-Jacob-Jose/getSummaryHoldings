@@ -17,7 +17,7 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
         if(displayResults){
             setTimeout(() => {
                 scrollToEditionsTable();
-           }, 100);
+           }, 400);
         }
         setDisplayResults(true);
     }
