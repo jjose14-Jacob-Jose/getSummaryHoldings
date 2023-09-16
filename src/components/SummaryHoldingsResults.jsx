@@ -5,6 +5,8 @@ import { getGenerateSummaryRequest } from "../../public/public";
 import axios from "axios";
 import Loader from "./static/Loader";
 import { ENV_LOCAL, ENV_PROD, HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED, HTML_ELEMENT_CLASS_VALUE_MODE_BASIC } from "@/constants/common_js_constants";
+import { motion } from "framer-motion";
+import { animateText } from "@/constants/framer_motion_utils";
 
 /**
  * Summary holdings results component.
@@ -54,7 +56,12 @@ export default function SummaryHoldingsResults() {
     }
 
     return(
-        <div className="bg-white text-black font-light rounded-lg m-auto w-[1070px]">
+        <motion.div
+            variants={animateText(0.1)}
+            viewport={{ once: true }}
+            initial="hidden"
+            whileInView="show"  
+            className="bg-white text-black font-light rounded-lg m-auto w-[1070px]">
             <div className="flex justify-between px-8 p-3 items-center">
                 <h2 className="font-medium text-lg">Summary Holdings Details</h2>
                 <div className="flex gap-4 items-center">
@@ -124,6 +131,6 @@ export default function SummaryHoldingsResults() {
             <Loader 
                 open={showLoader} 
             />
-        </div>
+        </motion.div>
     )
 };

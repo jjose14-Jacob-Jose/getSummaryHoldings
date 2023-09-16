@@ -1,6 +1,7 @@
 'use client';
 
 import { validateUserInputs } from "../../public/public";
+import { motion } from "framer-motion";
 
 /**
  * User inputs component for generating the editions table.
@@ -17,19 +18,21 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
             if(displayResults){
                 setTimeout(() => {
                     scrollToEditionsTable();
-               }, 100);
+               }, 400);
             }
             setDisplayResults(true);
         }
     }
 
-    function handleClear(){
+    function handleReset(){
         setEditionRows(null);
         setDisplayResults(false);
     }
 
     return (
-        <div id="tableUserInput" className="bg-white p-6 px-12 rounded-lg m-auto w-fit">
+        <motion.div layout 
+            id="tableUserInput" 
+            className="child bg-white p-6 px-12 rounded-lg m-auto w-fit">
             <div className="flex gap-4 justify-center items-center align-bottom text-[#515151]">
                 <div className="flex gap-6 pr-4">
                     <div className="max-w-[101px]">
@@ -58,9 +61,9 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
 
                 { 
                     displayResults &&
-                    <button onClick={handleClear} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Clear</button>
+                    <button onClick={handleReset} id="btnClearAll" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Reset</button>
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }
