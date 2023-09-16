@@ -4,6 +4,8 @@ import { useState } from "react";
 import UserInputs from "../UserInputs";
 import ResultsSection from "../ResultsSection";
 import Footer from "../static/Footer";
+import { motion } from "framer-motion";
+import { animateText } from "@/constants/framer_motion_utils";
 
 /**
  * A wrapper component for results to be used for displaying results table conditionally.
@@ -24,14 +26,19 @@ export default function ResultsWrapper() {
     
     return (
         <>
-            <div className="m-auto flex flex-col">
-                <div className={`"items-center align-middle justify-center ${displayResults ? "mb-4" : "mb-14" }`}>
+            <motion.div
+                variants={animateText(0.3)}
+                layout
+                initial="hidden"
+                animate="show"
+                className="parent m-auto flex flex-col">
+                <div className={`items-center align-middle justify-center ${displayResults ? "mb-4" : "mb-16" }`}>
                     {
                         !displayResults && (
-                            <div className="text-center mx-auto p-6 px-12 pb-4">
+                            <motion.div layout className="child text-center mx-auto p-6 px-12 pb-4">
                                 <h1 className="font-semibold text-3xl pb-1">Calculate Editions</h1>
                                 <p className="font-light text-[#ECECEC]">Fill out the details of the title you wish to generate summary holdings for.</p>
-                            </div>
+                            </motion.div>
                         )
                     }
                     <UserInputs 
@@ -44,7 +51,7 @@ export default function ResultsWrapper() {
                         displayResults && <ResultsSection editionRows={editionRows} />
                     }
                 </div>
-            </div>
+            </motion.div>
             {
                 displayResults && <Footer />
             }
