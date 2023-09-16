@@ -23,7 +23,8 @@ import { styled } from '@mui/material/styles';
 export default function EditionsTable({ editionRows }) {
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
-    
+    const [masterSwitch, setMasterSwitch] = useState(false);
+
     useEffect(() => {
         // Initialize selectedCheckboxes and selectedRows here
         const initialSelectedCheckboxes = {};
@@ -55,6 +56,12 @@ export default function EditionsTable({ editionRows }) {
             }));
         });
     }, [selectedCheckboxes, editionRows]);
+
+    // Monitor the state of all custom-switches and update the master switch state accordingly
+    useEffect(() => {
+        const anyCustomSwitchUntoggled = editionRows.some((row) => !selectedRows[row.rowId]);
+        setMasterSwitch(!anyCustomSwitchUntoggled);
+    }, [selectedRows, editionRows]);
 
     const toggleRowSelection = (rowId) => {
         setSelectedRows((prevState) => ({
@@ -90,10 +97,22 @@ export default function EditionsTable({ editionRows }) {
         }));
     };
 
+    const toggleMasterSwitch = () => {
+        // Toggle the master switch state
+        setMasterSwitch(!masterSwitch);
+
+        // Toggle the selection state of all rows based on the master switch state
+        editionRows.forEach((row) => {
+            toggleRowSelection(row.rowId);
+        });
+    };
+
     const isCheckboxSelected = (rowId, issueText) =>
         selectedCheckboxes[rowId]?.[issueText];
 
     const isRowSelected = (rowId) => selectedRows[rowId];
+
+    // const isMasterSwitchSelected=()=>
 
     const columns = [
         { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
@@ -101,6 +120,7 @@ export default function EditionsTable({ editionRows }) {
         { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
         { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
         { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
+        { field: "selectAll", title: "", numeric: false, align: "left" }, // Empty column for "Select All"
     ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
@@ -134,10 +154,33 @@ export default function EditionsTable({ editionRows }) {
             <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-fit max-w-[1070px]">
                 <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
                     <TableHead>
-                        <TableRow>
+                    <TableRow>
                             {columns.map((col) => (
                                 <HeaderTableCell key={col.field} align={col.align}>
-                                    {col.title}
+                                    {col.title === "" ? (
+                                        // Render the text label "Select All" and the master switch
+                                        <div 
+                                        className='flex gap-2'>
+                                            <div className='font-light text-xs text-gray-400'>Select All Issues</div>
+                                        <div
+                                        className={`relative cursor-pointer w-10 h-4 ${
+                                            masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                          }`}
+                                          onClick={toggleMasterSwitch}
+                                    >
+                                        <div
+                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
+                                             ${
+                                                masterSwitch ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
+                                              } `}
+                                        ></div>
+                                    </div>
+                                        </div>
+                                        
+                                    ) : (
+                                        // Render other column headers
+                                        col.title
+                                    )}
                                 </HeaderTableCell>
                             ))}
                         </TableRow>
@@ -188,6 +231,7 @@ export default function EditionsTable({ editionRows }) {
                                         ))}
                                     </div>
                                 </PaddedTableCell>
+                                <PaddedTableCell align="left" width="25%">{row.selectAll}</PaddedTableCell>
                             </AlternateTableRow>
                         ))}
                     </TableBody>
