@@ -65,14 +65,14 @@ export default function EditionsTable({ editionRows }) {
     }, [selectedRows, editionRows]);
 
     const toggleRowSelection = (rowId) => {
+        const isSelected = !selectedRows[rowId];
         setSelectedRows((prevState) => ({
             ...prevState,
-            [rowId]: !prevState[rowId], // Toggle the row's selection state
+            [rowId]: isSelected,
         }));
-        // Use the setCheckboxesAsRow function to update checkboxes in the row
-        const isSelected = !selectedRows[rowId];
+    
+        // Update checkboxes within the row
         setCheckboxesAsRow(rowId, isSelected);
-        
     };
 
     const setCheckboxesAsRow = (rowId, isSelected) => {
@@ -88,6 +88,24 @@ export default function EditionsTable({ editionRows }) {
         });
     };
 
+    const setRowsAsMaster = (isSelected) => {
+        setSelectedRows((prevRows) => {
+            const updatedRows = {};
+            editionRows.forEach((row) => {
+                updatedRows[row.rowId] = isSelected;
+            });
+            return {
+                ...prevRows,
+                ...updatedRows,
+            };
+        });
+    
+        // Update checkboxes for all rows
+        editionRows.forEach((row) => {
+            setCheckboxesAsRow(row.rowId, isSelected);
+        });
+    };
+
     const toggleCheckboxSelection = (rowId, issueText) => {
         setSelectedCheckboxes((prevCheckboxes) => ({
             ...prevCheckboxes,
@@ -100,20 +118,17 @@ export default function EditionsTable({ editionRows }) {
 
     const toggleMasterSwitch = () => {
         // Toggle the master switch state
-        setMasterSwitch(!masterSwitch);
-
-        // Toggle the selection state of all rows based on the master switch state
-        editionRows.forEach((row) => {
-            toggleRowSelection(row.rowId);
-        });
+        const newMasterSwitchState = !masterSwitch;
+        setMasterSwitch(newMasterSwitchState);
+    
+        // Set the selection state of all rows based on the new master switch state
+        setRowsAsMaster(newMasterSwitchState);
     };
-
+    
     const isCheckboxSelected = (rowId, issueText) =>
         selectedCheckboxes[rowId]?.[issueText];
 
     const isRowSelected = (rowId) => selectedRows[rowId];
-
-    // const isMasterSwitchSelected=()=>
 
     const columns = [
         { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },

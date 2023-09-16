@@ -3,9 +3,9 @@
 import HeroSection from "./static/home/HeroSection";
 import GoodbyeToTaxingCalSection from "./static/home/GoodbyeToTaxingCalSection";
 import WorkFasterSection from "./static/home/WorkFasterSection";
-import CheckoutTheProductPrototypeSection from "./static/home/CheckoutTheProductPrototypeSection";
 import ContactUsSection from "./static/home/ContactUsSection";
 import FeaturesSection from "./static/home/FeaturesSection";
+import CheckoutTheProductSection from "./static/home/CheckoutTheProductSection";
 
 /**
  * Home page component of the site. Describes the tool's purpose, features, etc.
@@ -22,7 +22,7 @@ export default function Home() {
         <GoodbyeToTaxingCalSection />
         <WorkFasterSection />
         <FeaturesSection />
-        <CheckoutTheProductPrototypeSection />
+        <CheckoutTheProductSection />
         <ContactUsSection />
       </div>
     </div>

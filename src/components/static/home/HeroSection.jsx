@@ -40,7 +40,7 @@ export default function HeroSection() {
         >
           Serials Auditing. Simplified.
         </motion.h1>
-        <motion.p variants={animateText(0.5)} className={`${styles.paraTwo}`}>
+        <motion.p variants={animateText(0.5)} className={`${styles.paraTwo} lg:pt-4`}>
           A free browser based solution that computes summary holdings of books
           for you.
         </motion.p>
@@ -48,12 +48,11 @@ export default function HeroSection() {
         <div className="lg:flex lg:gap-4 mt-6 mb-12 lg:mt-8 lg:mb-0 w-fit lg:w-full mx-auto">
           <MotionLink
             variants={animateText(0.6)}
-            href={prototype_link}
-            target="_blank"
+            href="/"
             rel="noopener noreferrer"
             className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light items-center"
           >
-            Explore the Prototype
+            Start Using it
           </MotionLink>
           <br className="lg:hidden" />
           <motion.button
