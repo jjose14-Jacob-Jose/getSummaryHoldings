@@ -149,7 +149,7 @@ export default function EditionsTable({ editionRows }) {
                                  <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
                                 <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
                                 <PaddedTableCell align="middle" width="10%">
-                                    <div className="ml-9">
+                                    <div className="ml-7">
                                     <div
                                         className={`relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
