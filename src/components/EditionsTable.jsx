@@ -15,7 +15,7 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
-import { setAllCheckboxesInARowSelected, setCheckBoxSelected } from '../../public/public';
+import { setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
 
 /**
  * Table component with issue details and checkboxes.
