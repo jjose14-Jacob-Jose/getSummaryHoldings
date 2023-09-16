@@ -97,8 +97,6 @@ function initializeArrays() {
 
 // Builds the request object for fetching holdings summary from the backend.
 export function getGenerateSummaryRequest() {
-    console.log(arrayAvailabilityStatusYear);
-    console.log(arrayAvailabilityStatusIssuesOfEachYear);
     const form = new FormData();
     form.append("arrayEditionDescription", arrayEditionDescription);
     form.append("arrayEditionNumber", arrayEditionNumber);
