@@ -55,8 +55,7 @@ export default function CheckoutTheProductSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            href={prototype_link}
-            target="_blank"
+            href="/"
             rel="noopener noreferrer"
             className="p-2 px-10 h-fit font-light bg-[#89634A] text-white text-sm rounded hover:bg-[#83593D] hover:font-light mx-auto justify-center"
           >
