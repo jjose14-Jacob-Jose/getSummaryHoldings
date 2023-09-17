@@ -29,6 +29,7 @@ label[id^="labelEdition"] {
     padding-right: 10px;
     margin-right: 10px;
     text-align: right;
+     background: #efe3af;
 }
 
 #tableSummaryHoldingAdvanced {
@@ -50,6 +51,30 @@ label[id^="labelEdition"] {
 /*Styles for the body.*/
 body {
     background-color: #fffff0; /* Set background color */
+}
+
+
+/* Style for the footer */
+.containerFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #efe3af; /* Change this to your desired background color */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 0.5%;
+}
+
+footer div {
+    flex: 1;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+ /*Style for divs with text.*/
+.divText {
+    text-align: left;
 }
 
 /*Following is for loading spiner animation.*/

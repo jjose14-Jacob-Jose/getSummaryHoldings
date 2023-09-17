@@ -887,6 +887,16 @@ function enableKeyboardShortCuts() {
 
 }
 
+function toggleDivVisibility(divId) {
+    const userGuideToggle = document.getElementById(divId);
+
+    if (userGuideToggle.style.display === "none" || divUserGuideText.style.display === "") {
+        userGuideToggle.style.display = "block";
+    } else {
+        userGuideToggle.style.display = "none";
+    }
+}
+
 // Function with main logic.
 function main() {
     initialLoadingActivities();
