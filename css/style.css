@@ -18,7 +18,12 @@ label[id^="labelEdition"] {
     color: #144879;
 }
 
-#tableUserInput {
+.divTablesUserInput {
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly, with space in between */
+}
+
+ #tableUserInput {
     border: 1px solid black;
     /*background-color: #f2f2f2;*/
     padding-right: 10px;
@@ -28,11 +33,6 @@ label[id^="labelEdition"] {
 
 #tableSummaryHoldingAdvanced {
     text-align: left;
-}
-
-.divTableContainers{
-    display: flex;
-    flex: 1;
 }
 
 .tableHeader {
@@ -46,21 +46,6 @@ label[id^="labelEdition"] {
 #tableHeading td {
     /*border: 1px solid #000000;*/
 }
-
-#tableSurvey {
-    color: red;
-
-}
-
-/*textarea {*/
-/*    white-space: pre-wrap;*/
-/*}*/
-
-/*.table1, .table2 {*/
-
-/*    margin-right: 10px; !* Adjust the spacing between tables if needed *!*/
-/*}*/
-
 
 /*Styles for the body.*/
 body {
