@@ -888,12 +888,13 @@ function enableKeyboardShortCuts() {
 }
 
 function toggleDivVisibility(divId) {
-    const userGuideToggle = document.getElementById(divId);
+    const htmlElement = document.getElementById(divId);
 
-    if (userGuideToggle.style.display === "none" || divUserGuideText.style.display === "") {
-        userGuideToggle.style.display = "block";
+    if (htmlElement.style.display === "none" || divUserGuideText.style.display === "") {
+        htmlElement.style.display = "block";
+        window.scrollTo(0, document.body.scrollHeight);
     } else {
-        userGuideToggle.style.display = "none";
+        htmlElement.style.display = "none";
     }
 }
 

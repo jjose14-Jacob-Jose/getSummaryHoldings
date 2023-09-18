@@ -23,13 +23,15 @@ label[id^="labelEdition"] {
     justify-content: space-between; /* Distribute items evenly, with space in between */
 }
 
- #tableUserInput {
+#tableUserInput {
     border: 1px solid black;
     /*background-color: #f2f2f2;*/
     padding-right: 10px;
     margin-right: 10px;
     text-align: right;
-     background: #efe3af;
+    background: #efe4b0;
+    border-radius: 10px;
+
 }
 
 #tableSummaryHoldingAdvanced {
@@ -40,30 +42,99 @@ label[id^="labelEdition"] {
     text-align: center;
 }
 
-#tableHeading {
-    /*border: 1px solid #000000;*/
+.divBodyHeader {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space evenly between child divs */
 }
 
-#tableHeading td {
-    /*border: 1px solid #000000;*/
+
+/*Style for divs that need left-justification.*/
+.left {
+    text-align: left;
+    flex: 1;
+}
+
+.middle {
+    text-align: right;
+    flex: 1;
+}
+
+
+
+/*Style for divs that need right-justification.*/
+.right {
+    display: flex;
+    justify-content: flex-end; /* Right-align the content horizontally */
+    align-items: flex-end; /* Align the content to the bottom vertically */
+}
+
+.divUpdatesForUser {
+    text-align: right;
+}
+
+.divUpdatesForUser ul {
+    list-style-type: none;
+}
+
+.divUpdatesForUser li {
+    margin-bottom: 10px;
+}
+
+
+
+/* Apply a specific width to all text input fields */
+#divMatrix input[type="text"]{
+    width: 70px; /* Set your desired width here */
 }
 
 /*Styles for the body.*/
 body {
     background-color: #fffff0; /* Set background color */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    height: 100%;
+}
+
+body div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.listHorizontal {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+}
+
+.listHorizontal li {
+    display: inline-block; /* Display list items inline-block */
+    margin-right: 10px; /* Add spacing between list items (adjust as needed) */
+}
+
+
+/* Style the main */
+main {
+    flex-grow: 1; /* Grow to fill remaining space */
+    /*padding: 20px;*/
+    /*overflow-y: auto; !* Add scrollbars if content overflows *!*/
+}
+
+#divMatrix {
+    padding-top: 1%;
+    padding-bottom: 5%;
 }
 
 
 /* Style for the footer */
 .containerFooter {
-    position: fixed;
+    background-color: #efe4b0; /* Change this to your desired background color */
     bottom: 0;
-    width: 100%;
-    background-color: #efe3af; /* Change this to your desired background color */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding-bottom: 0.5%;
+
 }
 
 footer div {
@@ -72,9 +143,8 @@ footer div {
     vertical-align: bottom;
 }
 
- /*Style for divs with text.*/
-.divText {
-    text-align: left;
+#divUserGuideText {
+    display: none;
 }
 
 /*Following is for loading spiner animation.*/

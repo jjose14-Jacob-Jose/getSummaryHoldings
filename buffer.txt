@@ -1,0 +1,26 @@
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+
+/* Style for the footer */
+.containerFooter {
+    background-color: #efe4b0; /* Change this to your desired background color */
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 0.5%;
+
+}
+
+footer div {
+    flex: 2;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+footer is flowing with the page help me fix it
