@@ -112,6 +112,9 @@ body div {
     margin-right: 10px; /* Add spacing between list items (adjust as needed) */
 }
 
+body {
+    height: 100vh;
+}
 
 /* Style the main */
 main {
@@ -134,6 +137,8 @@ main {
     justify-content: space-between;
     align-items: flex-end;
     padding-bottom: 0.5%;
+    position: relative;
+    clear: both;
 
 }
 

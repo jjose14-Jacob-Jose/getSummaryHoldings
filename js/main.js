@@ -98,7 +98,7 @@ function initializeArrays() {
 function clearHTMLTable() {
     const divElement = document.getElementById('divMatrix');
     divElement.innerHTML = '';
-
+    divElement.style.minHeight = '43vh'
     clearAPIResponse();
 }
 
