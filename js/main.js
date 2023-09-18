@@ -5,6 +5,8 @@ Description: JavaScript file for 'Edition Tracker'.
 */
 
 const ID_DIV_MATRIX = "divMatrix";
+const ID_DIV_BODY_INTERFACE_SECTION = "divBodyInterfaceSection";
+const ID_DIV_BODY_ABOUT_SECTION = "divBodyAbout";
 const MATRIX_COLUMN_INDICES = {
     COLUMN_INDEX_OF_EDITION_NUMBER: 0,
     COLUMN_INDEX_OF_YEAR: 1,
@@ -776,6 +778,24 @@ function initialLoadingActivities() {
     // Showing results from Java API.
     {
         ajaxForFormUserInput();
+    }
+
+    // Event-listener for 'About'.
+    {
+        document.getElementById("aTagAbout").addEventListener("click", function() {
+            event.preventDefault();
+
+            const divBodyInterfaceParts = document.getElementById(ID_DIV_BODY_INTERFACE_SECTION);
+            const divBodyAbout = document.getElementById(ID_DIV_BODY_ABOUT_SECTION);
+
+            if (divBodyInterfaceParts.style.display === "none" || divBodyInterfaceParts.style.display === "") {
+                divBodyInterfaceParts.style.display = "block";
+                divBodyAbout.style.display = "none";
+            } else {
+                divBodyInterfaceParts.style.display = "none";
+                divBodyAbout.style.display = "block";
+            }
+        });
     }
 
     loadingAnimationHide();

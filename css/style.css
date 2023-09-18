@@ -89,6 +89,10 @@ main {
     100% { transform: rotate(360deg); }
 }
 
+#divBodyAbout {
+    display: none;
+    text-align: center;
+}
 
 #divMatrix {
     padding-top: 1%;
@@ -96,7 +100,6 @@ main {
 }
 
 #matrixTable {
-    text-align: center;
 }
 
 /* Style for the footer */
