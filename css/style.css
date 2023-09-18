@@ -4,18 +4,31 @@ Date: May 15, 2023, 15:49.
 Description: CSS stylesheet for 'Edition Tracker'.
 */
 
-#matrixTable {
-    text-align: center;
+/*Styles for the body.*/
+body {
+    background-color: #ffffff; /* Set background color */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    height: 100vh;
 }
 
-/*#matrixTable th,*/
-/*#matrixTable td {*/
-/*    text-align: center;*/
-/*}*/
+body div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
-/*Styles for labels whose id starts with "labelEdition".*/
-label[id^="labelEdition"] {
-    color: #144879;
+/* Style the main */
+main {
+    flex-grow: 1; /* Grow to fill remaining space */
+    /*padding: 20px;*/
+    /*overflow-y: auto; !* Add scrollbars if content overflows *!*/
+}
+
+.divBodyHeader {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute space evenly between child divs */
 }
 
 .divTablesUserInput {
@@ -31,7 +44,6 @@ label[id^="labelEdition"] {
     text-align: right;
     background: #efe4b0;
     border-radius: 10px;
-
 }
 
 #tableSummaryHoldingAdvanced {
@@ -42,31 +54,6 @@ label[id^="labelEdition"] {
     text-align: center;
 }
 
-.divBodyHeader {
-    display: flex; /* Use flexbox */
-    justify-content: space-between; /* Distribute space evenly between child divs */
-}
-
-
-/*Style for divs that need left-justification.*/
-.left {
-    text-align: left;
-    flex: 1;
-}
-
-.middle {
-    text-align: right;
-    flex: 1;
-}
-
-
-
-/*Style for divs that need right-justification.*/
-.right {
-    display: flex;
-    justify-content: flex-end; /* Right-align the content horizontally */
-    align-items: flex-end; /* Align the content to the bottom vertically */
-}
 
 .divUpdatesForUser {
     text-align: right;
@@ -78,78 +65,6 @@ label[id^="labelEdition"] {
 
 .divUpdatesForUser li {
     margin-bottom: 10px;
-}
-
-
-
-/* Apply a specific width to all text input fields */
-#divMatrix input[type="text"]{
-    width: 70px; /* Set your desired width here */
-}
-
-/*Styles for the body.*/
-body {
-    background-color: #fffff0; /* Set background color */
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin: 0;
-    height: 100%;
-}
-
-body div {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.listHorizontal {
-    list-style-type: none; /* Remove default list bullets */
-    padding: 0; /* Remove default padding */
-}
-
-.listHorizontal li {
-    display: inline-block; /* Display list items inline-block */
-    margin-right: 10px; /* Add spacing between list items (adjust as needed) */
-}
-
-body {
-    height: 100vh;
-}
-
-/* Style the main */
-main {
-    flex-grow: 1; /* Grow to fill remaining space */
-    /*padding: 20px;*/
-    /*overflow-y: auto; !* Add scrollbars if content overflows *!*/
-}
-
-#divMatrix {
-    padding-top: 1%;
-    padding-bottom: 5%;
-}
-
-
-/* Style for the footer */
-.containerFooter {
-    background-color: #efe4b0; /* Change this to your desired background color */
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 0.5%;
-    position: relative;
-    clear: both;
-
-}
-
-footer div {
-    flex: 1;
-    text-align: center;
-    vertical-align: bottom;
-}
-
-#divUserGuideText {
-    display: none;
 }
 
 /*Following is for loading spiner animation.*/
@@ -174,6 +89,38 @@ footer div {
     100% { transform: rotate(360deg); }
 }
 
+
+#divMatrix {
+    padding-top: 1%;
+    padding-bottom: 5%;
+}
+
+#matrixTable {
+    text-align: center;
+}
+
+/* Style for the footer */
+.containerFooter {
+    background-color: #efe4b0; /* Change this to your desired background color */
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 0.5%;
+    position: relative;
+    clear: both;
+}
+
+footer div {
+    flex: 1;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#divUserGuideText {
+    display: none;
+}
+
 /*Styles for increase button.*/
 .btnIncrease {
     background: #bae1ba;
@@ -190,4 +137,30 @@ footer div {
     text-decoration: none;
 }
 
+/*Style for divs that need left-justification.*/
+.left {
+    text-align: left;
+    flex: 1;
+}
 
+.middle {
+    text-align: right;
+    flex: 1;
+}
+
+/*Style for divs that need right-justification.*/
+.right {
+    display: flex;
+    justify-content: flex-end; /* Right-align the content horizontally */
+    align-items: flex-end; /* Align the content to the bottom vertically */
+}
+
+/* Apply a specific width to all text input fields */
+#divMatrix input[type="text"]{
+    width: 70px; /* Set your desired width here */
+}
+
+/*Styles for labels whose id starts with "labelEdition".*/
+label[id^="labelEdition"] {
+    color: #144879;
+}
