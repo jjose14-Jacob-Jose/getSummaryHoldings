@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+    TEXT_LABEL_HEADER_ALL_ISSUES,
     TEXT_LABEL_HEADER_EDITION_CHECKBOX,
     TEXT_LABEL_HEADER_EDITION_NUMBER,
     TEXT_LABEL_HEADER_EDITION_TYPE,
@@ -136,7 +137,7 @@ export default function EditionsTable({ editionRows }) {
         { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
         { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
         { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
-        { field: "selectAll", title: "", numeric: false, align: "left" }, // Empty column for "Select All"
+        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
     ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
@@ -176,11 +177,11 @@ export default function EditionsTable({ editionRows }) {
                     <TableRow>
                             {columns.map((col) => (
                                 <HeaderTableCell key={col.field} align={col.align}>
-                                    {col.title === "" ? (
+                                    {col.field === "selectAll" ? (
                                         // Render the text label "Select All" and the master switch
                                         <div 
                                         className='flex gap-2'>
-                                            <div className='font-light text-xs text-gray-400'>Select All Issues</div>
+                                            <div className='font-light text-xs text-[#515151]'>{col.title}</div>
                                         <div
                                         className={`relative cursor-pointer w-10 h-4 ${
                                             masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
@@ -210,10 +211,9 @@ export default function EditionsTable({ editionRows }) {
                                  <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
                                  <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
                                 <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
-                                <PaddedTableCell align="middle" width="10%">
-                                    <div className="ml-7">
+                                <PaddedTableCell align="justify" width="11%">
                                     <div
-                                        className={`relative cursor-pointer w-10 h-4 ${
+                                        className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
                                           }`}
                                         onClick={() => toggleRowSelection(row.rowId)} 
@@ -225,12 +225,11 @@ export default function EditionsTable({ editionRows }) {
                                               } `}
                                         ></div>
                                     </div>
-                                    </div>
                                 </PaddedTableCell>
-                                <PaddedTableCell align="left" width="40%">
-                                    <div className="flex gap-2">
+                                <PaddedTableCell align="left" width="36%">
+                                    <div className="flex gap-2 flex-wrap justify-left">
                                         {row.listOfIssues.map((issue) => (
-                                            <li className="list-none" key={issue.text}>
+                                            <li className="list-none my-1" key={issue.text}>
                                                 <input
                                                     type="checkbox"
                                                     id={issue.text + '_' + row.rowId}
@@ -242,7 +241,7 @@ export default function EditionsTable({ editionRows }) {
                                                 />
                                                 <label
                                                     htmlFor={issue.text + '_' + row.rowId}
-                                                    className="px-2 py-1 items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
+                                                    className="px-2 py-1 cursor-pointer items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
                                                 >
                                                     {issue.text}
                                                 </label>
@@ -250,7 +249,7 @@ export default function EditionsTable({ editionRows }) {
                                         ))}
                                     </div>
                                 </PaddedTableCell>
-                                <PaddedTableCell align="left" width="25%">{row.selectAll}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="15%">{row.selectAll}</PaddedTableCell>
                             </AlternateTableRow>
                         ))
                     }
