@@ -61,14 +61,19 @@ export default function EditionsTable({ editionRows }) {
         // Check if all checkboxes in a row are selected and update the row's switch accordingly
         editionRows.forEach((row) => {
             let selectedCount = 0;
-            const allCheckboxesSelected = row.listOfIssues.every((issue) =>{
+            let allCheckboxesSelected = false;
+            
+            row.listOfIssues.forEach((issue) => {
                 let selected = selectedCheckboxes[row.rowId]?.[issue.text];
                 //Count to figure out how many issues are selected for form data request object.
                 if(selected){
                     selectedCount++;
                 }
-                return selected;
             });
+
+            if(selectedCount === row.listOfIssues.length){
+                allCheckboxesSelected = true;
+            }
 
             //Set array values for updating form data request object for the backend API.
             //Duplicate code. Code in this file needs to be refactored to consider array
@@ -152,6 +157,7 @@ export default function EditionsTable({ editionRows }) {
     const isCheckboxSelected = (rowId, issueText, id) => {
         let isSelected = selectedCheckboxes[rowId]?.[issueText];
         setCheckBoxSelected(rowId, id, isSelected);
+        console.log("is selected " + isSelected);
         return isSelected;
     }
 
