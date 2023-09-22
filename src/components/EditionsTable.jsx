@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+    TEXT_LABEL_HEADER_ALL_ISSUES,
     TEXT_LABEL_HEADER_EDITION_CHECKBOX,
     TEXT_LABEL_HEADER_EDITION_NUMBER,
     TEXT_LABEL_HEADER_EDITION_TYPE,
@@ -30,7 +31,7 @@ export default function EditionsTable({ editionRows }) {
         { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
         { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
         { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
-        { field: "selectAll", title: "", numeric: false, align: "left" }, // Empty column for "Select All"
+        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
     ];
 
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
@@ -191,85 +192,84 @@ export default function EditionsTable({ editionRows }) {
             <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        {columns.map((col) => (
-                            <HeaderTableCell key={col.field} align={col.align}>
-                                {col.title === "" ? (
-                                    // Render the text label "Select All" and the master switch
-                                    <div 
-                                    className='flex gap-2'>
-                                        <div className='font-light text-xs text-gray-400'>Select All Issues</div>
-                                    <div
-                                    className={`relative cursor-pointer w-10 h-4 ${
-                                        masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
-                                        }`}
-                                        onClick={toggleMasterSwitch}
-                                >
-                                    <div
-                                        className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
-                                            ${
-                                            masterSwitch ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
-                                            } `}
-                                    ></div>
-                                </div>
+                            {columns.map((col) => (
+                                <HeaderTableCell key={col.field} align={col.align}>
+                                    {col.field === "selectAll" ? (
+                                        // Render the text label "Select All" and the master switch
+                                        <div 
+                                        className='flex gap-2'>
+                                            <div className='font-light text-xs text-[#515151]'>{col.title}</div>
+                                        <div
+                                        className={`relative cursor-pointer w-10 h-4 ${
+                                            masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                          }`}
+                                          onClick={toggleMasterSwitch}
+                                    >
+                                        <div
+                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
+                                             ${
+                                                masterSwitch ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
+                                              } `}
+                                        ></div>
                                     </div>
-                                    
-                                ) : (
-                                    // Render other column headers
-                                    col.title
-                                )}
-                            </HeaderTableCell>
-                        ))}
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {editionRows.map((row) => (
-                        <AlternateTableRow hover key={row.rowId}>
-                            <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
-                            <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
-                            <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
-                            <PaddedTableCell align="middle" width="10%">
-                                <div className="ml-7">
-                                <div
-                                    className={`relative cursor-pointer w-10 h-4 ${
-                                        isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
-                                        }`}
-                                    onClick={() => toggleRowSelection(row.rowId)} 
-                                >
+                                        </div>
+                                        
+                                    ) : (
+                                        // Render other column headers
+                                        col.title
+                                    )}
+                                </HeaderTableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {editionRows.map((row) => (
+                            <AlternateTableRow hover key={row.rowId}>
+                                 <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
+                                 <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
+                                <PaddedTableCell align="justify" width="11%">
                                     <div
-                                        className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
-                                            ${
-                                            isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
-                                            } `}
-                                    ></div>
-                                </div>
-                                </div>
-                            </PaddedTableCell>
-                            <PaddedTableCell align="left" width="40%">
-                                <div className="flex gap-2">
-                                    {row.listOfIssues.map((issue) => (
-                                        <li className="list-none" key={issue.text}>
-                                            <input
-                                                type="checkbox"
-                                                id={issue.text + '_' + row.rowId}
-                                                name="checkbox"
-                                                value="value"
-                                                className="hidden peer"
-                                                checked={isCheckboxSelected(row.rowId, issue.text, issue.id)}
-                                                onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
-                                            />
-                                            <label
-                                                htmlFor={issue.text + '_' + row.rowId}
-                                                className="px-2 py-1 items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
-                                            >
-                                                {issue.text}
-                                            </label>
-                                        </li>
-                                    ))}
-                                </div>
-                            </PaddedTableCell>
-                            <PaddedTableCell align="left" width="25%">{row.selectAll}</PaddedTableCell>
-                        </AlternateTableRow>
-                    ))}
+                                        className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
+                                            isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                          }`}
+                                        onClick={() => toggleRowSelection(row.rowId)} 
+                                    >
+                                        <div
+                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
+                                             ${
+                                                isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
+                                              } `}
+                                        ></div>
+                                    </div>
+                                </PaddedTableCell>
+                                <PaddedTableCell align="left" width="36%">
+                                    <div className="flex gap-2 flex-wrap justify-left">
+                                        {row.listOfIssues.map((issue) => (
+                                            <li className="list-none my-1" key={issue.text}>
+                                                <input
+                                                    type="checkbox"
+                                                    id={issue.text + '_' + row.rowId}
+                                                    name="checkbox"
+                                                    value="value"
+                                                    className="hidden peer"
+                                                    checked={isCheckboxSelected(row.rowId, issue.text)}
+                                                    onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
+                                                />
+                                                <label
+                                                    htmlFor={issue.text + '_' + row.rowId}
+                                                    className="px-2 py-1 cursor-pointer items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
+                                                >
+                                                    {issue.text}
+                                                </label>
+                                            </li>
+                                        ))}
+                                    </div>
+                                </PaddedTableCell>
+                                <PaddedTableCell align="left" width="15%">{row.selectAll}</PaddedTableCell>
+                            </AlternateTableRow>
+                        ))
+                    }
                 </TableBody>
             </Table> 
         </TableContainer>

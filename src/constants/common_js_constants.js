@@ -20,6 +20,7 @@ export const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
 export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select All Issues";
 export const TEXT_LABEL_HEADER_YEAR = "Year";
 export const TEXT_LABEL_HEADER_ISSUES= "Issues";
+export const TEXT_LABEL_HEADER_ALL_ISSUES= "Select All Issues";
 export const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
 export const TEXT_BUTTON_ISSUE_COUNT_DECREASE= "-";
 
