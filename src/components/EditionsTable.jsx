@@ -253,7 +253,7 @@ export default function EditionsTable({ editionRows }) {
                                                     name="checkbox"
                                                     value="value"
                                                     className="hidden peer"
-                                                    checked={isCheckboxSelected(row.rowId, issue.text)}
+                                                    checked={isCheckboxSelected(row.rowId, issue.text, issue.id)}
                                                     onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
                                                 />
                                                 <label
