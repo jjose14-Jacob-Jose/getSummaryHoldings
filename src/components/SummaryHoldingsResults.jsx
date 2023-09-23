@@ -7,6 +7,7 @@ import Loader from "./static/Loader";
 import { ENV_LOCAL, ENV_PROD, HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED, HTML_ELEMENT_CLASS_VALUE_MODE_BASIC } from "@/constants/common_js_constants";
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
+import SummaryHoldingsCards from "./static/SummaryHoldingsCards";
 
 /**
  * Summary holdings results component.
@@ -25,7 +26,7 @@ export default function SummaryHoldingsResults() {
         let response;
         try {
             response = await axios({
-                url: `${ENV_PROD}/postData`,
+                url: `${ENV_LOCAL}/postData`,
                 method: "post",
                 data: request,
                 headers: {
@@ -65,7 +66,21 @@ export default function SummaryHoldingsResults() {
             <div className="flex justify-between px-8 p-3 items-center">
                 <h2 className="font-medium text-lg">Summary Holdings Details</h2>
                 <div className="flex gap-4 items-center">
-                    <p>(slider)</p>
+                    <div className="flex">
+                        <label htmlFor ="divRBMode" className="text-right">View: </label>
+                        <div id="divRBMode">
+                            <label>
+                                <input type="radio" name="rbMode" id="rbModeBasic" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
+                                    checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? true : false} />
+                                Basic
+                            </label>
+                            <label>
+                                <input type="radio" name="rbMode" id="rbModeAdvanced" defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
+                                    checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? true : false} />
+                                Detailed
+                            </label>
+                        </div>
+                    </div>
                     <button onClick={handleGenerateSummaryClick} id="btnGenerateSummary" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Generate Summary Holdings</button>
                 </div>
             </div>
@@ -74,44 +89,20 @@ export default function SummaryHoldingsResults() {
                 {
                     summaryGenerated ? 
                         <>
-                            <div className="flex">
-                                
-                                <label htmlFor ="divRBMode" className="text-right">View: </label>
-                                <div id="divRBMode">
-                                    <label>
-                                        <input type="radio" name="rbMode" id="rbModeBasic" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
-                                            checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? true : false} />
-                                        Basic
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="rbMode" id="rbModeAdvanced" defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
-                                            checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? true : false} />
-                                        Detailed
-                                    </label>
-                                </div>
+                          
+
+                            <div className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"} flex gap-4 justify-center`}>
+                                <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
+                                <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} />
                             </div>
 
-                            <div id="tableSummaryHoldingBasic" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"}`}>
-                                <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Missing Editions</label>
-                                <label htmlFor ="textAreaAvailableSummaryHoldingBasic">Summary Holdings (available)</label>
+                            <div id="tableSummaryHoldingAdvanced" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"} flex gap-4 justify-center`} >
                             
-                                <textarea id="textAreaUnavailableEditionsWithoutYearBasic" name="textAreaUnavailableEditionsWithoutYear">{summaryData.textAreaUnavailableEditionsWithoutYear}</textarea>
-                                <textarea id="textAreaAvailableSummaryHoldingBasic" name="textAreaAvailableSummaryHolding">{summaryData.textAreaAvailableSummaryHolding}</textarea>
-                            </div>
-
-                            <div id="tableSummaryHoldingAdvanced" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"}`} >
-                            
-                                <div colSpan="2" className="align-middle items-center">
-                                    Missing Editions
-                                </div>
-                                <div colSpan="2" className="align-middle items-center" >
-                                    Available Editions
-                                </div>
-                                <div rowSpan="2" className="align-middle items-center" >
-                                    Standard Summary Holdings
-                                </div>
+                                <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
+                                <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} dataWithYear={summaryData.textAreaUnavailableEditionsWithYear} />
+                                <SummaryHoldingsCards title="Available Editions" holdingsData={summaryData.textAreaAvailableEditionsWithoutYear} dataWithYear={summaryData.textAreaAvailableEditionsWithYear} />
                                 
-                                <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Without Year</label>
+                                {/* <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Without Year</label>
                                 <label htmlFor ="textAreaUnavailableEditionsWithYear">With Year</label>
                                 <label htmlFor ="textAreaAvailableEditionsWithYear" className="modeAdvanced" >With Year</label>
                                 <label htmlFor ="textAreaAvailableEditionsWithoutYear" className="modeAdvanced" >Without Year</label>
@@ -120,7 +111,7 @@ export default function SummaryHoldingsResults() {
                                 <textarea id="textAreaUnavailableEditionsWithYear" name="textAreaUnavailableEditionsWithYear" className="modeAdvanced">{summaryData.textAreaUnavailableEditionsWithYear}</textarea>
                                 <textarea id="textAreaAvailableEditionsWithYear" name="textAreaAvailableEditionsWithYear" className="modeAdvanced">{summaryData.textAreaAvailableEditionsWithYear}</textarea>
                                 <textarea id="textAreaAvailableEditionsWithoutYear" name="textAreaAvailableEditionsWithoutYear" className="modeAdvanced">{summaryData.textAreaAvailableEditionsWithoutYear}</textarea>
-                                <textarea id="textAreaAvailableSummaryHoldingAdvanced" name="textAreaAvailableSummaryHolding">{summaryData.textAreaAvailableSummaryHolding}</textarea>
+                                <textarea id="textAreaAvailableSummaryHoldingAdvanced" name="textAreaAvailableSummaryHolding">{summaryData.textAreaAvailableSummaryHolding}</textarea> */}
                         
                             </div>
                         </>
