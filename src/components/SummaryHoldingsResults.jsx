@@ -21,6 +21,15 @@ export default function SummaryHoldingsResults() {
     const [showLoader, setShowLoader] = useState(false);
     const [userMode, setUserMode] = useState(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC);
 
+    //Adds new lines after each ";".
+    function formatResponse(responseData) {
+        responseData.textAreaUnavailableEditionsWithoutYear = responseData.textAreaUnavailableEditionsWithoutYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaAvailableEditionsWithoutYear = responseData.textAreaAvailableEditionsWithoutYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaUnavailableEditionsWithYear = responseData.textAreaUnavailableEditionsWithYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaAvailableEditionsWithYear = responseData.textAreaAvailableEditionsWithYear.split(";").join(";\n").replace(/\n$/, "");
+        return responseData;
+    }
+
     //Makes the backend API call to fetch holdings summary details.
     const fetchData = async (request) => {
         let response;
@@ -33,7 +42,8 @@ export default function SummaryHoldingsResults() {
                   "Content-type": "multipart/form-data",
                 },
             });
-            setSummaryData(response.data);
+
+            setSummaryData(formatResponse(response.data));
                     
             //Setting a delay of 1s as the loader loads a little too fast to see. 
             //This might confuse users.
@@ -89,30 +99,15 @@ export default function SummaryHoldingsResults() {
                 {
                     summaryGenerated ? 
                         <>
-                          
-
                             <div className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"} flex gap-4 justify-center`}>
                                 <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
                                 <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} />
                             </div>
 
                             <div id="tableSummaryHoldingAdvanced" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"} flex gap-4 justify-center`} >
-                            
                                 <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
                                 <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} dataWithYear={summaryData.textAreaUnavailableEditionsWithYear} />
                                 <SummaryHoldingsCards title="Available Editions" holdingsData={summaryData.textAreaAvailableEditionsWithoutYear} dataWithYear={summaryData.textAreaAvailableEditionsWithYear} />
-                                
-                                {/* <label htmlFor ="textAreaUnavailableEditionsWithoutYearAdvanced">Without Year</label>
-                                <label htmlFor ="textAreaUnavailableEditionsWithYear">With Year</label>
-                                <label htmlFor ="textAreaAvailableEditionsWithYear" className="modeAdvanced" >With Year</label>
-                                <label htmlFor ="textAreaAvailableEditionsWithoutYear" className="modeAdvanced" >Without Year</label>
-                            
-                                <textarea id="textAreaUnavailableEditionsWithoutYearAdvanced" name="textAreaUnavailableEditionsWithoutYear">{summaryData.textAreaUnavailableEditionsWithoutYear}</textarea>
-                                <textarea id="textAreaUnavailableEditionsWithYear" name="textAreaUnavailableEditionsWithYear" className="modeAdvanced">{summaryData.textAreaUnavailableEditionsWithYear}</textarea>
-                                <textarea id="textAreaAvailableEditionsWithYear" name="textAreaAvailableEditionsWithYear" className="modeAdvanced">{summaryData.textAreaAvailableEditionsWithYear}</textarea>
-                                <textarea id="textAreaAvailableEditionsWithoutYear" name="textAreaAvailableEditionsWithoutYear" className="modeAdvanced">{summaryData.textAreaAvailableEditionsWithoutYear}</textarea>
-                                <textarea id="textAreaAvailableSummaryHoldingAdvanced" name="textAreaAvailableSummaryHolding">{summaryData.textAreaAvailableSummaryHolding}</textarea> */}
-                        
                             </div>
                         </>
                     : <div className="text-sm py-2 text-center text-gray opacity-70">No summary holdings generated yet.</div>
