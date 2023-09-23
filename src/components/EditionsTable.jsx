@@ -16,6 +16,7 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
+import { setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
 
 /**
  * Table component with issue details and checkboxes.
@@ -23,6 +24,16 @@ import { animateText } from "@/constants/framer_motion_utils";
  * @author pdoddi
  */
 export default function EditionsTable({ editionRows }) {
+
+    const columns = [
+        { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
+        { field: "editionNo", title: TEXT_LABEL_HEADER_EDITION_NUMBER, numeric: true, align: "left" },
+        { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
+        { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
+        { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
+        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
+    ];
+
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
     const [masterSwitch, setMasterSwitch] = useState(false);
@@ -49,9 +60,26 @@ export default function EditionsTable({ editionRows }) {
     useEffect(() => {
         // Check if all checkboxes in a row are selected and update the row's switch accordingly
         editionRows.forEach((row) => {
-            const allCheckboxesSelected = row.listOfIssues.every((issue) =>
-                selectedCheckboxes[row.rowId]?.[issue.text]
-            );
+            let selectedCount = 0;
+            let allCheckboxesSelected = false;
+            
+            row.listOfIssues.forEach((issue) => {
+                let selected = selectedCheckboxes[row.rowId]?.[issue.text];
+                //Count to figure out how many issues are selected for form data request object.
+                if(selected){
+                    selectedCount++;
+                }
+            });
+
+            if(selectedCount === row.listOfIssues.length){
+                allCheckboxesSelected = true;
+            }
+
+            //Set array values for updating form data request object for the backend API.
+            //Duplicate code. Code in this file needs to be refactored to consider array
+            //objects in public.js.
+            setCheckboxesInARowSelectedValue(row.rowId, allCheckboxesSelected, selectedCount);
+            
             setSelectedRows((prevState) => ({
                 ...prevState,
                 [row.rowId]: allCheckboxesSelected,
@@ -126,19 +154,14 @@ export default function EditionsTable({ editionRows }) {
         setRowsAsMaster(newMasterSwitchState);
     };
     
-    const isCheckboxSelected = (rowId, issueText) =>
-        selectedCheckboxes[rowId]?.[issueText];
+    const isCheckboxSelected = (rowId, issueText, id) => {
+        let isSelected = selectedCheckboxes[rowId]?.[issueText];
+        setCheckBoxSelected(rowId, id, isSelected);
+        console.log("is selected " + isSelected);
+        return isSelected;
+    }
 
     const isRowSelected = (rowId) => selectedRows[rowId];
-
-    const columns = [
-        { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
-        { field: "editionNo", title: TEXT_LABEL_HEADER_EDITION_NUMBER, numeric: true, align: "left" },
-        { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
-        { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
-        { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
-        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
-    ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
         [`&.${tableCellClasses.head}`]: {
@@ -236,7 +259,7 @@ export default function EditionsTable({ editionRows }) {
                                                     name="checkbox"
                                                     value="value"
                                                     className="hidden peer"
-                                                    checked={isCheckboxSelected(row.rowId, issue.text)}
+                                                    checked={isCheckboxSelected(row.rowId, issue.text, issue.id)}
                                                     onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
                                                 />
                                                 <label
