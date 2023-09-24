@@ -1,4 +1,4 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
+import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE, MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
@@ -12,6 +12,30 @@ function printToConsole(variable) {
 function printToAlert(variable) {
     printToConsole(JSON.stringify(variable));
     alert(JSON.stringify(variable));
+}
+
+export function setCheckBoxSelected(i, indexOfEdition, isTrue){
+    if(isTrue) {
+        arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_ALL_AVAILABLE;
+    }
+    else {
+        arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_NOT_AVAILABLE;
+    }
+}
+
+//Sets row level flags depending on the number of checkboxes selected in a row -
+// - All the checkboxes selected - FLAG_ISSUES_ALL_AVAILABLE
+// - Some of the checkboxes selected - FLAG_ISSUES_SOME_AVAILABLE
+// - None of the checkboxes selected - FLAG_ISSUES_NOT_AVAILABLE
+export function setCheckboxesInARowSelectedValue(i, isTrue, selectedIssuesCount){
+    if(isTrue){
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_ALL_AVAILABLE;
+    }
+    else if(selectedIssuesCount === 0) {
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+    } else {
+        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
+    }
 }
 
 // Initializes the table.
@@ -46,7 +70,7 @@ function initializeArrays() {
 
             // Create checkbox element
             const checkbox = {
-                id: 'checkboxOfIssue' + indexOfEdition,
+                id: indexOfEdition,
                 checked: arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition]  === FLAG_ISSUES_ALL_AVAILABLE,
                 text: `${indexOfEdition + 1 }`
             }
@@ -94,22 +118,36 @@ export function validateUserInputs(){
         editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
 
         let messageError = STRING_VALUE_EMPTY;
-        // Check if the parsed values are NaN (Not-a-Number)
-        if (isNaN(yearStarting)) {
+        // Check if the parsed values are NaN (Not-a-Number) or negative/zero.
+        if (isNaN(yearStarting) || yearStarting < 1) {
             messageError = document.getElementById("lblTxtNumberYearStarting").innerHTML;
         }
-        if (isNaN(yearEnding)) {
+        if (isNaN(yearEnding) || yearEnding < 1) {
             messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML;
         }
-        if (isNaN(volumeYearStarting)) {
+        if (isNaN(volumeYearStarting) || volumeYearStarting < 1) {
             messageError = document.getElementById("lblTxtNumberVolumeStartingYear").innerHTML;
         }
-        if (isNaN(editionsPerYear)) {
+        if (isNaN(editionsPerYear) || editionsPerYear < 1) {
             messageError = document.getElementById("lblTxtNumberEditionsPerYear").innerHTML;
         }
 
         if (messageError !== STRING_VALUE_EMPTY) {
             messageError = messageError + MESSAGE_INVALID_INTEGER_INPUT_SUFFIX;
+            throw new Error (messageError);
+        }
+     
+        //Check for empty string
+        editionsType = editionsType.trim();
+        if(!editionsType){
+            messageError = document.getElementById("lblTxtTextEditionsType").innerHTML + MESSAGE_EMPTY_FIELD;
+            throw new Error (messageError);
+        }
+
+        //Check for the correct year range - earliest edition should be before latest edition.
+        if(yearStarting > yearEnding){
+            messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML + 
+                            MESSAGE_YEAR_RANGE_INVALID + document.getElementById("lblTxtNumberYearStarting").innerHTML + ".";
             throw new Error (messageError);
         }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+    TEXT_LABEL_HEADER_ALL_ISSUES,
     TEXT_LABEL_HEADER_EDITION_CHECKBOX,
     TEXT_LABEL_HEADER_EDITION_NUMBER,
     TEXT_LABEL_HEADER_EDITION_TYPE,
@@ -15,6 +16,7 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
+import { setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
 
 /**
  * Table component with issue details and checkboxes.
@@ -22,6 +24,16 @@ import { animateText } from "@/constants/framer_motion_utils";
  * @author pdoddi
  */
 export default function EditionsTable({ editionRows }) {
+
+    const columns = [
+        { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
+        { field: "editionNo", title: TEXT_LABEL_HEADER_EDITION_NUMBER, numeric: true, align: "left" },
+        { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
+        { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
+        { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
+        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
+    ];
+
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
     const [masterSwitch, setMasterSwitch] = useState(false);
@@ -48,9 +60,26 @@ export default function EditionsTable({ editionRows }) {
     useEffect(() => {
         // Check if all checkboxes in a row are selected and update the row's switch accordingly
         editionRows.forEach((row) => {
-            const allCheckboxesSelected = row.listOfIssues.every((issue) =>
-                selectedCheckboxes[row.rowId]?.[issue.text]
-            );
+            let selectedCount = 0;
+            let allCheckboxesSelected = false;
+            
+            row.listOfIssues.forEach((issue) => {
+                let selected = selectedCheckboxes[row.rowId]?.[issue.text];
+                //Count to figure out how many issues are selected for form data request object.
+                if(selected){
+                    selectedCount++;
+                }
+            });
+
+            if(selectedCount === row.listOfIssues.length){
+                allCheckboxesSelected = true;
+            }
+
+            //Set array values for updating form data request object for the backend API.
+            //Duplicate code. Code in this file needs to be refactored to consider array
+            //objects in public.js.
+            setCheckboxesInARowSelectedValue(row.rowId, allCheckboxesSelected, selectedCount);
+            
             setSelectedRows((prevState) => ({
                 ...prevState,
                 [row.rowId]: allCheckboxesSelected,
@@ -125,19 +154,14 @@ export default function EditionsTable({ editionRows }) {
         setRowsAsMaster(newMasterSwitchState);
     };
     
-    const isCheckboxSelected = (rowId, issueText) =>
-        selectedCheckboxes[rowId]?.[issueText];
+    const isCheckboxSelected = (rowId, issueText, id) => {
+        let isSelected = selectedCheckboxes[rowId]?.[issueText];
+        setCheckBoxSelected(rowId, id, isSelected);
+        console.log("is selected " + isSelected);
+        return isSelected;
+    }
 
     const isRowSelected = (rowId) => selectedRows[rowId];
-
-    const columns = [
-        { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
-        { field: "editionNo", title: TEXT_LABEL_HEADER_EDITION_NUMBER, numeric: true, align: "left" },
-        { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
-        { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
-        { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
-        { field: "selectAll", title: "", numeric: false, align: "left" }, // Empty column for "Select All"
-    ];
 
     const HeaderTableCell = styled(TableCell)(() => ({
         [`&.${tableCellClasses.head}`]: {
@@ -176,11 +200,11 @@ export default function EditionsTable({ editionRows }) {
                     <TableRow>
                             {columns.map((col) => (
                                 <HeaderTableCell key={col.field} align={col.align}>
-                                    {col.title === "" ? (
+                                    {col.field === "selectAll" ? (
                                         // Render the text label "Select All" and the master switch
                                         <div 
                                         className='flex gap-2'>
-                                            <div className='font-light text-xs text-gray-400'>Select All Issues</div>
+                                            <div className='font-light text-xs text-[#515151]'>{col.title}</div>
                                         <div
                                         className={`relative cursor-pointer w-10 h-4 ${
                                             masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
@@ -210,10 +234,9 @@ export default function EditionsTable({ editionRows }) {
                                  <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
                                  <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
                                 <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
-                                <PaddedTableCell align="middle" width="10%">
-                                    <div className="ml-7">
+                                <PaddedTableCell align="justify" width="11%">
                                     <div
-                                        className={`relative cursor-pointer w-10 h-4 ${
+                                        className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
                                             isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
                                           }`}
                                         onClick={() => toggleRowSelection(row.rowId)} 
@@ -225,24 +248,23 @@ export default function EditionsTable({ editionRows }) {
                                               } `}
                                         ></div>
                                     </div>
-                                    </div>
                                 </PaddedTableCell>
-                                <PaddedTableCell align="left" width="40%">
-                                    <div className="flex gap-2">
+                                <PaddedTableCell align="left" width="36%">
+                                    <div className="flex gap-2 flex-wrap justify-left">
                                         {row.listOfIssues.map((issue) => (
-                                            <li className="list-none" key={issue.text}>
+                                            <li className="list-none my-1" key={issue.text}>
                                                 <input
                                                     type="checkbox"
                                                     id={issue.text + '_' + row.rowId}
                                                     name="checkbox"
                                                     value="value"
                                                     className="hidden peer"
-                                                    checked={isCheckboxSelected(row.rowId, issue.text)}
+                                                    checked={isCheckboxSelected(row.rowId, issue.text, issue.id)}
                                                     onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
                                                 />
                                                 <label
                                                     htmlFor={issue.text + '_' + row.rowId}
-                                                    className="px-2 py-1 items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
+                                                    className="px-2 py-1 cursor-pointer items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
                                                 >
                                                     {issue.text}
                                                 </label>
@@ -250,7 +272,7 @@ export default function EditionsTable({ editionRows }) {
                                         ))}
                                     </div>
                                 </PaddedTableCell>
-                                <PaddedTableCell align="left" width="25%">{row.selectAll}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="15%">{row.selectAll}</PaddedTableCell>
                             </AlternateTableRow>
                         ))
                     }

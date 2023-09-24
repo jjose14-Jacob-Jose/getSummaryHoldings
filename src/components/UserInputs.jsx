@@ -51,6 +51,7 @@ export default function UserInputs({setDisplayResults, setEditionRows, displayRe
                     <div className="max-w-[133px] w-fit">
                         <label id="lblTxtNumberEditionsPerYear" htmlFor ="txtNumberEditionsPerYear" className="font-medium text-[13px]">Issues in a year</label>
                         <input type="number" min="1" id="txtNumberEditionsPerYear" className="text-black mt-1 font-light p-1 pl-[10px] text-sm border-black/[0.2] border-[1.5px] rounded max-w-[133px]" name="editionsPerYear" required defaultValue="12" />
+
                     </div>
                     <div className="max-w-[130px]">
                         <label id="lblTxtNumberVolumeStartingYear" htmlFor ="txtNumberVolumeStartingYear" className="font-medium text-[13px]">Starting volume</label>

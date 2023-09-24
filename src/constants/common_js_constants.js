@@ -20,6 +20,7 @@ export const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
 export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select All Issues";
 export const TEXT_LABEL_HEADER_YEAR = "Year";
 export const TEXT_LABEL_HEADER_ISSUES= "Issues";
+export const TEXT_LABEL_HEADER_ALL_ISSUES= "Select All Issues";
 export const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
 export const TEXT_BUTTON_ISSUE_COUNT_DECREASE= "-";
 
@@ -44,6 +45,8 @@ export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
 
 export const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
 export const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = " is not a valid number.";
+export const MESSAGE_EMPTY_FIELD = " is required.";
+export const MESSAGE_YEAR_RANGE_INVALID = " can't be older than ";
 export const MESSAGE_DUPLICATE_EDITION_NUMBER = " already exists. Please enter a unique value.";
 
 export const STRING_VALUE_EMPTY = "";
