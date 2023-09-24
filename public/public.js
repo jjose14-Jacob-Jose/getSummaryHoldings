@@ -153,7 +153,6 @@ export function validateUserInputs(){
 
         if(editionsPerYear>0) {
             generatedRows = initializeArrays();
-            console.log("Arrays initialized successfully.");
         }
 
     } catch (error) {
