@@ -207,14 +207,14 @@ export default function EditionsTable({ editionRows }) {
                                             <div className='font-light text-xs text-[#515151]'>{col.title}</div>
                                         <div
                                         className={`relative cursor-pointer w-10 h-4 ${
-                                            masterSwitch ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                            masterSwitch ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
                                           }`}
                                           onClick={toggleMasterSwitch}
                                     >
                                         <div
                                             className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
                                              ${
-                                                masterSwitch ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
+                                                masterSwitch ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
                                               } `}
                                         ></div>
                                     </div>
@@ -237,14 +237,14 @@ export default function EditionsTable({ editionRows }) {
                                 <PaddedTableCell align="justify" width="11%">
                                     <div
                                         className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
-                                            isRowSelected(row.rowId) ? 'bg-gray-900 border border-gray-900 rounded-2xl' : 'bg-white border border-gray-900 rounded-2xl'
+                                            isRowSelected(row.rowId) ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
                                           }`}
                                         onClick={() => toggleRowSelection(row.rowId)} 
                                     >
                                         <div
                                             className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
                                              ${
-                                                isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-gray-900 left-0.5'
+                                                isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
                                               } `}
                                         ></div>
                                     </div>
