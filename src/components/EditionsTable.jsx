@@ -157,7 +157,6 @@ export default function EditionsTable({ editionRows }) {
     const isCheckboxSelected = (rowId, issueText, id) => {
         let isSelected = selectedCheckboxes[rowId]?.[issueText];
         setCheckBoxSelected(rowId, id, isSelected);
-        console.log("is selected " + isSelected);
         return isSelected;
     }
 
