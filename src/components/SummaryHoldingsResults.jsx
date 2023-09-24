@@ -80,18 +80,18 @@ export default function SummaryHoldingsResults() {
                         <label htmlFor ="divRBMode" className="text-right">View: </label>
                         <div id="divRBMode">
                             <label>
-                                <input type="radio" name="rbMode" id="rbModeBasic" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
+                                <input type="radio" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
                                     checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? true : false} />
                                 Basic
                             </label>
                             <label>
-                                <input type="radio" name="rbMode" id="rbModeAdvanced" defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
+                                <input type="radio"  defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
                                     checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? true : false} />
                                 Detailed
                             </label>
                         </div>
                     </div>
-                    <button onClick={handleGenerateSummaryClick} id="btnGenerateSummary" className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Generate Summary Holdings</button>
+                    <button onClick={handleGenerateSummaryClick} className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Generate Summary Holdings</button>
                 </div>
             </div>
             <hr />
@@ -104,7 +104,7 @@ export default function SummaryHoldingsResults() {
                                 <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} />
                             </div>
 
-                            <div id="tableSummaryHoldingAdvanced" className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"} flex gap-4 justify-center`} >
+                            <div className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? "block" : "hidden"} flex gap-4 justify-center`} >
                                 <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
                                 <SummaryHoldingsCards title="Missing Editions" holdingsData={summaryData.textAreaUnavailableEditionsWithoutYear} dataWithYear={summaryData.textAreaUnavailableEditionsWithYear} />
                                 <SummaryHoldingsCards title="Available Editions" holdingsData={summaryData.textAreaAvailableEditionsWithoutYear} dataWithYear={summaryData.textAreaAvailableEditionsWithYear} />

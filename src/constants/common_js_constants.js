@@ -19,10 +19,14 @@ export const TEXT_LABEL_HEADER_EDITION_TYPE = "Edition";
 export const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
 export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select All Issues";
 export const TEXT_LABEL_HEADER_YEAR = "Year";
-export const TEXT_LABEL_HEADER_ISSUES= "Issues";
-export const TEXT_LABEL_HEADER_ALL_ISSUES= "Select All Issues";
-export const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
-export const TEXT_BUTTON_ISSUE_COUNT_DECREASE= "-";
+export const TEXT_LABEL_HEADER_ISSUES = "Issues";
+export const TEXT_LABEL_HEADER_ALL_ISSUES = "Select All Issues";
+export const TEXT_BUTTON_ISSUE_COUNT_INCREASE = "+";
+export const TEXT_BUTTON_ISSUE_COUNT_DECREASE = "-";
+export const TEXT_AREA_WITH_YEAR = 1;
+export const TEXT_AREA_WITHOUT_YEAR = 2;
+export const GENERAL_TEXT_AREA = 3;
+
 
 export const FLAG_ISSUES_NOT_AVAILABLE = 0;
 export const FLAG_ISSUES_ALL_AVAILABLE = 1;
@@ -43,6 +47,7 @@ export const CSS_HTML_ELEMENT_VALUE_DECREASE = "btnDecrease";
 export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
 export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
 
+// Error related constants.
 export const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
 export const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = " is not a valid number.";
 export const MESSAGE_EMPTY_FIELD = " is required.";
@@ -51,6 +56,7 @@ export const MESSAGE_DUPLICATE_EDITION_NUMBER = " already exists. Please enter a
 
 export const STRING_VALUE_EMPTY = "";
 
+// Keyboard functions related constants.
 export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITION_TYPE_DESCRIPTION = '1';
 export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_STARTING = '2';
 export const KEYBOARD_LETTER_TO_FOCUS_ON_TXT_YEAR_ENDING = '3';
