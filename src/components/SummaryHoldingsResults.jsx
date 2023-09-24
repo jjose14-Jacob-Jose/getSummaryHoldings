@@ -35,7 +35,7 @@ export default function SummaryHoldingsResults() {
         let response;
         try {
             response = await axios({
-                url: `${ENV_LOCAL}/postData`,
+                url: `${ENV_PROD}/postData`,
                 method: "post",
                 data: request,
                 headers: {
