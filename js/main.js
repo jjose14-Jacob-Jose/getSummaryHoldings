@@ -270,10 +270,16 @@ function displayMatrixAsHTMLTable() {
             });
             tdYear.appendChild(textFieldYear);
 
-            // Check-box to check all issues.
+
+            // Create a toggle switch container (label)
+            const toggleSwitch = document.createElement('label');
+            toggleSwitch.classList.add('switch');
+
+            // Check-box to check all issues of the year.
             const tdCheckboxesForEntireEdition = document.createElement('td');
             const checkboxForEntireEdition = document.createElement('input');
             checkboxForEntireEdition.type = 'checkbox';
+            checkboxForEntireEdition.id = 'checkboxForEntireEdition' + i;
             checkboxForEntireEdition.addEventListener('change', function () {
                 const checkboxes = tr.querySelectorAll('input[type="checkbox"][id^="checkboxOfIssue"]');
                 const arrayIndividualIssues = [];
@@ -297,7 +303,26 @@ function displayMatrixAsHTMLTable() {
 
             });
             checkboxForEntireEdition.checked = arrayAvailabilityStatusYear[i] === FLAG_ISSUES_ALL_AVAILABLE;
-            tdCheckboxesForEntireEdition.appendChild(checkboxForEntireEdition);
+
+            // Create the slider (span) for the toggle switch
+            const slider = document.createElement('span');
+            slider.classList.add('slider');
+
+            // Append the checkbox and slider to the toggle switch container
+            toggleSwitch.appendChild(checkboxForEntireEdition);
+            toggleSwitch.appendChild(slider);
+
+
+            const labelForCheckboxForEntireEdition = document.createElement('label');
+            labelForCheckboxForEntireEdition.textContent = 'Select All Editions';
+            labelForCheckboxForEntireEdition.setAttribute('for', 'checkboxForEntireEdition' + i );
+
+            // Add classes to the elements to style them as a toggle switch
+            checkboxForEntireEdition.classList.add('toggle-checkbox'); // Add this class
+            labelForCheckboxForEntireEdition.classList.add('toggle-label'); // Add this class
+
+            tdCheckboxesForEntireEdition.appendChild(toggleSwitch);
+            tdCheckboxesForEntireEdition.appendChild(labelForCheckboxForEntireEdition);
 
             // Creating individual checkbox for each edition of year.
             const tdCheckboxesForIndividualIssues = document.createElement('td');
