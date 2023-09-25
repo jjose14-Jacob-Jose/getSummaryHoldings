@@ -509,6 +509,7 @@ function matrixRowAddOrDelete(mode) {
     }
 
     displayMatrixAsHTMLTable();
+    toggleToggleSwitches();
 }
 // Get last element of the array.
 function arrayGetLastElement(array) {
