@@ -128,6 +128,8 @@ function displayMatrixAsHTMLTable() {
     // Remove existing table if it exists
     clearHTMLTable();
 
+    let checkboxToCheckAllCheckboxes;
+
     // Defining table header.
     const thead = document.createElement('tHead');
     {
@@ -148,7 +150,7 @@ function displayMatrixAsHTMLTable() {
         const toggleSwitch = document.createElement('label');
         toggleSwitch.classList.add('switch');
 
-        let checkboxToCheckAllCheckboxes = document.createElement('input');
+        checkboxToCheckAllCheckboxes = document.createElement('input');
         checkboxToCheckAllCheckboxes.type = 'checkbox';
         checkboxToCheckAllCheckboxes.addEventListener('change', function () {
 
@@ -282,15 +284,12 @@ function displayMatrixAsHTMLTable() {
             });
             tdYear.appendChild(textFieldYear);
 
-
-
-
+            const tdCheckboxesForEntireEdition = document.createElement('td');
             // Check-box to check all issues of the year.
             // Create a toggle switch container (label)
             const toggleSwitch = document.createElement('label');
             toggleSwitch.classList.add('switch');
 
-            const tdCheckboxesForEntireEdition = document.createElement('td');
             const checkboxForEntireEdition = document.createElement('input');
             checkboxForEntireEdition.type = 'checkbox';
             checkboxForEntireEdition.id = 'checkboxForEntireEdition' + i;
@@ -348,19 +347,16 @@ function displayMatrixAsHTMLTable() {
                 checkbox.checked = arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition]  === FLAG_ISSUES_ALL_AVAILABLE;
 
                 // Create label for checkbox
-                const label = document.createElement('label');
-                label.textContent = `${indexOfEdition + 1 }`;
-                label.setAttribute('for', 'checkboxOfIssue' + indexOfEdition );
-                label.classList.add('button-label');
-                label.addEventListener('click', function () {
+                const labelForYear = document.createElement('label');
+                labelForYear.textContent = `${indexOfEdition + 1 }`;
+                labelForYear.setAttribute('for', 'checkboxOfIssue' + indexOfEdition );
+                labelForYear.classList.add('button-label');
+                labelForYear.addEventListener('click', function () {
                     // Toggle the associated checkbox's checked state
                     checkbox.checked = !checkbox.checked;
                     event.preventDefault();
-                });
 
-                // Attach change event listener to checkbox
-                checkbox.addEventListener('change', function () {
-                    if (this.checked) {
+                    if (checkbox.checked) {
                         arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_ALL_AVAILABLE; // Value to 1 if checkbox is checked
                     } else {
                         arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_NOT_AVAILABLE; // Value to 0 if checkbox is not-checked.
@@ -375,24 +371,40 @@ function displayMatrixAsHTMLTable() {
                             countChecked++;
                     }
 
-                    checkboxForEntireEdition.checked = false;
+                    // Toggling checkbox for current year.
+                    {
+                        checkboxForEntireEdition.checked = false;
+                        if (countChecked === 0) {
+                            arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+                        } else if (countChecked === checkboxesInRow.length) {
+                            checkboxForEntireEdition.checked = true;
+                            arrayAvailabilityStatusYear[i] = FLAG_ISSUES_ALL_AVAILABLE;
+                        } else {
+                            arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
+                        }
+                    }
 
-                    if (countChecked === 0) {
-                        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+                    // Toggling checkbox for all editions
+                    {
+                        let k=0;
+                        for(; k<arrayAvailabilityStatusYear.length; k++)
+                        {
+                            if (arrayAvailabilityStatusYear[k] !== FLAG_ISSUES_ALL_AVAILABLE)
+                                break;
+                        }
+                        if (k === arrayAvailabilityStatusYear.length)
+                            checkboxToCheckAllCheckboxes.checked = true;
+                        else {
+                            checkboxToCheckAllCheckboxes.checked = false;
+                            printToConsole(checkbox.checked);
+                        }
                     }
-                    else if (countChecked === checkboxesInRow.length) {
-                        checkboxForEntireEdition.checked = true;
-                        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_ALL_AVAILABLE;
 
-                    }
-                    else {
-                        arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
-                    }
                 });
 
                 // Append checkbox to tdCheckboxesForIndividualIssues
                 tdCheckboxesForIndividualIssues.appendChild(checkbox);
-                tdCheckboxesForIndividualIssues.appendChild(label);
+                tdCheckboxesForIndividualIssues.appendChild(labelForYear);
             }
 
             // Creating buttons to increase or decrease number of issues per year.
