@@ -152,6 +152,7 @@ function displayMatrixAsHTMLTable() {
 
         checkboxToCheckAllCheckboxes = document.createElement('input');
         checkboxToCheckAllCheckboxes.type = 'checkbox';
+        checkboxToCheckAllCheckboxes.id = 'checkboxToCheckAllCheckboxes';
         checkboxToCheckAllCheckboxes.addEventListener('change', function () {
 
             printToConsole('hi');
@@ -384,21 +385,7 @@ function displayMatrixAsHTMLTable() {
                         }
                     }
 
-                    // Toggling checkbox for all editions
-                    {
-                        let k=0;
-                        for(; k<arrayAvailabilityStatusYear.length; k++)
-                        {
-                            if (arrayAvailabilityStatusYear[k] !== FLAG_ISSUES_ALL_AVAILABLE)
-                                break;
-                        }
-                        if (k === arrayAvailabilityStatusYear.length)
-                            checkboxToCheckAllCheckboxes.checked = true;
-                        else {
-                            checkboxToCheckAllCheckboxes.checked = false;
-                            printToConsole(checkbox.checked);
-                        }
-                    }
+                    toggleToggleSwitches();
 
                 });
 
@@ -415,6 +402,7 @@ function displayMatrixAsHTMLTable() {
             btnIssueCountIncrease.className = CSS_HTML_ELEMENT_VALUE_INCREASE;
             btnIssueCountIncrease.addEventListener("click", function() {
                 changeIssueCountOfCurrentAndSubsequentYear(i, btnIssueCountIncrease.value);
+                toggleToggleSwitches();
             });
 
             const btnIssueCountDecrease = document.createElement('input');
@@ -424,6 +412,7 @@ function displayMatrixAsHTMLTable() {
             btnIssueCountDecrease.className = CSS_HTML_ELEMENT_VALUE_DECREASE;
             btnIssueCountDecrease.addEventListener("click", function() {
                 changeIssueCountOfCurrentAndSubsequentYear(i, btnIssueCountDecrease.value);
+                toggleToggleSwitches();
             });
 
             const tdIssueCountIncrease = document.createElement('td');
@@ -452,6 +441,7 @@ function displayMatrixAsHTMLTable() {
             btnAddEdition.className = CSS_HTML_ELEMENT_VALUE_INCREASE;
             btnAddEdition.addEventListener("click", function () {
                 matrixRowAddOrDelete(HTML_ELEMENT_VALUE_INCREASE);
+                displayMatrixAsHTMLTable();
             });
 
             const btnDeleteEdition = document.createElement('input');
@@ -538,15 +528,27 @@ function changeIssueCountOfCurrentAndSubsequentYear(editionIndexInMatrix, change
     for (let i = editionIndexInMatrix; i < arrayAvailabilityStatusIssuesOfEachYear.length; i++) {
         if (changeMode === TEXT_BUTTON_ISSUE_COUNT_INCREASE)  {
             arrayAvailabilityStatusIssuesOfEachYear[i].push(FLAG_ISSUES_NOT_AVAILABLE);
+            arrayAvailabilityStatusYear[editionIndexInMatrix] = FLAG_ISSUES_SOME_AVAILABLE;
             arrayIssuesInTheYear[i]++;
         } else {
             arrayAvailabilityStatusIssuesOfEachYear[i].pop();
             arrayIssuesInTheYear[i]--;
+            arrayAvailabilityStatusYear[editionIndexInMatrix] = getAvailabilityOfIssuesInARow(editionIndexInMatrix);
         }
     }
     printToConsole("AFTER: arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]: " + arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]);
     displayMatrixAsHTMLTable();
 
+}
+
+function getAvailabilityOfIssuesInARow(rowIndex) {
+    for (j = 0; j < arrayAvailabilityStatusIssuesOfEachYear[rowIndex].length; j++) {
+        if (arrayAvailabilityStatusIssuesOfEachYear[rowIndex][j] !== FLAG_ISSUES_ALL_AVAILABLE) {
+            // All editions are not available.
+            return FLAG_ISSUES_NOT_AVAILABLE;
+        }
+    }
+    return FLAG_ISSUES_ALL_AVAILABLE;
 }
 
 // Increment of String-cells in column below the specified row.
@@ -987,6 +989,39 @@ function toggleDivVisibility(divId) {
     } else {
         htmlElement.style.display = "none";
     }
+}
+
+function toggleToggleSwitches() {
+    // Toggle-switch for all issues.
+    let allAvailable = true;
+    for (let i = 0; i < arrayAvailabilityStatusYear.length; i++) {
+        if (arrayAvailabilityStatusYear[i] !== FLAG_ISSUES_ALL_AVAILABLE) {
+            allAvailable = false;
+            break;
+        }
+    }
+
+    // Toggle-switch for each row.
+    for (let i = 0; i < arrayAvailabilityStatusIssuesOfEachYear.length; i++) {
+        let rowAvailable = true;
+        let j = 0;
+        let checkboxForCurrentRow;
+        for (j = 0; j < arrayAvailabilityStatusIssuesOfEachYear[i].length; j++) {
+            if (arrayAvailabilityStatusIssuesOfEachYear[i][j] !== FLAG_ISSUES_ALL_AVAILABLE) {
+                rowAvailable = false;
+                break;
+            }
+        }
+        checkboxForCurrentRow = document.getElementById('checkboxForEntireEdition' + i);
+        checkboxForCurrentRow.checked = rowAvailable
+
+        // Do something with rowAvailable if needed
+    }
+
+    let checkboxToCheckAllCheckboxes = document.getElementById('checkboxToCheckAllCheckboxes');
+    checkboxToCheckAllCheckboxes.checked = allAvailable;
+
+
 }
 
 
