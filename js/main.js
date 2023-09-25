@@ -780,24 +780,6 @@ function initialLoadingActivities() {
         ajaxForFormUserInput();
     }
 
-    // Event-listener for 'About'.
-    {
-        document.getElementById("aTagAbout").addEventListener("click", function() {
-            event.preventDefault();
-
-            const divBodyInterfaceParts = document.getElementById(ID_DIV_BODY_INTERFACE_SECTION);
-            const divBodyAbout = document.getElementById(ID_DIV_BODY_ABOUT_SECTION);
-
-            if (divBodyInterfaceParts.style.display === "none" || divBodyInterfaceParts.style.display === "") {
-                divBodyInterfaceParts.style.display = "block";
-                divBodyAbout.style.display = "none";
-            } else {
-                divBodyInterfaceParts.style.display = "none";
-                divBodyAbout.style.display = "block";
-            }
-        });
-    }
-
     loadingAnimationHide();
     enableKeyboardShortCuts();
 
@@ -907,14 +889,16 @@ function enableKeyboardShortCuts() {
 
 }
 
-function toggleDivVisibility(divId) {
-    const htmlElement = document.getElementById(divId);
+function toggleDivsInBody() {
+    const divBodyInterfaceParts = document.getElementById(ID_DIV_BODY_INTERFACE_SECTION);
+    const divBodyAbout = document.getElementById(ID_DIV_BODY_ABOUT_SECTION);
 
-    if (htmlElement.style.display === "none" || divUserGuideText.style.display === "") {
-        htmlElement.style.display = "block";
-        window.scrollTo(0, document.body.scrollHeight);
+    if (divBodyInterfaceParts.style.display === "none" || divBodyInterfaceParts.style.display === "") {
+        divBodyInterfaceParts.style.display = "block";
+        divBodyAbout.style.display = "none";
     } else {
-        htmlElement.style.display = "none";
+        divBodyInterfaceParts.style.display = "none";
+        divBodyAbout.style.display = "block";
     }
 }
 

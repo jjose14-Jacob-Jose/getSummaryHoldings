@@ -20,15 +20,16 @@
                 </div>
                 <div class="right">
                     <h3>
-                        <a href="https://getSummaryHoldings.com" class="URLLikeRegularText">Regular page</a>
+                        <a href="https://getSummaryHoldings.com" class="URLLikeRegularText">Interactive UI</a>
                     </h3>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <h3>
-                        <a class="URLLikeRegularText" id="aTagAbout" >About</a>
+                        <a class="URLLikeRegularText" id="aTagAbout" onclick="toggleDivsInBody()">About</a>
                     </h3>
                 </div>
             </div>
             <hr />
+<!--            GSH main interface-->
             <div id="divBodyInterfaceSection">
                 <div class="divTablesUserInput">
                 <table id="tableUserInput">
@@ -52,38 +53,38 @@
                         <tr>
 
                         </tr>
-                    <tr>
-                        <td><button id="btnCreateTable">Generate Checkboxes</button></td>
+                        <tr>
+                            <td><button id="btnCreateTable">Generate Checkboxes</button></td>
 
-                        <td colspan="2">
-                                <input type="hidden" id="arrayEditionDescription" name="arrayEditionDescription">
-                                <input type="hidden" id="arrayEditionNumber" name="arrayEditionNumber">
-                                <input type="hidden" id="arrayYear" name="arrayYear">
-                                <input type="hidden" id="arrayAvailabilityStatusYear" name="arrayAvailabilityStatusYear">
-                                <input type="hidden" id="arrayAvailabilityStatusIssuesOfEachYear" name="arrayAvailabilityStatusIssuesOfEachYear">
-                                <input type="hidden" id="arrayIssuesInTheYear" name="arrayIssuesInTheYear">
-                                <button type="submit" id="btnGenerateSummary" disabled="disabled">Generate Summary Holdings</button>
-                        </td>
-                    </form>
+                            <td colspan="2">
+                                    <input type="hidden" id="arrayEditionDescription" name="arrayEditionDescription">
+                                    <input type="hidden" id="arrayEditionNumber" name="arrayEditionNumber">
+                                    <input type="hidden" id="arrayYear" name="arrayYear">
+                                    <input type="hidden" id="arrayAvailabilityStatusYear" name="arrayAvailabilityStatusYear">
+                                    <input type="hidden" id="arrayAvailabilityStatusIssuesOfEachYear" name="arrayAvailabilityStatusIssuesOfEachYear">
+                                    <input type="hidden" id="arrayIssuesInTheYear" name="arrayIssuesInTheYear">
+                                    <button type="submit" id="btnGenerateSummary" disabled="disabled">Generate Summary Holdings</button>
+                            </td>
+                        </form>
 
-                    <td><button id="btnClearAll" disabled="disabled">Reset</button></td>
+                        <td><button id="btnClearAll" disabled="disabled">Reset</button></td>
 
-                    </tr>
-                    <tr>
-                        <td><label for="divRBMode" class="right-align" >Output:</label></td>
-                        <td>
-                            <div id="divRBMode">
-                                <label>
-                                    <input type="radio" name="rbMode" id="rbModeBasic" value="modeBasic" onclick="setUserMode(this.value)" checked>
-                                    Basic
-                                </label>
-                                <label>
-                                    <input type="radio" name="rbMode" id="rbModeAdvanced" value="modeAdvanced" onclick="setUserMode(this.value)" >
-                                    Detailed
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
+                        </tr>
+                        <tr>
+                            <td><label for="divRBMode" class="right-align" >Output:</label></td>
+                            <td>
+                                <div id="divRBMode">
+                                    <label>
+                                        <input type="radio" name="rbMode" id="rbModeBasic" value="modeBasic" onclick="setUserMode(this.value)" checked>
+                                        Basic
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="rbMode" id="rbModeAdvanced" value="modeAdvanced" onclick="setUserMode(this.value)" >
+                                        Detailed
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
                 </table>
 
                 <table id="tableSummaryHoldingBasic" class="modeBasic">
@@ -141,8 +142,10 @@
                     main();
                 </script>
             </div>
+<!--            About page.-->
             <div id="divBodyAbout">
-                <button>Back</button>
+                <button onclick="toggleDivsInBody()">Back </button>
+<!--                <button onclick="alert('hi')">Back</button>-->
                 <h3>A Motivation</h3>
 
                 <h5>Tech Stack Used</h5>
@@ -169,7 +172,7 @@
                 </div>
                 <div id="divFooterContactUs" class="right">
                     <p>
-                        Contact Us:
+                        Contact us:
                         <a href="mailto:support@getsummaryholdings.com" class="URLLikeRegularText">support@getsummaryholdings.com</a>
                     </p>
 
