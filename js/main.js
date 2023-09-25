@@ -145,10 +145,14 @@ function displayMatrixAsHTMLTable() {
         let thEditionCheckbox = document.createElement('th');
         thEditionCheckbox.textContent = TEXT_LABEL_HEADER_EDITION_CHECKBOX;
 
+        const toggleSwitch = document.createElement('label');
+        toggleSwitch.classList.add('switch');
+
         let checkboxToCheckAllCheckboxes = document.createElement('input');
         checkboxToCheckAllCheckboxes.type = 'checkbox';
         checkboxToCheckAllCheckboxes.addEventListener('change', function () {
 
+            printToConsole('hi');
             // Get all checkboxes in the web page.
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -177,7 +181,15 @@ function displayMatrixAsHTMLTable() {
 
         });
 
-        thEditionCheckbox.appendChild(checkboxToCheckAllCheckboxes);
+        // Create the slider (span) for the toggle switch
+        const slider = document.createElement('span');
+        slider.classList.add('slider');
+
+        toggleSwitch.appendChild(checkboxToCheckAllCheckboxes);
+        toggleSwitch.appendChild(slider);
+
+
+        thEditionCheckbox.appendChild(toggleSwitch);
 
         let thIssues = document.createElement('th');
         thIssues.textContent = TEXT_LABEL_HEADER_ISSUES;
@@ -271,11 +283,13 @@ function displayMatrixAsHTMLTable() {
             tdYear.appendChild(textFieldYear);
 
 
+
+
+            // Check-box to check all issues of the year.
             // Create a toggle switch container (label)
             const toggleSwitch = document.createElement('label');
             toggleSwitch.classList.add('switch');
 
-            // Check-box to check all issues of the year.
             const tdCheckboxesForEntireEdition = document.createElement('td');
             const checkboxForEntireEdition = document.createElement('input');
             checkboxForEntireEdition.type = 'checkbox';
@@ -288,16 +302,15 @@ function displayMatrixAsHTMLTable() {
 
                     if (checkboxes[j].checked) {
                         arrayIndividualIssues.push(FLAG_ISSUES_ALL_AVAILABLE);
-                    }
-                    else {
+                    } else {
                         arrayIndividualIssues.push(FLAG_ISSUES_NOT_AVAILABLE);
                     }
                 }
                 arrayAvailabilityStatusIssuesOfEachYear[i] = arrayIndividualIssues;
 
-                if(checkboxForEntireEdition.checked) {
+                if (checkboxForEntireEdition.checked) {
                     arrayAvailabilityStatusYear[i] = FLAG_ISSUES_ALL_AVAILABLE;
-                }  else {
+                } else {
                     arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
                 }
 
@@ -312,17 +325,15 @@ function displayMatrixAsHTMLTable() {
             toggleSwitch.appendChild(checkboxForEntireEdition);
             toggleSwitch.appendChild(slider);
 
-
             const labelForCheckboxForEntireEdition = document.createElement('label');
-            labelForCheckboxForEntireEdition.textContent = 'Select All Editions';
-            labelForCheckboxForEntireEdition.setAttribute('for', 'checkboxForEntireEdition' + i );
+            labelForCheckboxForEntireEdition.setAttribute('for', 'checkboxForEntireEdition' + i);
 
             // Add classes to the elements to style them as a toggle switch
             checkboxForEntireEdition.classList.add('toggle-checkbox'); // Add this class
             labelForCheckboxForEntireEdition.classList.add('toggle-label'); // Add this class
 
             tdCheckboxesForEntireEdition.appendChild(toggleSwitch);
-            tdCheckboxesForEntireEdition.appendChild(labelForCheckboxForEntireEdition);
+
 
             // Creating individual checkbox for each edition of year.
             const tdCheckboxesForIndividualIssues = document.createElement('td');
