@@ -6,12 +6,19 @@ Description: CSS stylesheet for 'Edition Tracker'.
 
 /*Styles for the body.*/
 body {
-    background-color: #6b4040; /* Set background color */
+    background-color: #ffffff; /* Set background color */
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 0;
     height: 100vh;
+}
+
+ /*Defining constants for CSS.*/
+:root {
+    --knob-translate-x: 37px;
+    --button-height-in-pixels: 20px;
+    --button-width-in-pixels: 20px;
 }
 
 body div {
@@ -127,11 +134,17 @@ footer div {
 /*Styles for increase button.*/
 .btnIncrease {
     background: #bae1ba;
+    height: var(--button-height-in-pixels);
+    width: var(--button-width-in-pixels);
+    text-align: center; /* Center text horizontally */
 }
 
 /*Styles for decrease button.*/
 .btnDecrease {
     background: #eeb6b6;
+    height: var(--button-height-in-pixels);
+    width: var(--button-width-in-pixels);
+    text-align: center; /* Center text horizontally */
 }
 
 /*Remove underline and blue color from HTML anchor-tag text. */
@@ -185,7 +198,6 @@ label[id^="labelEdition"] {
 /* Change button appearance when checkbox is checked */
 input[type="checkbox"]:checked + .button-label {
     background-color: #ec6708; /* Change background color when checked */
-    border-color: #28a745; /* Change border color when checked */
 }
 
 
@@ -194,9 +206,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-
-/*TOGGLE sWITCH */
-
+ /************ START: Toggle Switch *******************/
 /* Style for the switch container */
 .switch {
     position: relative;
@@ -228,7 +238,7 @@ input[type="checkbox"] {
 .slider::before {
     position: absolute;
     content: "";
-    height: 15px;
+    height:15px;
     width: 15px;
     left: 4px;
     bottom: 2px;
@@ -243,14 +253,99 @@ input[type="checkbox"] {
     background-color: #efe4b0;
 }
 
-/* Define a variable for the transform value */
-:root {
-    --knob-translate-x: 37px;
-}
-
 /* Style for the knob when it's in the "on" position */
 .switch input:checked + .slider::before {
     -webkit-transform: translateX(var(--knob-translate-x));
     -ms-transform: translateX(var(--knob-translate-x));
     transform: translateX(var(--knob-translate-x));
 }
+
+/************ END: Toggle Switch *******************/
+
+/************ START: About *******************/
+
+#divBodyAbout {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#divBodyAbout h3, h5, h6 {
+    color: #144879;
+}
+
+#divBodyAbout p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#divBodyAbout ul {
+    list-style: square;
+    padding-left: 20px;
+}
+
+/************ END: About *******************/
+
+/************ START: Images in About *******************/
+
+/* Style for thumbnail images */
+.thumbnail {
+    width: 100px; /* Adjust the size of your thumbnails */
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1); /* Add a hover effect to make them slightly larger */
+}
+
+/* Style for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Style for the modal's close button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 150px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Style for the expanded image */
+#expanded-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* Style for the container of thumbnail images */
+.image-container {
+    display: flex;
+    justify-content: center; /* Adjust this to your layout preference */
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.image-container img {
+    margin: 5px; /* Adjust the margin between thumbnails */
+}
+
+
+/************ END: Images in About *******************/

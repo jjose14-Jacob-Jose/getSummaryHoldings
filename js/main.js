@@ -657,7 +657,6 @@ function loadingAnimationShow() {
 // Hide loading animation spinner.
 function loadingAnimationHide() {
     // Hide loading spinner animation.
-    document.getElementById('divUserInteractionArea').style.display = 'none';
 }
 
 // Ajax to call REST API and update page content dynamically.
@@ -944,7 +943,43 @@ function toggleDivsInBody() {
     }
 }
 
+// Method to close the expanded image by clicking anywhere on the screen.
+document.addEventListener("click", function(event) {
+    const modal = document.getElementById("image-modal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+// Method expand images in 'About'
+function expandImage(image) {
+    const modal = document.getElementById("image-modal");
+    const expandedImage = document.getElementById("expanded-image");
+    expandedImage.src = image.src;
+    modal.style.display = "block";
+}
+
+// Method hide images in 'About'
+function closeModal() {
+    const modal = document.getElementById("image-modal");
+    modal.style.display = "none";
+}
+
+ // Toggling 'User Guide' in footer.
+function toggleDivVisibility(divId) {
+    const htmlElement = document.getElementById(divId);
+
+    if (htmlElement.style.display === "none" || htmlElement.style.display === "") {
+        htmlElement.style.display = "block";
+        window.scrollTo(0, document.body.scrollHeight);
+    } else {
+        htmlElement.style.display = "none";
+    }
+}
+
+
 // Function with main logic.
 function main() {
     initialLoadingActivities();
 }
+

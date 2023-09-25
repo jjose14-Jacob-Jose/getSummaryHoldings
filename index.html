@@ -8,7 +8,16 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/main.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N5DCWKQ06J"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N5DCWKQ06J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-N5DCWKQ06J');
+    </script>
+
 </head>
     <body>
         <main>
@@ -147,8 +156,32 @@
                 <button onclick="toggleDivsInBody()">Back </button>
 <!--                <button onclick="alert('hi')">Back</button>-->
                 <h3>A Motivation</h3>
+                <p>This application makes taxing calculations easier for fellow library colleagues!</p>
+                <p>Library workers use sheets of paper with sets of sequential numbers to track records of publications. They get buried in messy, irregular data. Hundreds of years of publishing means magazines, journals, and newspapers with fluctuating frequencies and ever-changing patterns. Identifying the missing issues from an archive is a painstaking process. Pen and paper put the pain right into the palm of your hands.  </p>
+
+                <div class="image-container">
+                    <img src="images/Multiple_Editions.jpg" alt="Photo of a paper used to track editions of multiple periodicals." class="thumbnail" onclick="expandImage(this)">
+                    <img src="images/Checkboxes_only.jpg" alt="Photo of numbers checked and highlighted." class="thumbnail" onclick="expandImage(this)">
+                </div>
+                <div class="modal" id="image-modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img src="" alt="Expanded Image" id="expanded-image">
+                </div>
+
+
+                <p>‘Get Summary Holdings’ makes a significant difference in getting the job done. Digitizing the audit lets you track missing issues and quickly summarize the findings with mouse clicks. </p>
+                <p>Literally, you can say goodbye to pen and paper!</p>
+                <p>As deployed on the cloud, ‘Get Summary Holdings’ has the potential to flatten the learning curve for budget-constrained, hand-cramped library colleagues.</p>
+                <p>‘Get Summary Holdings’ with an interactive UI is under development and is expected to be released soon.</p>
 
                 <h5>Tech Stack Used</h5>
+                <ul>
+                    <li>Java Spring</li>
+                    <li>Docker</li>
+                    <li>JavaScript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
 
             </div>
         </main>
