@@ -15,7 +15,7 @@ const MATRIX_COLUMN_INDICES = {
 const TEXT_OF_KEY_TO_CONFIRM_YEAR_UPDATE = 'Enter';
 const TEXT_LABEL_HEADER_EDITION_TYPE = "Volume";
 const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
-const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Check all";
+const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select all";
 const TEXT_LABEL_HEADER_YEAR = "Year";
 const TEXT_LABEL_HEADER_ISSUES= "Issues";
 const TEXT_BUTTON_ISSUE_COUNT_INCREASE= "+";
@@ -314,13 +314,18 @@ function displayMatrixAsHTMLTable() {
                 // Create label for checkbox
                 const label = document.createElement('label');
                 label.textContent = `${indexOfEdition + 1 }`;
-                label.setAttribute('for', 'checkboxOfIssue' + indexOfEdition);
+                label.setAttribute('for', 'checkboxOfIssue' + indexOfEdition );
+                label.classList.add('button-label');
+                label.addEventListener('click', function () {
+                    // Toggle the associated checkbox's checked state
+                    checkbox.checked = !checkbox.checked;
+                    event.preventDefault();
+                });
 
                 // Attach change event listener to checkbox
                 checkbox.addEventListener('change', function () {
                     if (this.checked) {
                         arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_ALL_AVAILABLE; // Value to 1 if checkbox is checked
-
                     } else {
                         arrayAvailabilityStatusIssuesOfEachYear[i][indexOfEdition] = FLAG_ISSUES_NOT_AVAILABLE; // Value to 0 if checkbox is not-checked.
                     }
@@ -820,7 +825,7 @@ function stringReplaceAllSemiColonWithCharacter(string, characterReplacement) {
     return string.replace(/;/g, characterReplacement);
 }
 
- // Enable keyboard shorts.
+// Enable keyboard shorts.
 function enableKeyboardShortCuts() {
 
 
@@ -889,6 +894,7 @@ function enableKeyboardShortCuts() {
 
 }
 
+// Method to toggle visibility of 'about' and GSH interface in home page.
 function toggleDivsInBody() {
     const divBodyInterfaceParts = document.getElementById(ID_DIV_BODY_INTERFACE_SECTION);
     const divBodyAbout = document.getElementById(ID_DIV_BODY_ABOUT_SECTION);

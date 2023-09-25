@@ -6,7 +6,7 @@ Description: CSS stylesheet for 'Edition Tracker'.
 
 /*Styles for the body.*/
 body {
-    background-color: #ffffff; /* Set background color */
+    background-color: #6b4040; /* Set background color */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -166,4 +166,29 @@ footer div {
 /*Styles for labels whose id starts with "labelEdition".*/
 label[id^="labelEdition"] {
     color: #144879;
+}
+
+ /*For individual issue buttons.*/
+.button-label{
+    display: inline-block;
+    text-align: center; /* Center text horizontally */
+    height: 20px;
+    width: 20px;
+    margin: 1px;
+    background-color: #f5f5f5; /* Background color for the button */
+    color: #000000; /* Text color */
+    border: 1px solid #007bff; /* Border for button appearance */
+    border-radius: 4px; /* Round the corners */
+    cursor: pointer;
+}
+
+/* Change button appearance when checkbox is checked */
+input[type="checkbox"]:checked + .button-label {
+    background-color: #efe4b0; /* Change background color when checked */
+    border-color: #28a745; /* Change border color when checked */
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
 }
