@@ -157,28 +157,46 @@
             </div>
 <!--            About page.-->
             <div id="divBodyAbout">
-                <button onclick="toggleDivsInBody()">Back </button>
-<!--                <button onclick="alert('hi')">Back</button>-->
-                <h3>A Motivation</h3>
-                <p>This application makes taxing calculations easier for fellow library colleagues!</p>
-                <p>Library workers use sheets of paper with sets of sequential numbers to track records of publications. They get buried in messy, irregular data. Hundreds of years of publishing means magazines, journals, and newspapers with fluctuating frequencies and ever-changing patterns. Identifying the missing issues from an archive is a painstaking process. Pen and paper put the pain right into the palm of your hands.  </p>
-
-                <div class="image-container">
-                    <img src="images/Multiple_Editions.jpg" alt="Photo of a paper used to track editions of multiple periodicals." class="thumbnail" onclick="expandImage(this)">
-                    <img src="images/Checkboxes_only.jpg" alt="Photo of numbers checked and highlighted." class="thumbnail" onclick="expandImage(this)">
+                <div style="text-align: right">
+                    <button onclick="toggleDivsInBody()" style="">Back </button>
                 </div>
+                <h2>Motivation</h2>
+
+                <div class="divBodyAboutSides">
+                    <div class="divBodyAboutSideLeft">
+                        <img src="images/Checkboxes_only.jpg" alt="Photo of a paper used to track editions of multiple periodicals." style="height: 400px"  onclick="expandImage(this)">
+                    </div>
+
+                    <div class="divBodyAboutSideRight">
+                        <h3>Hey there!</h3>
+                        <p>Get Summary Holdings makes taxing calculations easier for fellow library colleagues! </p>
+                        <p>Library workers use sheets of paper with sets of sequential numbers to track records of publications. They get buried in messy, irregular data. Hundreds of years of publishing means magazines, journals, and newspapers with fluctuating frequencies and ever-changing patterns. Identifying the missing issues from an archive is a painstaking process. Pen and paper put the pain right into the palm of your hands.  </p>
+                    </div>
+                </div>
+
+                <div class="divBodyAboutSides">
+
+                    <div class="divBodyAboutSideLeft">
+                        <p>Get Summary Holdings makes a significant difference in getting the job done. Digitizing the audit lets you track missing issues and quickly summarize the findings with mouse clicks.  </p>
+                        <p>Literally, say goodbye to pen and paper!  </p>
+                        <p>As deployed on the cloud, Get Summary Holdings has the potential to flatten the learning curve for budget-constrained, hand-cramped library colleagues. </p>
+                        </div>
+
+                    <div class="divBodyAboutSideRight">
+                        <img src="images/Multiple_Editions.jpg" alt="Photo of a paper used to track editions of multiple periodicals." style="height: 400px"  onclick="expandImage(this)">
+                    </div>
+                </div>
+
+                <p style="font-style: italic">Get Summary Holdings with an interactive UI is under development and is expected to be released soon.  </p>
                 <div class="modal" id="image-modal">
                     <span class="close" onclick="closeModal()">&times;</span>
                     <img src="" alt="Expanded Image" id="expanded-image">
                 </div>
 
 
-                <p>‘Get Summary Holdings’ makes a significant difference in getting the job done. Digitizing the audit lets you track missing issues and quickly summarize the findings with mouse clicks. </p>
-                <p>Literally, you can say goodbye to pen and paper!</p>
-                <p>As deployed on the cloud, ‘Get Summary Holdings’ has the potential to flatten the learning curve for budget-constrained, hand-cramped library colleagues.</p>
-                <p>‘Get Summary Holdings’ with an interactive UI is under development and is expected to be released soon.</p>
 
-                <h5>Tech Stack Used</h5>
+
+                <h4>Tech Stack Used</h4>
                 <ul>
                     <li>Java Spring</li>
                     <li>Docker</li>
