@@ -35,8 +35,9 @@ const HTML_ELEMENT_VALUE_INCREASE = "+";
 const HTML_ELEMENT_VALUE_DECREASE = "-";
 const HTML_ELEMENT_NAME_MODE = "rbMode";
 
-const CSS_HTML_ELEMENT_VALUE_INCREASE = "btnIncrease";
-const CSS_HTML_ELEMENT_VALUE_DECREASE = "btnDecrease";
+    const CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT = "btnToggleRowsOrColumns";
+const CSS_HTML_ELEMENT_VALUE_INCREASE = CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT + " " + "btnIncrease";
+const CSS_HTML_ELEMENT_VALUE_DECREASE = CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT + " " + "btnDecrease";
 
 const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
 const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
@@ -1016,7 +1017,6 @@ function toggleToggleSwitches() {
         checkboxForCurrentRow = document.getElementById('checkboxForEntireEdition' + i);
         checkboxForCurrentRow.checked = rowAvailable
 
-        // Do something with rowAvailable if needed
     }
 
     // Toggle-switch for all issues.

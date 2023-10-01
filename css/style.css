@@ -6,7 +6,7 @@ Description: CSS stylesheet for 'Edition Tracker'.
 
 /*Styles for the body.*/
 body {
-    background-color: #ffffff; /* Set background color */
+    background-color: #fffff0; /* Set background color */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -131,21 +131,30 @@ footer div {
     display: none;
 }
 
-/*Styles for increase button.*/
-.btnIncrease {
-    background: #bae1ba;
+/* Common styles for toggle buttons */
+.btnToggleRowsOrColumns {
     height: var(--button-height-in-pixels);
     width: var(--button-width-in-pixels);
-    text-align: center; /* Center text horizontally */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    text-align: center;
 }
 
-/*Styles for decrease button.*/
-.btnDecrease {
-    background: #eeb6b6;
-    height: var(--button-height-in-pixels);
-    width: var(--button-width-in-pixels);
-    text-align: center; /* Center text horizontally */
+/* Styles for increase button. */
+.btnIncrease {
+    background: #79db79;
+    margin-left: 15px;
+    margin-right: 5px;
 }
+
+/* Styles for decrease button. */
+.btnDecrease {
+    background: #df8c8c;
+}
+
 
 /*Remove underline and blue color from HTML anchor-tag text. */
 .URLLikeRegularText {
@@ -191,14 +200,14 @@ label[id^="labelEdition"] {
     margin: 1px;
     background-color: #f5f5f5; /* Background color for the button */
     color: #000000; /* Text color */
-    border: 1px solid #007bff; /* Border for button appearance */
+    border: 1px solid #8B0000; /* Border for button appearance */
     border-radius: 4px; /* Round the corners */
     cursor: pointer;
 }
 
 /* Change button appearance when checkbox is checked */
 input[type="checkbox"]:checked + .button-label {
-    background-color: #ec6708; /* Change background color when checked */
+    background-color: #FAA0A0; /* Change background color when checked */
 }
 
 
