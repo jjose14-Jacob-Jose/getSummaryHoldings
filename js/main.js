@@ -25,7 +25,8 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
+// const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
+const URL_GENERATE_SUMMARY = "http//localhost:8080/postData";
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
@@ -672,6 +673,7 @@ function loadingAnimationShow() {
 // Hide loading animation spinner.
 function loadingAnimationHide() {
     // Hide loading spinner animation.
+    document.getElementById('divUserInteractionArea').style.display = 'none';
 }
 
 // Ajax to call REST API and update page content dynamically.
@@ -993,14 +995,6 @@ function toggleDivVisibility(divId) {
 }
 
 function toggleToggleSwitches() {
-    // Toggle-switch for all issues.
-    let allAvailable = true;
-    for (let i = 0; i < arrayAvailabilityStatusYear.length; i++) {
-        if (arrayAvailabilityStatusYear[i] !== FLAG_ISSUES_ALL_AVAILABLE) {
-            allAvailable = false;
-            break;
-        }
-    }
 
     // Toggle-switch for each row.
     for (let i = 0; i < arrayAvailabilityStatusIssuesOfEachYear.length; i++) {
@@ -1010,6 +1004,12 @@ function toggleToggleSwitches() {
         for (j = 0; j < arrayAvailabilityStatusIssuesOfEachYear[i].length; j++) {
             if (arrayAvailabilityStatusIssuesOfEachYear[i][j] !== FLAG_ISSUES_ALL_AVAILABLE) {
                 rowAvailable = false;
+
+                if (j > 0) {
+                    arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
+                } else {
+                    arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+                }
                 break;
             }
         }
@@ -1017,6 +1017,15 @@ function toggleToggleSwitches() {
         checkboxForCurrentRow.checked = rowAvailable
 
         // Do something with rowAvailable if needed
+    }
+
+    // Toggle-switch for all issues.
+    let allAvailable = true;
+    for (let i = 0; i < arrayAvailabilityStatusYear.length; i++) {
+        if (arrayAvailabilityStatusYear[i] !== FLAG_ISSUES_ALL_AVAILABLE) {
+            allAvailable = false;
+            break;
+        }
     }
 
     let checkboxToCheckAllCheckboxes = document.getElementById('checkboxToCheckAllCheckboxes');
