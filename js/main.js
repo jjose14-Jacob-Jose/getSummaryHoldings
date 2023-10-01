@@ -13,7 +13,7 @@ const MATRIX_COLUMN_INDICES = {
     COLUMN_INDEX_OF_FLAG_AVAILABILITY: 2
 };
 const TEXT_OF_KEY_TO_CONFIRM_YEAR_UPDATE = 'Enter';
-const TEXT_LABEL_HEADER_EDITION_TYPE = "Volume";
+const TEXT_LABEL_HEADER_EDITION_TYPE = "Edition";
 const TEXT_LABEL_HEADER_EDITION_NUMBER = "Number";
 const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select all";
 const TEXT_LABEL_HEADER_YEAR = "Year";
@@ -25,8 +25,7 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-// const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
-const URL_GENERATE_SUMMARY = "http//localhost:8080/postData";
+const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
@@ -837,7 +836,6 @@ function initialLoadingActivities() {
     {
         ajaxForFormUserInput();
     }
-
     loadingAnimationHide();
     enableKeyboardShortCuts();
 
@@ -1033,7 +1031,6 @@ function toggleToggleSwitches() {
 
 
 }
-
 
 // Function with main logic.
 function main() {
