@@ -25,7 +25,10 @@ const FLAG_ISSUES_NOT_AVAILABLE = 0;
 const FLAG_ISSUES_ALL_AVAILABLE = 1;
 const FLAG_ISSUES_SOME_AVAILABLE = 2;
 
-const URL_GENERATE_SUMMARY = "https://editiontracker.azurewebsites.net/postData";
+ // Change the URL according to the deployment.
+const URL_FOR_GITHUB_PAGES =  "https://editiontracker.azurewebsites.net/postData";
+const URL_FOR_APPLICATION = "/postData"
+const URL_GENERATE_SUMMARY = URL_FOR_GITHUB_PAGES;
 const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
@@ -33,13 +36,13 @@ const HTML_ELEMENT_CLASS_VALUE_MODE_BASIC = "modeBasic";
 const HTML_ELEMENT_VALUE_INCREASE = "+";
 const HTML_ELEMENT_VALUE_DECREASE = "-";
 const HTML_ELEMENT_NAME_MODE = "rbMode";
-
-    const CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT = "btnToggleRowsOrColumns";
+const CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT = "btnToggleRowsOrColumns";
 const CSS_HTML_ELEMENT_VALUE_INCREASE = CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT + " " + "btnIncrease";
 const CSS_HTML_ELEMENT_VALUE_DECREASE = CSS_HTML_ELEMENT_TOGGLE_ROW_COLUMN_COUNT + " " + "btnDecrease";
 
 const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
 const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
+const TEXT_AREA_BOTTOM_MARGIN_LINES = 1;
 
 const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
 const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = " is not a valid number.";
@@ -579,7 +582,7 @@ function displayAPIResponseInHTML(response) {
 
     stringInResponse = response['textAreaUnavailableEditionsWithoutYear'];
     numberOfLines = stringGetNumberOfCharacterOccurrences(stringInResponse, DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API);
-    maximumNumberOfLines = numberOfLines;
+    maximumNumberOfLines = numberOfLines + TEXT_AREA_BOTTOM_MARGIN_LINES;
     stringInResponse = stringReplaceAllSemiColonWithCharacter(stringInResponse, DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML);
     document.getElementById('textAreaUnavailableEditionsWithoutYearBasic').value = stringInResponse;
 
@@ -1003,14 +1006,12 @@ function toggleToggleSwitches() {
         for (j = 0; j < arrayAvailabilityStatusIssuesOfEachYear[i].length; j++) {
             if (arrayAvailabilityStatusIssuesOfEachYear[i][j] !== FLAG_ISSUES_ALL_AVAILABLE) {
                 rowAvailable = false;
-
-                if (j > 0) {
-                    arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
-                } else {
-                    arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
-                }
-                break;
             }
+        }
+        if (j === 0 || j === arrayAvailabilityStatusYear[i].length) {
+            arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
+        } else if (j < arrayAvailabilityStatusIssuesOfEachYear[i].length) {
+            arrayAvailabilityStatusYear[i] = FLAG_ISSUES_SOME_AVAILABLE;
         }
         checkboxForCurrentRow = document.getElementById('checkboxForEntireEdition' + i);
         checkboxForCurrentRow.checked = rowAvailable
