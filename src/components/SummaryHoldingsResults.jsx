@@ -93,10 +93,38 @@ export default function SummaryHoldingsResults() {
                             }
                             >
                             <div
-                                className={`w-7 h-7 rounded-full absolute top-1/2 transform -translate-y-1/2 ${
+                                className={`w-8 h-8 rounded-full absolute top-1/2 transform -translate-y-1/2 ${
                                 userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? 'bg-white left-0.5' : 'bg-[#2A2C32] right-0.5'
-                                } transition-left duration-300`}
-                            ></div>
+                                } transition-left duration-1000`}
+                            >
+                                {userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? (
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#2A2C32"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className={`w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2`}
+                                >
+                                    <path d="M6 6l6 6-6 6" />
+                                </svg>
+                                    ) : (
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className={`w-5 h-5 absolute top-1/2 transform -translate-y-1/2 -translate-x-1 left-2`}
+                                    >
+                                        <path d="M18 18l-6-6 6-6" />
+                                    </svg>
+                                    )}
+                            </div>
                             <span className={`absolute top-1/2 transform -translate-y-1/2 left-2 text-sm ${
                                 userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? 'translate-x-9' : 'translate-x-6'
                                 }`}
