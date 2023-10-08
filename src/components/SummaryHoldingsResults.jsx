@@ -14,9 +14,8 @@ import SummaryHoldingsCards from "./static/SummaryHoldingsCards";
  * 
  * @author pdoddi
  */
-export default function SummaryHoldingsResults() {
+export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSuccess}) {
 
-    const [summaryGenerated, setSummaryGenerated] = useState(false);
     const [summaryData, setSummaryData] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
     const [userMode, setUserMode] = useState(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC);
@@ -49,18 +48,21 @@ export default function SummaryHoldingsResults() {
             //This might confuse users.
             setTimeout(() => {
                 setShowLoader(false);
-                setSummaryGenerated(true);
+                setApiCallSuccess(true);
             }, 1000);
         } catch (error) {
-            setShowLoader(false);
-            console.log(error);
+            setTimeout(() => {
+                setApiCallSuccess(false);
+                setShowLoader(false);
+                console.log(error);
+            }, 1000);
         }
     };
 
     //Displays a loader, fetches the request object for the backend API call and makes the request.
     function handleGenerateSummaryClick() {
         setShowLoader(true);
-        setSummaryGenerated(false);
+        setApiCallSuccess(null);
         setSummaryData(null);
         const request = getGenerateSummaryRequest();
         fetchData(request);
@@ -97,7 +99,7 @@ export default function SummaryHoldingsResults() {
             <hr />
             <div className="px-8 p-3 align-middle justify-center items-center">
                 {
-                    summaryGenerated ? 
+                    apiCallSuccess ? 
                         <>
                             <div className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"} flex gap-4 justify-center`}>
                                 <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />

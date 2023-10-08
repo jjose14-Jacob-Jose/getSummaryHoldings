@@ -9,15 +9,12 @@ import BackToTopButton from "./static/BackToTopButton";
  * 
  * @author pdoddi
  */
-export default function ResultsSection({editionRows}) {
-
-    //todo: Convert all event listeners to normal onclick functions
-    //todo: Use state to check if results are populated or not and disable/enable buttons on that basis.
+export default function ResultsSection({editionRows, setApiCallSuccess, apiCallSuccess}) {
 
     return (
         <div className="items-center align-middle justify-center space-y-4 pb-8">
             <BackToTopButton />
-            <SummaryHoldingsResults />
+            <SummaryHoldingsResults apiCallSuccess={apiCallSuccess} setApiCallSuccess={(status) => setApiCallSuccess(status)} />
             <EditionsTable editionRows={editionRows} />
         </div>
     )
