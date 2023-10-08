@@ -22,7 +22,11 @@ export default function SummaryHoldingsResults() {
 
     // Adds new lines after each ";".
     function formatResponse(responseData) {
-        // Format response data here
+        responseData.textAreaUnavailableEditionsWithoutYear = responseData.textAreaUnavailableEditionsWithoutYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaAvailableEditionsWithoutYear = responseData.textAreaAvailableEditionsWithoutYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaUnavailableEditionsWithYear = responseData.textAreaUnavailableEditionsWithYear.split(";").join(";\n").replace(/\n$/, "");
+        responseData.textAreaAvailableEditionsWithYear = responseData.textAreaAvailableEditionsWithYear.split(";").join(";\n").replace(/\n$/, "");
+        return responseData;
     }
 
     // Makes the backend API call to fetch holdings summary details.
