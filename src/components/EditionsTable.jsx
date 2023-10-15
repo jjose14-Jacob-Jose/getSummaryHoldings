@@ -193,8 +193,8 @@ export default function EditionsTable({ editionRows }) {
         viewport={{ once: true }}
         initial="hidden"
         whileInView="show" >
-        <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-fit max-w-[1070px]">
-            <Table sx={{ minWidth: 650, maxWidth: 1085 }} aria-label="simple table">
+        <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-[1131px]">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                             {columns.map((col) => (
