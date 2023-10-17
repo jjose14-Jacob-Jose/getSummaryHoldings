@@ -26,6 +26,7 @@ export default function Header() {
             </Link>
             <div className="flex gap-8 items-center align-middle">
                 <Link href="/" rel="noopener noreferrer" className={`text-white ${pathname === '/' ? 'opacity-75': 'opacity-100'}  hover:opacity-75`}>Tool</Link>
+                <Link href="/lite" rel="noopener noreferrer" className={`text-white hover:opacity-75`}>Lite Version</Link>
                 <Link href="/about" rel="noopener noreferrer" className={`text-white ${pathname === '/about' ? 'opacity-75': 'opacity-100'}  hover:opacity-75`}>About</Link>
                 <Link href="mailto:support@getsummaryholdings.com" rel="noopener noreferrer" target="_blank" className="p-2 px-4 h-fit text-white hover:text-[#2A2C32] border-[1px] font-light rounded  hover:bg-white hover:font-light items-center">
                     Contact Support
