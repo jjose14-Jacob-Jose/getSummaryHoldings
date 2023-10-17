@@ -14,8 +14,8 @@ import SummaryHoldingsCards from "./static/SummaryHoldingsCards";
  * 
  * @author pdoddi
  */
-export default function SummaryHoldingsResults() {
 
+export default function SummaryHoldingsResults() {
     const [summaryGenerated, setSummaryGenerated] = useState(false);
     const [summaryData, setSummaryData] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
@@ -75,22 +75,64 @@ export default function SummaryHoldingsResults() {
             className="bg-white text-black font-light rounded-lg m-auto w-[1131px]">
             <div className="flex justify-between px-8 p-3 items-center">
                 <h2 className="font-medium text-lg">Summary Holdings Details</h2>
-                <div className="flex gap-4 items-center">
-                    <div className="flex">
-                        <label htmlFor ="divRBMode" className="text-right">View: </label>
-                        <div id="divRBMode">
-                            <label>
-                                <input type="radio" defaultValue="modeBasic" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC)} 
-                                    checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? true : false} />
-                                Basic
-                            </label>
-                            <label>
-                                <input type="radio"  defaultValue="modeAdvanced" onClick={() => setUserMode(HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED)} 
-                                    checked={ userMode === HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED ? true : false} />
-                                Detailed
-                            </label>
-                        </div>
-                    </div>
+                <div className="flex gap-4">
+                    {
+                        summaryGenerated &&
+                        <button
+                            className={`relative cursor-pointer w-56 h-9 border border-[#2A2C32] rounded-full ${
+                                userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC
+                                ? 'bg-[#2A2C32] text-white'
+                                : 'bg-white text-[#2A2C32]'
+                            }`}
+                            onClick={() =>
+                                setUserMode(
+                                userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC
+                                    ? HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED
+                                    : HTML_ELEMENT_CLASS_VALUE_MODE_BASIC
+                                )
+                            }
+                            >
+                            <div
+                                className={`w-8 h-8 rounded-full absolute top-1/2 transform -translate-y-1/2 ${
+                                userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? 'bg-white left-0.5' : 'bg-[#2A2C32] right-0.5'
+                                } transition-left duration-1000`}
+                            >
+                                {userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? (
+                                    <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="#2A2C32"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className={`w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-2`}
+                                >
+                                    <path d="M6 6l6 6-6 6" />
+                                </svg>
+                                    ) : (
+                                        <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className={`w-5 h-5 absolute top-1/2 transform -translate-y-1/2 -translate-x-1 left-2`}
+                                    >
+                                        <path d="M18 18l-6-6 6-6" />
+                                    </svg>
+                                    )}
+                            </div>
+                            <span className={`absolute top-1/2 transform -translate-y-1/2 left-2 text-sm ${
+                                userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? 'translate-x-9' : 'translate-x-6'
+                                }`}
+                            >
+                                {userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "View detailed summary" : "View basic summary"}
+                            </span>
+                        </button>
+                    }    
                     <button onClick={handleGenerateSummaryClick} className="p-2 px-8 h-fit font-light text-[#2A2C32] text-sm hover:text-white border border-[#2A2C32] rounded hover:bg-[#2A2C32] hover:font-light items-center">Generate Summary Holdings</button>
                 </div>
             </div>
@@ -110,7 +152,7 @@ export default function SummaryHoldingsResults() {
                                 <SummaryHoldingsCards title="Available Editions" holdingsData={summaryData.textAreaAvailableEditionsWithoutYear} dataWithYear={summaryData.textAreaAvailableEditionsWithYear} />
                             </div>
                         </>
-                    : <div className="text-sm py-2 text-center text-gray opacity-70">No summary holdings generated yet.</div>
+                        : <div className="text-sm py-2 text-center text-gray opacity-70">No summary holdings generated yet.</div>
                 }
             </div>
           
