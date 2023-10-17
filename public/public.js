@@ -39,7 +39,13 @@ export function setCheckboxesInARowSelectedValue(i, isTrue, selectedIssuesCount)
 }
 
 // Initializes the table.
-function initializeArrays() {
+export function initializeArrays() {
+    editionsType = document.getElementById("txtTextEditionsType").value;
+    yearStarting = parseInt(document.getElementById("txtNumberYearStarting").value);
+    yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
+    volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
+    editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
+
     arrayEditionDescription = [];
     arrayEditionNumber = [];
     arrayYear = [];
@@ -107,60 +113,3 @@ export function getGenerateSummaryRequest() {
     form.append("editionsPerYear", editionsPerYear);
     return form;
 }
-
-export function validateUserInputs(){
-    let generatedRows = [];
-    try {
-        editionsType = document.getElementById("txtTextEditionsType").value;
-        yearStarting = parseInt(document.getElementById("txtNumberYearStarting").value);
-        yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
-        volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
-        editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
-
-        let messageError = STRING_VALUE_EMPTY;
-        // Check if the parsed values are NaN (Not-a-Number) or negative/zero.
-        if (isNaN(yearStarting) || yearStarting < 1) {
-            messageError = document.getElementById("lblTxtNumberYearStarting").innerHTML;
-        }
-        if (isNaN(yearEnding) || yearEnding < 1) {
-            messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML;
-        }
-        if (isNaN(volumeYearStarting) || volumeYearStarting < 1) {
-            messageError = document.getElementById("lblTxtNumberVolumeStartingYear").innerHTML;
-        }
-        if (isNaN(editionsPerYear) || editionsPerYear < 1) {
-            messageError = document.getElementById("lblTxtNumberEditionsPerYear").innerHTML;
-        }
-
-        if (messageError !== STRING_VALUE_EMPTY) {
-            messageError = messageError + MESSAGE_INVALID_INTEGER_INPUT_SUFFIX;
-            throw new Error (messageError);
-        }
-     
-        //Check for empty string
-        editionsType = editionsType.trim();
-        if(!editionsType){
-            messageError = document.getElementById("lblTxtTextEditionsType").innerHTML + MESSAGE_EMPTY_FIELD;
-            throw new Error (messageError);
-        }
-
-        //Check for the correct year range - earliest edition should be before latest edition.
-        if(yearStarting > yearEnding){
-            messageError = document.getElementById("lblTxtNumberYearEnding").innerHTML + 
-                            MESSAGE_YEAR_RANGE_INVALID + document.getElementById("lblTxtNumberYearStarting").innerHTML + ".";
-            throw new Error (messageError);
-        }
-
-        if(editionsPerYear>0) {
-            generatedRows = initializeArrays();
-        }
-
-    } catch (error) {
-        printToAlert(error.message); //Handle error at UI end
-    }
-
-    return generatedRows;
-}
-
-
-    
