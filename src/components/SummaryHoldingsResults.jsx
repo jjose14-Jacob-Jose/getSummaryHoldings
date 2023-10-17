@@ -74,7 +74,7 @@ export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSucces
             viewport={{ once: true }}
             initial="hidden"
             whileInView="show"  
-            className="bg-white text-black font-light rounded-lg m-auto w-[1070px]">
+            className="bg-white text-black font-light rounded-lg m-auto w-[1131px]">
             <div className="flex justify-between px-8 p-3 items-center">
                 <h2 className="font-medium text-lg">Summary Holdings Details</h2>
                 <div className="flex gap-4 items-center">
