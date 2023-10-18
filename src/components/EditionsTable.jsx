@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
+    TEXT_BUTTON_ISSUE_COUNT_DECREASE,
+    TEXT_BUTTON_ISSUE_COUNT_INCREASE,
     TEXT_LABEL_HEADER_ALL_ISSUES,
     TEXT_LABEL_HEADER_EDITION_CHECKBOX,
     TEXT_LABEL_HEADER_EDITION_NUMBER,
@@ -16,27 +18,19 @@ import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
-import { setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
+import { changeIssueCountOfCurrentAndSubsequentYear, setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
 
 /**
  * Table component with issue details and checkboxes.
  * 
  * @author pdoddi
  */
-export default function EditionsTable({ editionRows }) {
-
-    const columns = [
-        { field: "editionType", title: TEXT_LABEL_HEADER_EDITION_TYPE, numeric: false, align: "left" },
-        { field: "editionNo", title: TEXT_LABEL_HEADER_EDITION_NUMBER, numeric: true, align: "left" },
-        { field: "year", title: TEXT_LABEL_HEADER_YEAR, numeric: true, align: "left" },
-        { field: "selectAllBox", title: TEXT_LABEL_HEADER_EDITION_CHECKBOX, numeric: false, align: "left" },
-        { field: "issues", title: TEXT_LABEL_HEADER_ISSUES, numeric: false, align: "left" },
-        { field: "selectAll", title: TEXT_LABEL_HEADER_ALL_ISSUES, numeric: false, align: "left" }, // Empty column for "Select All"
-    ];
+export default function EditionsTable({ editionRows, columns, handleIssueUpdate }) {
 
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
     const [masterSwitch, setMasterSwitch] = useState(false);
+    const [showRowActions, setShowRowActions] = useState(-1);
 
     useEffect(() => {
         // Initialize selectedCheckboxes and selectedRows here
@@ -188,11 +182,7 @@ export default function EditionsTable({ editionRows }) {
         },
     }));
 
-    return(<motion.div
-        variants={animateText(0.15)}
-        viewport={{ once: true }}
-        initial="hidden"
-        whileInView="show" >
+    return(
         <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-[1131px]">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -229,7 +219,12 @@ export default function EditionsTable({ editionRows }) {
                     </TableHead>
                     <TableBody>
                         {editionRows.map((row) => (
-                            <AlternateTableRow hover key={row.rowId}>
+                            <AlternateTableRow hover key={row.rowId} 
+                            // onMouseEnter={() => {
+                                // setShowRowActions(row.rowId);    
+                            //   }}
+                            //   onMouseLeave={() => setShowRowActions(-1)}
+                              >
                                  <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
                                  <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
                                 <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
@@ -271,12 +266,20 @@ export default function EditionsTable({ editionRows }) {
                                         ))}
                                     </div>
                                 </PaddedTableCell>
-                                <PaddedTableCell align="left" width="15%">{row.selectAll}</PaddedTableCell>
+                                <PaddedTableCell align="left" width="15%">
+                                    {/*  className={`gap-2 ${row.rowId === showRowActions ? 'flex': 'hidden'}`} */}
+                                    <div className={`gap-2 flex`}>
+                                        <button onClick={() => handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
+                                            className="p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center">+ Issue</button>
+                                        <button onClick={() => handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_DECREASE)} 
+                                            className="p-1 px-4 h-fit text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center">- Issue</button>
+                                    </div>
+                                </PaddedTableCell>
                             </AlternateTableRow>
                         ))
                     }
                 </TableBody>
             </Table> 
         </TableContainer>
-    </motion.div>)
+    )
 };

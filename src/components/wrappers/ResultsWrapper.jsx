@@ -48,7 +48,7 @@ export default function ResultsWrapper() {
                         scrollToEditionsTable={scrollToEditionsTable}
                     />
                     {
-                        displayResults && <ResultsSection editionRows={editionRows} />
+                        displayResults && <ResultsSection editionRows={editionRows} setEditionRows={setEditionRows} />
                     }
                 </div>
             </motion.div>
