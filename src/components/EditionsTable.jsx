@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import {
     TEXT_BUTTON_ISSUE_COUNT_DECREASE,
     TEXT_BUTTON_ISSUE_COUNT_INCREASE,
-    TEXT_LABEL_HEADER_ALL_ISSUES,
-    TEXT_LABEL_HEADER_EDITION_CHECKBOX,
-    TEXT_LABEL_HEADER_EDITION_NUMBER,
-    TEXT_LABEL_HEADER_EDITION_TYPE,
-    TEXT_LABEL_HEADER_ISSUES,
-    TEXT_LABEL_HEADER_YEAR,
 } from "@/constants/common_js_constants";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,145 +9,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
-import { motion } from "framer-motion";
-import { animateText } from "@/constants/framer_motion_utils";
-import { changeIssueCountOfCurrentAndSubsequentYear, setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../public/public';
 
 /**
  * Table component with issue details and checkboxes.
  * 
  * @author pdoddi
  */
-export default function EditionsTable({ editionRows, columns, handleIssueUpdate }) {
-
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
-    const [selectedRows, setSelectedRows] = useState({});
-    const [masterSwitch, setMasterSwitch] = useState(false);
-    const [showRowActions, setShowRowActions] = useState(-1);
-
-    useEffect(() => {
-        // Initialize selectedCheckboxes and selectedRows here
-        const initialSelectedCheckboxes = {};
-        const initialSelectedRows = {};
-
-        // Set all checkboxes to false initially for each row
-        editionRows.forEach((row) => {
-            initialSelectedCheckboxes[row.rowId] = {};
-            row.listOfIssues.forEach((issue) => {
-                initialSelectedCheckboxes[row.rowId][issue.text] = false;
-            });
-            initialSelectedRows[row.rowId] = false; // Deselect all rows initially
-        });
-
-        setSelectedCheckboxes(initialSelectedCheckboxes);
-        setSelectedRows(initialSelectedRows);
-
-    }, [editionRows]);
-
-    useEffect(() => {
-        // Check if all checkboxes in a row are selected and update the row's switch accordingly
-        editionRows.forEach((row) => {
-            let selectedCount = 0;
-            let allCheckboxesSelected = false;
-            
-            row.listOfIssues.forEach((issue) => {
-                let selected = selectedCheckboxes[row.rowId]?.[issue.text];
-                //Count to figure out how many issues are selected for form data request object.
-                if(selected){
-                    selectedCount++;
-                }
-            });
-
-            if(selectedCount === row.listOfIssues.length){
-                allCheckboxesSelected = true;
-            }
-
-            //Set array values for updating form data request object for the backend API.
-            //Duplicate code. Code in this file needs to be refactored to consider array
-            //objects in public.js.
-            setCheckboxesInARowSelectedValue(row.rowId, allCheckboxesSelected, selectedCount);
-            
-            setSelectedRows((prevState) => ({
-                ...prevState,
-                [row.rowId]: allCheckboxesSelected,
-            }));
-        });
-    }, [selectedCheckboxes, editionRows]);
-
-    // Monitor the state of all custom-switches and update the master switch state accordingly
-    useEffect(() => {
-        const anyCustomSwitchUntoggled = editionRows.some((row) => !selectedRows[row.rowId]);
-        setMasterSwitch(!anyCustomSwitchUntoggled);
-    }, [selectedRows, editionRows]);
-
-    const toggleRowSelection = (rowId) => {
-        const isSelected = !selectedRows[rowId];
-        setSelectedRows((prevState) => ({
-            ...prevState,
-            [rowId]: isSelected,
-        }));
-    
-        // Update checkboxes within the row
-        setCheckboxesAsRow(rowId, isSelected);
-    };
-
-    const setCheckboxesAsRow = (rowId, isSelected) => {
-        setSelectedCheckboxes((prevCheckboxes) => {
-            const updatedRowCheckboxes = { ...prevCheckboxes[rowId] };
-            for (const issueText in updatedRowCheckboxes) {
-                updatedRowCheckboxes[issueText] = isSelected;
-            }
-            return {
-                ...prevCheckboxes,
-                [rowId]: updatedRowCheckboxes,
-            };
-        });
-    };
-
-    const setRowsAsMaster = (isSelected) => {
-        setSelectedRows((prevRows) => {
-            const updatedRows = {};
-            editionRows.forEach((row) => {
-                updatedRows[row.rowId] = isSelected;
-            });
-            return {
-                ...prevRows,
-                ...updatedRows,
-            };
-        });
-    
-        // Update checkboxes for all rows
-        editionRows.forEach((row) => {
-            setCheckboxesAsRow(row.rowId, isSelected);
-        });
-    };
-
-    const toggleCheckboxSelection = (rowId, issueText) => {
-        setSelectedCheckboxes((prevCheckboxes) => ({
-            ...prevCheckboxes,
-            [rowId]: {
-                ...prevCheckboxes[rowId],
-                [issueText]: !prevCheckboxes[rowId]?.[issueText],
-            },
-        }));
-    };
-
-    const toggleMasterSwitch = () => {
-        // Toggle the master switch state
-        const newMasterSwitchState = !masterSwitch;
-        setMasterSwitch(newMasterSwitchState);
-    
-        // Set the selection state of all rows based on the new master switch state
-        setRowsAsMaster(newMasterSwitchState);
-    };
-    
-    const isCheckboxSelected = (rowId, issueText, id) => {
-        let isSelected = selectedCheckboxes[rowId]?.[issueText];
-        setCheckBoxSelected(rowId, id, isSelected);
-        return isSelected;
-    }
-
-    const isRowSelected = (rowId) => selectedRows[rowId];
+export default function EditionsTable(props) {
 
     const HeaderTableCell = styled(TableCell)(() => ({
         [`&.${tableCellClasses.head}`]: {
@@ -187,97 +48,96 @@ export default function EditionsTable({ editionRows, columns, handleIssueUpdate 
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                            {columns.map((col) => (
-                                <HeaderTableCell key={col.field} align={col.align}>
-                                    {col.field === "selectAll" ? (
-                                        // Render the text label "Select All" and the master switch
-                                        <div 
-                                        className='flex gap-2'>
-                                            <div className='font-light text-xs text-[#515151]'>{col.title}</div>
-                                        <div
-                                        className={`relative cursor-pointer w-10 h-4 ${
-                                            masterSwitch ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
-                                          }`}
-                                          onClick={toggleMasterSwitch}
-                                    >
-                                        <div
-                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
-                                             ${
-                                                masterSwitch ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
-                                              } `}
-                                        ></div>
-                                    </div>
-                                        </div>
-                                        
-                                    ) : (
-                                        // Render other column headers
-                                        col.title
-                                    )}
-                                </HeaderTableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {editionRows.map((row) => (
-                            <AlternateTableRow hover key={row.rowId} 
-                            // onMouseEnter={() => {
-                                // setShowRowActions(row.rowId);    
-                            //   }}
-                            //   onMouseLeave={() => setShowRowActions(-1)}
-                              >
-                                 <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
-                                 <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
-                                <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
-                                <PaddedTableCell align="justify" width="11%">
+                        {props.columns.map((col) => (
+                            <HeaderTableCell key={col.field} align={col.align}>
+                                {col.field === "selectAll" ? (
+                                    // Render the text label "Select All" and the master switch
+                                    <div 
+                                    className='flex gap-2'>
+                                        <div className='font-light text-xs text-[#515151]'>{col.title}</div>
                                     <div
-                                        className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
-                                            isRowSelected(row.rowId) ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
-                                          }`}
-                                        onClick={() => toggleRowSelection(row.rowId)} 
-                                    >
-                                        <div
-                                            className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
-                                             ${
-                                                isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
-                                              } `}
-                                        ></div>
+                                    className={`relative cursor-pointer w-10 h-4 ${
+                                        props.masterSwitch ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
+                                        }`}
+                                        onClick={props.toggleMasterSwitch}
+                                >
+                                    <div
+                                        className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
+                                            ${
+                                                props.masterSwitch ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
+                                            } `}
+                                    ></div>
+                                </div>
                                     </div>
-                                </PaddedTableCell>
-                                <PaddedTableCell align="left" width="36%">
-                                    <div className="flex gap-2 flex-wrap justify-left">
-                                        {row.listOfIssues.map((issue) => (
-                                            <li className="list-none my-1" key={issue.text}>
-                                                <input
-                                                    type="checkbox"
-                                                    id={issue.text + '_' + row.rowId}
-                                                    name="checkbox"
-                                                    value="value"
-                                                    className="hidden peer"
-                                                    checked={isCheckboxSelected(row.rowId, issue.text, issue.id)}
-                                                    onChange={() => toggleCheckboxSelection(row.rowId, issue.text)}
-                                                />
-                                                <label
-                                                    htmlFor={issue.text + '_' + row.rowId}
-                                                    className="px-2 py-1 cursor-pointer items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
-                                                >
-                                                    {issue.text}
-                                                </label>
-                                            </li>
-                                        ))}
-                                    </div>
-                                </PaddedTableCell>
-                                <PaddedTableCell align="left" width="15%">
-                                    {/*  className={`gap-2 ${row.rowId === showRowActions ? 'flex': 'hidden'}`} */}
-                                    <div className={`gap-2 flex`}>
-                                        <button onClick={() => handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
-                                            className="p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center">+ Issue</button>
-                                        <button onClick={() => handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_DECREASE)} 
-                                            className="p-1 px-4 h-fit text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center">- Issue</button>
-                                    </div>
-                                </PaddedTableCell>
-                            </AlternateTableRow>
-                        ))
-                    }
+                                    
+                                ) : (
+                                    // Render other column headers
+                                    col.title
+                                )}
+                            </HeaderTableCell>
+                        ))}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {props.editionRows.map((row) => (
+                        <AlternateTableRow hover key={row.rowId} 
+                        // onMouseEnter={() => {
+                            // setShowRowActions(row.rowId);    
+                        //   }}
+                        //   onMouseLeave={() => setShowRowActions(-1)}
+                            >
+                            <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
+                            <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
+                            <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
+                            <PaddedTableCell align="justify" width="11%">
+                                <div
+                                    className={`ml-[24px] relative cursor-pointer w-10 h-4 ${
+                                        props.isRowSelected(row.rowId) ? 'bg-[#2A2C32] border border-[#2A2C32] rounded-2xl' : 'bg-white border border-[#2A2C32] rounded-2xl'
+                                        }`}
+                                    onClick={() => props.toggleRowSelection(row.rowId)} 
+                                >
+                                    <div
+                                        className={`absolute w-3 h-3 rounded-full transform top-1/2 -translate-y-1/2
+                                            ${
+                                                props.isRowSelected(row.rowId) ? 'checked bg-white left-6':'bg-[#2A2C32] left-0.5'
+                                            } `}
+                                    ></div>
+                                </div>
+                            </PaddedTableCell>
+                            <PaddedTableCell align="left" width="36%">
+                                <div className="flex gap-2 flex-wrap justify-left">
+                                    {row.listOfIssues.map((issue) => (
+                                        <li className="list-none my-1" key={issue.text}>
+                                            <input
+                                                type="checkbox"
+                                                id={issue.text + '_' + row.rowId}
+                                                name="checkbox"
+                                                value="value"
+                                                className="hidden peer"
+                                                checked={props.isCheckboxSelected(row.rowId, issue.text, issue.id)}
+                                                onChange={() => props.toggleCheckboxSelection(row.rowId, issue.text)}
+                                            />
+                                            <label
+                                                htmlFor={issue.text + '_' + row.rowId}
+                                                className="px-2 py-1 cursor-pointer items-center justify-between border-[1px] border-black/[0.3] bg-white hover:bg-[#e7e7e738] peer-checked:bg-[#2A2C32] peer-checked:text-white rounded-md"
+                                            >
+                                                {issue.text}
+                                            </label>
+                                        </li>
+                                    ))}
+                                </div>
+                            </PaddedTableCell>
+                            <PaddedTableCell align="left" width="15%">
+                                {/*  className={`gap-2 ${row.rowId === showRowActions ? 'flex': 'hidden'}`} */}
+                                <div className={`gap-2 flex`}>
+                                    <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
+                                        className="p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center">+ Issue</button>
+                                    <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_DECREASE)} 
+                                        className="p-1 px-4 h-fit text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center">- Issue</button>
+                                </div>
+                            </PaddedTableCell>
+                        </AlternateTableRow>
+                    ))}
                 </TableBody>
             </Table> 
         </TableContainer>

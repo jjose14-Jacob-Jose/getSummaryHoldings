@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID } from "@/constants/common_js_constants";
-import { initializeArrays } from "../../public/public";
+import { initializeArrays, populateRows } from "../../public/public";
 
 /**
  * User inputs component for generating the editions table.
@@ -72,7 +72,8 @@ export default function UserInputs({ setDisplayResults, setEditionRows, displayR
     function handleCalculateEditionsClick(e) {
         validateInputs();
         if(!hasAnError()){
-            let rows = initializeArrays();
+            initializeArrays();
+            let rows = populateRows();
             if(rows.length > 0){
                 setEditionRows(null);
                 setEditionRows(rows);
