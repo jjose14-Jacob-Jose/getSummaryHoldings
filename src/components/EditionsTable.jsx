@@ -80,12 +80,7 @@ export default function EditionsTable(props) {
                 </TableHead>
                 <TableBody>
                     {props.editionRows.map((row) => (
-                        <AlternateTableRow hover key={row.rowId} 
-                        // onMouseEnter={() => {
-                            // setShowRowActions(row.rowId);    
-                        //   }}
-                        //   onMouseLeave={() => setShowRowActions(-1)}
-                            >
+                        <AlternateTableRow hover key={row.rowId} className="group">
                             <PaddedTableCell component="th" scope="row" align="left" width="5%">{row.editionType}</PaddedTableCell>
                             <PaddedTableCell align="left" width="5%">{row.editionNumber}</PaddedTableCell>
                             <PaddedTableCell align="left" width="5%">{row.year}</PaddedTableCell>
@@ -128,12 +123,16 @@ export default function EditionsTable(props) {
                                 </div>
                             </PaddedTableCell>
                             <PaddedTableCell align="left" width="15%">
-                                {/*  className={`gap-2 ${row.rowId === showRowActions ? 'flex': 'hidden'}`} */}
-                                <div className={`gap-2 flex`}>
+                                <div className={`gap-2 group-hover:flex hidden`}>
                                     <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
-                                        className="p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center">+ Issue</button>
+                                        className="flex gap-1 text-sm p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center align-middle">
+                                           <div className="text-md font-normal">+</div>
+                                            Issue
+                                    </button>
                                     <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_DECREASE)} 
-                                        className="p-1 px-4 h-fit text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center">- Issue</button>
+                                        className="group/button p-1 px-4 h-fit flex gap-1 text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center align-middle">
+                                            <div className="text-md font-normal w-[6px] h-[1.5px] bg-[#B0322A] group-hover/button:bg-white my-auto"></div> 
+                                            Issue</button>
                                 </div>
                             </PaddedTableCell>
                         </AlternateTableRow>

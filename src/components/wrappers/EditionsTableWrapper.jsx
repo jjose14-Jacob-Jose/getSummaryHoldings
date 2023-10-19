@@ -33,14 +33,13 @@ export default function EditionsTableWrapper({ editionRows, setEditionRows }) {
     const [selectedCheckboxes, setSelectedCheckboxes] = useState({});
     const [selectedRows, setSelectedRows] = useState({});
     const [masterSwitch, setMasterSwitch] = useState(false);
-    // const [showRowActions, setShowRowActions] = useState(-1);
 
     useEffect(() => {
         // Initialize selectedCheckboxes and selectedRows here
         const initialSelectedCheckboxes = {};
         const initialSelectedRows = {};
 
-        // Set all checkboxes to false initially for each row
+        // Check for previously selected checkboxes and update selection accordingly
         editionRows.forEach((row) => {
             initialSelectedCheckboxes[row.rowId] = {};
             row.listOfIssues.forEach((issue) => {
