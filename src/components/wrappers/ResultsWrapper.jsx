@@ -6,6 +6,8 @@ import ResultsSection from "../ResultsSection";
 import Footer from "../static/Footer";
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
+import ToastMessage from "../ToastMessage";
+import { MESSAGE_ERROR_API_RESPONSE } from "@/constants/common_js_constants";
 
 /**
  * A wrapper component for results to be used for displaying results table conditionally.
@@ -15,7 +17,12 @@ import { animateText } from "@/constants/framer_motion_utils";
 export default function ResultsWrapper() {
     
 	const [displayResults, setDisplayResults] = useState(false);
+    const [apiCallSuccess, setApiCallSuccess] = useState(null);
     const [editionRows, setEditionRows] = useState(null);
+
+    function closeToastMessage() {
+        setApiCallSuccess(null);
+    }
 
     function scrollToEditionsTable(){
         const element = document.getElementById('editionsTable');
@@ -48,12 +55,23 @@ export default function ResultsWrapper() {
                         scrollToEditionsTable={scrollToEditionsTable}
                     />
                     {
-                        displayResults && <ResultsSection editionRows={editionRows} setEditionRows={setEditionRows} />
+                        displayResults && <ResultsSection apiCallSuccess={apiCallSuccess} editionRows={editionRows} setEditionRows={setEditionRows} setApiCallSuccess={setApiCallSuccess} />
                     }
                 </div>
             </motion.div>
+            
             {
                 displayResults && <Footer />
+            }
+
+            {
+                apiCallSuccess === false ? 
+                <ToastMessage 
+                    open={apiCallSuccess === false} 
+                    toastMessage={MESSAGE_ERROR_API_RESPONSE}
+                    closeToastMessage={() => closeToastMessage()}
+                /> 
+                : null
             }
         </>
     )

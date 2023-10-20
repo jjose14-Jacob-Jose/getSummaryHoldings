@@ -48,11 +48,10 @@ export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FROM_API = ';';
 export const DELIMITER_SUMMARY_HOLDINGS_BETWEEN_YEARS_FOR_HTML = ";\n";
 
 // Error related constants.
-export const MESSAGE_ERROR_API_RESPONSE = "Error while connecting to server. Contact customer support with following message: ";
+export const MESSAGE_ERROR_API_RESPONSE = "Unable to generate summary holdings at the moment. Please try again later.";
 export const MESSAGE_INVALID_INTEGER_INPUT_SUFFIX = "Not a valid number";
 export const MESSAGE_EMPTY_FIELD = "* Required";
 export const MESSAGE_YEAR_RANGE_INVALID = "Can't be older than earliest year";
-export const MESSAGE_DUPLICATE_EDITION_NUMBER = " already exists. Please enter a unique value.";
 
 export const STRING_VALUE_EMPTY = "";
 
