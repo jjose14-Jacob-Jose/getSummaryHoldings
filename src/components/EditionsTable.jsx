@@ -122,8 +122,8 @@ export default function EditionsTable(props) {
                                     ))}
                                 </div>
                             </PaddedTableCell>
-                            <PaddedTableCell align="left" width="15%">
-                                <div className={`gap-2 group-hover:flex hidden`}>
+                            <PaddedTableCell align="left" width="5%">
+                                <div className={`gap-2 group-hover:opacity-100 flex opacity-0`}>
                                     <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
                                         className="flex gap-1 text-sm p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center align-middle">
                                            <div className="text-md font-normal">+</div>
