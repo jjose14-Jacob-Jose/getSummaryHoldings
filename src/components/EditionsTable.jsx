@@ -44,8 +44,8 @@ export default function EditionsTable(props) {
     }));
 
     return(
-        <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-[1131px]">
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer id="editionsTable" className="bg-white rounded-lg mx-auto w-[1131px] max-w-[1131px]">
+            <Table sx={{ minWidth: 650, maxWidth: 1131 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         {props.columns.map((col) => (
