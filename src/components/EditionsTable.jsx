@@ -1,6 +1,6 @@
 import {
-    TEXT_BUTTON_ISSUE_COUNT_DECREASE,
-    TEXT_BUTTON_ISSUE_COUNT_INCREASE,
+    COUNT_DECREASE,
+    COUNT_INCREASE,
 } from "@/constants/common_js_constants";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -124,12 +124,12 @@ export default function EditionsTable(props) {
                             </PaddedTableCell>
                             <PaddedTableCell align="left" width="5%">
                                 <div className={`gap-2 group-hover:opacity-100 flex opacity-0`}>
-                                    <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_INCREASE)} 
+                                    <button onClick={() => props.handleIssueUpdate(row.rowId, COUNT_INCREASE)} 
                                         className="flex gap-1 text-sm p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center align-middle">
                                            <div className="text-md font-normal">+</div>
                                             Issue
                                     </button>
-                                    <button onClick={() => props.handleIssueUpdate(row.rowId, TEXT_BUTTON_ISSUE_COUNT_DECREASE)} 
+                                    <button onClick={() => props.handleIssueUpdate(row.rowId, COUNT_DECREASE)} 
                                         className="group/button p-1 px-4 h-fit flex gap-1 text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center align-middle">
                                             <div className="text-md font-normal w-[6px] h-[1.5px] bg-[#B0322A] group-hover/button:bg-white my-auto"></div> 
                                             Issue</button>
@@ -137,6 +137,21 @@ export default function EditionsTable(props) {
                             </PaddedTableCell>
                         </AlternateTableRow>
                     ))}
+                    <TableRow>
+                        <TableCell align="center" colSpan={6}> 
+                            <div className={`gap-2 flex mx-auto w-fit`}>
+                                <button onClick={() => props.handleRowUpdate(COUNT_INCREASE)} 
+                                    className="flex gap-1 text-sm p-1 px-4 h-fit text-[#2B720A] hover:text-white border-[1px] border-[#2B720A] font-normal rounded  hover:bg-[#2B720A] hover:font-light items-center align-middle">
+                                        <div className="text-md font-normal">+</div>
+                                        Row
+                                </button>
+                                <button onClick={() => props.handleRowUpdate(COUNT_DECREASE)} 
+                                    className="group text-sm p-1 px-4 h-fit flex gap-1 text-[#B0322A] hover:text-white border-[1px] border-[#B0322A] font-normal rounded  hover:bg-[#B0322A] hover:font-light items-center align-middle">
+                                        <div className="text-md font-normal w-[6px] h-[1.5px] bg-[#B0322A] group-hover:bg-white my-auto"></div> 
+                                        Row</button>
+                            </div>
+                        </TableCell>
+                    </TableRow>
                 </TableBody>
             </Table> 
         </TableContainer>

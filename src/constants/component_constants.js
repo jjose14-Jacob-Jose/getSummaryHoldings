@@ -30,5 +30,3 @@ export const features_list = [
         alt: "Select multiple issues at once"
     }
 ]
-
-export const prototype_link = "https://www.figma.com/proto/JN5jq6RKIbtnmKNb3wzIi4/getSummaryHoldings?type=design&node-id=447-69494&t=LsfbSqHiHLnaFWQp-1&scaling=scale-down&page-id=447%3A69493&starting-point-node-id=447%3A69494&mode=design";

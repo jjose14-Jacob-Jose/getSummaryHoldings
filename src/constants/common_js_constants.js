@@ -21,8 +21,8 @@ export const TEXT_LABEL_HEADER_EDITION_CHECKBOX = "Select All Issues";
 export const TEXT_LABEL_HEADER_YEAR = "Year";
 export const TEXT_LABEL_HEADER_ISSUES = "Issues";
 export const TEXT_LABEL_HEADER_ALL_ISSUES = "Select All Issues";
-export const TEXT_BUTTON_ISSUE_COUNT_INCREASE = "+";
-export const TEXT_BUTTON_ISSUE_COUNT_DECREASE = "-";
+export const COUNT_INCREASE = "+";
+export const COUNT_DECREASE = "-";
 export const TEXT_AREA_WITH_YEAR = 1;
 export const TEXT_AREA_WITHOUT_YEAR = 2;
 export const GENERAL_TEXT_AREA = 3;
@@ -37,8 +37,6 @@ export const URL_GENERATE_SUMMARY_REQUEST_TYPE = "POST";
 
 export const HTML_ELEMENT_CLASS_VALUE_MODE_ADVANCED = "modeAdvanced";
 export const HTML_ELEMENT_CLASS_VALUE_MODE_BASIC = "modeBasic";
-export const HTML_ELEMENT_VALUE_INCREASE = "+";
-export const HTML_ELEMENT_VALUE_DECREASE = "-";
 export const HTML_ELEMENT_NAME_MODE = "rbMode";
 
 export const CSS_HTML_ELEMENT_VALUE_INCREASE = "btnIncrease";
