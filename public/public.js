@@ -1,17 +1,12 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE, MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID, STRING_VALUE_EMPTY } from "@/constants/common_js_constants";
+import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE, MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID, STRING_VALUE_EMPTY, TEXT_BUTTON_ISSUE_COUNT_INCREASE } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
+let rows, yearRange;
 
 // Function to print console outputs.
 function printToConsole(variable) {
     console.log(JSON.stringify(variable));
-}
-
-// Show variable as an alert.
-function printToAlert(variable) {
-    printToConsole(JSON.stringify(variable));
-    alert(JSON.stringify(variable));
 }
 
 export function setCheckBoxSelected(i, indexOfEdition, isTrue){
@@ -38,36 +33,9 @@ export function setCheckboxesInARowSelectedValue(i, isTrue, selectedIssuesCount)
     }
 }
 
-// Initializes the table.
-export function initializeArrays() {
-    editionsType = document.getElementById("txtTextEditionsType").value;
-    yearStarting = parseInt(document.getElementById("txtNumberYearStarting").value);
-    yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
-    volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
-    editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
-
-    arrayEditionDescription = [];
-    arrayEditionNumber = [];
-    arrayYear = [];
-    arrayAvailabilityStatusYear = [];
-    arrayAvailabilityStatusIssuesOfEachYear = [];
-    arrayIssuesInTheYear = [];
-
-    // Adding '+1' to ensure 'ending' year is also included.
-    const yearRange = yearEnding - yearStarting + 1;
-    
-    for(let i=0; i<yearRange; i++) {
-        arrayEditionDescription.push(editionsType);
-        arrayEditionNumber.push(volumeYearStarting++);
-        arrayYear.push(yearStarting++);
-        arrayAvailabilityStatusYear.push(FLAG_ISSUES_NOT_AVAILABLE);
-
-        // Creating an array of length 'editionsPerYear' with all elements having value 'FLAG_ISSUES_NOT_AVAILABLE' and pushing it to 'arrayAvailabilityStatusIssuesOfEachYear'.
-        arrayAvailabilityStatusIssuesOfEachYear.push(Array.from({ length: editionsPerYear }, () => FLAG_ISSUES_NOT_AVAILABLE));
-        arrayIssuesInTheYear.push(editionsPerYear);
-    }
-
-    let rows = [];
+// Populates/updates the rows of the table.
+export function populateRows(){
+    rows = [];
      
     for(let i=0; i<yearRange; i++) {
         let checkboxes = [];
@@ -86,19 +54,65 @@ export function initializeArrays() {
 
         const newRow ={
             rowId: i,
-            editionType: editionsType,
+            editionType: arrayEditionDescription[i],
             editionNumber: arrayEditionNumber[i],
             year: arrayYear[i],
             availabilityStatus: FLAG_ISSUES_NOT_AVAILABLE,
             listOfIssues: checkboxes,
-            availabilityStatusIssuesOfEachYear: Array.from({ length: editionsPerYear }, () => FLAG_ISSUES_NOT_AVAILABLE),
-            issuesInEachYear: editionsPerYear,
+            availabilityStatusIssuesOfEachYear: arrayAvailabilityStatusIssuesOfEachYear[i],
+            issuesInEachYear: arrayIssuesInTheYear[i],
         };
 
         rows.push(newRow);
     }
 
     return rows;
+}
+
+// Initializes the table.
+export function initializeArrays() {
+    editionsType = document.getElementById("txtTextEditionsType").value;
+    yearStarting = parseInt(document.getElementById("txtNumberYearStarting").value);
+    yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
+    volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
+    editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
+
+    arrayEditionDescription = [];
+    arrayEditionNumber = [];
+    arrayYear = [];
+    arrayAvailabilityStatusYear = [];
+    arrayAvailabilityStatusIssuesOfEachYear = [];
+    arrayIssuesInTheYear = [];
+
+    // Adding '+1' to ensure 'ending' year is also included.
+    yearRange = yearEnding - yearStarting + 1;
+    
+    for(let i=0; i<yearRange; i++) {
+        arrayEditionDescription.push(editionsType);
+        arrayEditionNumber.push(volumeYearStarting++);
+        arrayYear.push(yearStarting++);
+        arrayAvailabilityStatusYear.push(FLAG_ISSUES_NOT_AVAILABLE);
+
+        // Creating an array of length 'editionsPerYear' with all elements having value 'FLAG_ISSUES_NOT_AVAILABLE' and pushing it to 'arrayAvailabilityStatusIssuesOfEachYear'.
+        arrayAvailabilityStatusIssuesOfEachYear.push(Array.from({ length: editionsPerYear }, () => FLAG_ISSUES_NOT_AVAILABLE));
+        arrayIssuesInTheYear.push(editionsPerYear);
+    }
+}
+
+// Increase or Decrease the number of issues in current and subsequent rows.
+export function changeIssueCountOfCurrentAndSubsequentYear(rowID, changeMode) {
+    printToConsole("BEFORE: arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]: " + arrayAvailabilityStatusIssuesOfEachYear[rowID]);
+    for (let i = rowID; i < arrayAvailabilityStatusIssuesOfEachYear.length; i++) {
+        if (changeMode === TEXT_BUTTON_ISSUE_COUNT_INCREASE)  {
+            arrayAvailabilityStatusIssuesOfEachYear[i].push(FLAG_ISSUES_NOT_AVAILABLE);
+            arrayIssuesInTheYear[i]++;
+        } else {
+            arrayAvailabilityStatusIssuesOfEachYear[i].pop();
+            arrayIssuesInTheYear[i]--;
+        }
+    }
+    printToConsole("AFTER: arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]: " + arrayAvailabilityStatusIssuesOfEachYear[rowID] + " " + arrayIssuesInTheYear[rowID]);
+    return populateRows();
 }
 
 // Builds the request object for fetching holdings summary from the backend.

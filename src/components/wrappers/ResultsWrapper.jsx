@@ -55,7 +55,7 @@ export default function ResultsWrapper() {
                         scrollToEditionsTable={scrollToEditionsTable}
                     />
                     {
-                        displayResults && <ResultsSection apiCallSuccess={apiCallSuccess} editionRows={editionRows} setApiCallSuccess={setApiCallSuccess} />
+                        displayResults && <ResultsSection apiCallSuccess={apiCallSuccess} editionRows={editionRows} setEditionRows={setEditionRows} setApiCallSuccess={setApiCallSuccess} />
                     }
                 </div>
             </motion.div>
