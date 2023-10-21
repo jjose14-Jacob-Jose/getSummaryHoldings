@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-    FLAG_ISSUES_NOT_AVAILABLE,
-    TEXT_BUTTON_ISSUE_COUNT_INCREASE,
     TEXT_LABEL_HEADER_ALL_ISSUES,
     TEXT_LABEL_HEADER_EDITION_CHECKBOX,
     TEXT_LABEL_HEADER_EDITION_NUMBER,
@@ -11,7 +9,7 @@ import {
 } from "@/constants/common_js_constants";
 import { motion } from "framer-motion";
 import { animateText } from "@/constants/framer_motion_utils";
-import { changeIssueCountOfCurrentAndSubsequentYear, setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../../public/public';
+import { changeIssueCountOfCurrentAndSubsequentYear, matrixRowAddOrDelete, setCheckBoxSelected, setCheckboxesInARowSelectedValue } from '../../../public/public';
 import EditionsTable from '../EditionsTable';
 
 /**
@@ -170,6 +168,11 @@ export default function EditionsTableWrapper({ editionRows, setEditionRows }) {
         setEditionRows(rows);
     }
 
+    function handleRowUpdate(changeMode){
+        const rows = matrixRowAddOrDelete(changeMode);
+        setEditionRows(rows);
+    }
+
     return(
         <motion.div
             variants={animateText(0.15)}
@@ -180,6 +183,7 @@ export default function EditionsTableWrapper({ editionRows, setEditionRows }) {
                 editionRows={editionRows}
                 columns={columns}
                 handleIssueUpdate={handleIssueUpdate}
+                handleRowUpdate={handleRowUpdate}
                 isRowSelected={isRowSelected}
                 isCheckboxSelected={isCheckboxSelected}
                 toggleMasterSwitch={toggleMasterSwitch}

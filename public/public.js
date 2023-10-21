@@ -1,4 +1,4 @@
-import { FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE, MESSAGE_EMPTY_FIELD, MESSAGE_INVALID_INTEGER_INPUT_SUFFIX, MESSAGE_YEAR_RANGE_INVALID, STRING_VALUE_EMPTY, TEXT_BUTTON_ISSUE_COUNT_INCREASE } from "@/constants/common_js_constants";
+import { COUNT_DECREASE, COUNT_INCREASE, FLAG_ISSUES_ALL_AVAILABLE, FLAG_ISSUES_NOT_AVAILABLE, FLAG_ISSUES_SOME_AVAILABLE } from "@/constants/common_js_constants";
 
 let editionsType, yearStarting, yearEnding, volumeYearStarting, editionsPerYear;
 let arrayEditionDescription, arrayEditionNumber, arrayYear, arrayAvailabilityStatusYear, arrayIssuesInTheYear, arrayAvailabilityStatusIssuesOfEachYear;
@@ -37,7 +37,7 @@ export function setCheckboxesInARowSelectedValue(i, isTrue, selectedIssuesCount)
 export function populateRows(){
     rows = [];
      
-    for(let i=0; i<yearRange; i++) {
+    for(let i=0; i<arrayYear.length; i++) {
         let checkboxes = [];
 
         for (let indexOfEdition = 0; indexOfEdition < arrayAvailabilityStatusIssuesOfEachYear[i].length; indexOfEdition++) {
@@ -103,7 +103,7 @@ export function initializeArrays() {
 export function changeIssueCountOfCurrentAndSubsequentYear(rowID, changeMode) {
     printToConsole("BEFORE: arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]: " + arrayAvailabilityStatusIssuesOfEachYear[rowID]);
     for (let i = rowID; i < arrayAvailabilityStatusIssuesOfEachYear.length; i++) {
-        if (changeMode === TEXT_BUTTON_ISSUE_COUNT_INCREASE)  {
+        if (changeMode === COUNT_INCREASE)  {
             arrayAvailabilityStatusIssuesOfEachYear[i].push(FLAG_ISSUES_NOT_AVAILABLE);
             arrayIssuesInTheYear[i]++;
         } else {
@@ -113,6 +113,49 @@ export function changeIssueCountOfCurrentAndSubsequentYear(rowID, changeMode) {
     }
     printToConsole("AFTER: arrayAvailabilityStatusIssuesOfEachYear[editionIndexInMatrix]: " + arrayAvailabilityStatusIssuesOfEachYear[rowID] + " " + arrayIssuesInTheYear[rowID]);
     return populateRows();
+}
+
+// Add or delete a row from the end of the matrix.
+export function matrixRowAddOrDelete(mode) {
+    if (mode === COUNT_INCREASE) {
+        let lastRowValue = arrayGetLastElement(arrayEditionDescription);
+        arrayEditionDescription.push(lastRowValue);
+
+        lastRowValue = arrayGetLastElement(arrayEditionNumber);
+        arrayEditionNumber.push(lastRowValue+1);
+
+        lastRowValue = arrayGetLastElement(arrayYear);
+        arrayYear.push(lastRowValue + 1);
+
+        // Availability status of new row must be 'nothing found'.
+        arrayAvailabilityStatusYear.push(FLAG_ISSUES_NOT_AVAILABLE);
+
+        const issuesPublishedInLastYear = arrayGetLastElement(arrayIssuesInTheYear);
+        arrayIssuesInTheYear.push(issuesPublishedInLastYear);
+
+        const arrayAvailabilityStatusIssuesCurrentYear = [];
+        // Adding 'not found' flags to matrix, the count of new flags is equal to number of issues in last year.
+        for (let i = 0; i<issuesPublishedInLastYear; i++) {
+            arrayAvailabilityStatusIssuesCurrentYear.push(FLAG_ISSUES_NOT_AVAILABLE);
+        }
+        arrayAvailabilityStatusIssuesOfEachYear.push(arrayAvailabilityStatusIssuesCurrentYear);
+
+    } else  if (mode === COUNT_DECREASE) {
+        // Removing last element of the arrays.
+        arrayEditionDescription.pop();
+        arrayEditionNumber.pop();
+        arrayYear.pop();
+        arrayAvailabilityStatusYear.pop();
+        arrayIssuesInTheYear.pop();
+        arrayAvailabilityStatusIssuesOfEachYear.pop();
+    }
+
+    return populateRows();
+}
+
+// Get last element of the array.
+function arrayGetLastElement(array) {
+    return array.slice(-1)[0];
 }
 
 // Builds the request object for fetching holdings summary from the backend.
