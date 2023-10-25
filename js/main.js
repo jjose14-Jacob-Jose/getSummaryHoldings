@@ -115,15 +115,21 @@ function clearAPIResponse() {
 
 }
 
-// Function to ensure that only numbers are accepted in text-fields.
-function restrictToNumbers(event) {
-    // Remove non-numeric characters
-    this.value = this.value.replace(/\D/g, '');
+/**
+ * Check if the html element is having an integer value.
+ * @param htmlElementId : ID of the HTML element whose value is to be validated and returned.
+ * @returns {*} : valid integer; NAN if not a valid integer;
+ */
+function validateIntegerValue(htmlElementId) {
+    value = document.getElementById(htmlElementId).value;
 
-    // Allow only numeric key codes
-    if (event.key !== 'Backspace' && isNaN(parseInt(event.key))) {
-        event.preventDefault();
+    if (/^\d+$/.test(value)) {
+        value = parseInt(value);
+    } else {
+        value = NaN;
     }
+
+    return value;
 }
 
 // Function to convert a matrix to HTML table. Created by ChatGPT.
@@ -159,7 +165,6 @@ function displayMatrixAsHTMLTable() {
         checkboxToCheckAllCheckboxes.id = 'checkboxToCheckAllCheckboxes';
         checkboxToCheckAllCheckboxes.addEventListener('change', function () {
 
-            printToConsole('hi');
             // Get all checkboxes in the web page.
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
@@ -317,6 +322,7 @@ function displayMatrixAsHTMLTable() {
                 } else {
                     arrayAvailabilityStatusYear[i] = FLAG_ISSUES_NOT_AVAILABLE;
                 }
+                toggleToggleSwitches();
 
             });
             checkboxForEntireEdition.checked = arrayAvailabilityStatusYear[i] === FLAG_ISSUES_ALL_AVAILABLE;
@@ -515,6 +521,7 @@ function matrixRowAddOrDelete(mode) {
     displayMatrixAsHTMLTable();
     toggleToggleSwitches();
 }
+
 // Get last element of the array.
 function arrayGetLastElement(array) {
     return array.slice(-1)[0];
@@ -780,10 +787,10 @@ function initialLoadingActivities() {
 
             try {
                 editionsType = document.getElementById("txtTextEditionsType").value;
-                yearStarting = parseInt(document.getElementById("txtNumberYearStarting").value);
-                yearEnding = parseInt(document.getElementById("txtNumberYearEnding").value);
-                volumeYearStarting = parseInt(document.getElementById("txtNumberVolumeStartingYear").value);
-                editionsPerYear = parseInt(document.getElementById("txtNumberEditionsPerYear").value);
+                yearStarting = validateIntegerValue("txtNumberYearStarting");
+                yearEnding = validateIntegerValue("txtNumberYearEnding");
+                volumeYearStarting = validateIntegerValue("txtNumberVolumeStartingYear");
+                editionsPerYear = validateIntegerValue("txtNumberEditionsPerYear");
                 div_matrix = document.querySelector("#"+ID_DIV_MATRIX);
 
                 let messageError = STRING_VALUE_EMPTY;
@@ -884,8 +891,6 @@ function enableKeyboardShortCuts() {
 
 
     document.addEventListener('keydown', function(event) {
-        printToConsole("event.altKey: "+event.altKey);
-        printToConsole("event.key: "+event.key);
         // Shortcuts executed when numeric keys pressed with 'ALT'.
         if (event.altKey) {
             let htmlInputElement = STRING_VALUE_EMPTY;
@@ -902,15 +907,6 @@ function enableKeyboardShortCuts() {
                     break;
                 case KEYBOARD_LETTER_TO_FOCUS_ON_TXT_EDITIONS_IN_A_YEAR:
                     htmlInputElement = document.getElementById("txtNumberEditionsPerYear");
-                    break;
-                case KEYBOARD_LETTER_TO_FOCUS_ON_TXT_VOLUME_OF_STARTING_YEAR:
-                    htmlInputElement = document.getElementById("txtNumberVolumeStartingYear");
-                    break;
-                case KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_CHECKBOXES:
-                    htmlInputElement = document.getElementById("btnCreateTable");
-                    break;
-                case KEYBOARD_LETTER_TO_FOCUS_ON_BTN_GENERATE_SUMMARY_HOLDINGS:
-                    htmlInputElement = document.getElementById("btnGenerateSummary");
                     break;
                 case KEYBOARD_LETTER_TO_FOCUS_ON_TXT_VOLUME_OF_STARTING_YEAR:
                     htmlInputElement = document.getElementById("txtNumberVolumeStartingYear");
