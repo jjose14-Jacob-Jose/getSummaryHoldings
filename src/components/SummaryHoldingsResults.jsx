@@ -15,7 +15,7 @@ import SummaryHoldingsCards from "./static/SummaryHoldingsCards";
  * @author pdoddi
  */
 
-export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSuccess}) {
+export default function SummaryHoldingsResults({setApiCallSuccess}) {
     const [summaryData, setSummaryData] = useState(null);
     const [showLoader, setShowLoader] = useState(false);
     const [userMode, setUserMode] = useState(HTML_ELEMENT_CLASS_VALUE_MODE_BASIC);
@@ -42,13 +42,14 @@ export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSucces
                 },
             });
 
-            setSummaryData(formatResponse(response.data));
+
                     
             //Setting a delay of 1s as the loader loads a little too fast to see. 
             //This might confuse users.
             setTimeout(() => {
                 setShowLoader(false);
                 setApiCallSuccess(true);
+                setSummaryData(formatResponse(response.data));
             }, 1000);
         } catch (error) {
             setTimeout(() => {
@@ -79,7 +80,7 @@ export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSucces
                 <h2 className="font-medium text-lg">Summary Holdings Details</h2>
                 <div className="flex gap-4">
                     {
-                        apiCallSuccess &&
+                        summaryData &&
                         <button
                             className={`relative cursor-pointer w-56 h-9 border border-[#2A2C32] rounded-full ${
                                 userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC
@@ -141,7 +142,7 @@ export default function SummaryHoldingsResults({setApiCallSuccess, apiCallSucces
             <hr />
             <div className="px-8 p-3 align-middle justify-center items-center">
                 {
-                    apiCallSuccess ? 
+                    summaryData ? 
                         <>
                             <div className={`${userMode === HTML_ELEMENT_CLASS_VALUE_MODE_BASIC ? "block" : "hidden"} flex gap-4 justify-center`}>
                                 <SummaryHoldingsCards title="Summary Holdings" holdingsData={summaryData.textAreaAvailableSummaryHolding} />
