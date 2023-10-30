@@ -10,12 +10,12 @@ import EditionsTableWrapper from "./wrappers/EditionsTableWrapper";
  * 
  * @author pdoddi
  */
-export default function ResultsSection({ editionRows, setEditionRows , setApiCallSuccess, apiCallSuccess}) {
+export default function ResultsSection({ editionRows, setEditionRows , setApiCallSuccess }) {
 
     return (
         <div className="items-center align-middle justify-center space-y-4 pb-8">
             <BackToTopButton />
-            <SummaryHoldingsResults apiCallSuccess={apiCallSuccess} setApiCallSuccess={(status) => setApiCallSuccess(status)} />
+            <SummaryHoldingsResults setApiCallSuccess={(status) => setApiCallSuccess(status)} />
             <EditionsTableWrapper editionRows={editionRows} setEditionRows={setEditionRows} />
         </div>
     )

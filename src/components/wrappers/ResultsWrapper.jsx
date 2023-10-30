@@ -55,7 +55,7 @@ export default function ResultsWrapper() {
                         scrollToEditionsTable={scrollToEditionsTable}
                     />
                     {
-                        displayResults && <ResultsSection apiCallSuccess={apiCallSuccess} editionRows={editionRows} setEditionRows={setEditionRows} setApiCallSuccess={setApiCallSuccess} />
+                        displayResults && <ResultsSection editionRows={editionRows} setEditionRows={setEditionRows} setApiCallSuccess={setApiCallSuccess} />
                     }
                 </div>
             </motion.div>
@@ -65,13 +65,12 @@ export default function ResultsWrapper() {
             }
 
             {
-                apiCallSuccess === false ? 
-                <ToastMessage 
+                !apiCallSuccess &&  
+                (<ToastMessage 
                     open={apiCallSuccess === false} 
                     toastMessage={MESSAGE_ERROR_API_RESPONSE}
                     closeToastMessage={() => closeToastMessage()}
-                /> 
-                : null
+                />)
             }
         </>
     )
