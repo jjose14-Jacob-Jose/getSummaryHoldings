@@ -814,6 +814,7 @@ function initialLoadingActivities() {
                     // Adding '+1' to ensure 'ending' year is also included.
                     initializeArrays();
                     displayMatrixAsHTMLTable();
+                    saveToApm("Table Created. ")
                 }
 
             } catch (error) {
@@ -931,6 +932,7 @@ function showDivAbout() {
     const divBodyAbout = document.getElementById(ID_DIV_BODY_ABOUT_SECTION);
     divBodyInterfaceParts.style.display = "none";
     divBodyAbout.style.display = "block";
+    saveToApm("Clicked on About");
 }
 
 
@@ -970,6 +972,7 @@ function closeModal() {
  // Toggling 'User Guide' in footer.
 function toggleDivVisibility(divId) {
     const htmlElement = document.getElementById(divId);
+    saveToApm("Toggling visibility of div with id: " + divId);
 
     if (htmlElement.style.display === "none" || htmlElement.style.display === "") {
         htmlElement.style.display = "block";
@@ -1033,6 +1036,7 @@ function getReCaptchaToken(clientSecretKey) {
 
 // Function with main logic.
 function main() {
+    saveToApm("GSH GitHub Pages Loaded");
     initialLoadingActivities();
 }
 
