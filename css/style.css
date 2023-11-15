@@ -28,7 +28,7 @@ body div {
 
 /* Style the main */
 main {
-    flex-grow: 1; /* Grow to fill remaining space */
+    flex-grow: 0.3; /* Grow to fill remaining space */
     /*padding: 20px;*/
     /*overflow-y: auto; !* Add scrollbars if content overflows *!*/
 }
